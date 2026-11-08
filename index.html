@@ -165,14 +165,14 @@
         </div>
     </div>
 
-    <!-- MODAL ĐỘC QUYỀN CHO TUẤN KIỆT -->
+    <!-- MODAL ĐỘC QUYỀN CHO TUẤN KIỆT (ĐÃ GẮN LINK HTTPS/.WEBP TRỰC TIẾP) -->
     <div id="kietModal" class="fixed inset-0 z-[120] bg-black/90 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4" onclick="closeKietModal()">
         <div class="relative max-w-md w-full bg-slate-900 light:bg-white border-2 border-cyan-400 rounded-3xl p-5 sm:p-6 text-center shadow-2xl shadow-cyan-500/30" onclick="event.stopPropagation()">
             <button onclick="closeKietModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 w-8 h-8 rounded-full flex items-center justify-center transition">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="w-28 h-28 mx-auto mb-3 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-500/20">
-                <img id="kietAvatarImg" src="" alt="Võ Tuấn Kiệt" class="w-full h-full object-cover">
+                <img id="kietAvatarImg" src="https://i.postimg.cc/PJ50zJJL/kiet.webp" alt="Võ Tuấn Kiệt" class="w-full h-full object-cover">
             </div>
             <span class="px-3 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 text-[10px] font-mono font-bold uppercase">Lead Developer • 11A12</span>
             <h3 class="text-lg sm:text-xl font-black text-adaptive-title mt-1.5">VÕ TUẤN KIỆT</h3>
@@ -232,7 +232,7 @@
                 THU HÚT ĐẦU TƯ TRỰC TIẾP NƯỚC NGOÀI (<span class="text-gradient">FDI</span>) TẠI TP.HCM
             </h1>
             <p class="text-adaptive-desc max-w-xl mx-auto text-xs sm:text-sm px-2">
-                Bấm vào tên <strong class="text-cyan-400">Tuấn Kiệt</strong> ở phần thành viên bên dưới để khám phá hiệu ứng độc quyền trên điện thoại!
+                Bấm vào tên <strong class="text-cyan-400">Tuấn Kiệt</strong> ở phần thành viên bên dưới để khám phá hiệu ứng độc quyền!
             </p>
         </div>
     </section>
@@ -351,9 +351,6 @@
     <!-- AOS & JAVASCRIPT -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // CHUỖI BASE64 ẢNH CHÂN DỤNG CỦA KIỆT
-        const kietAvatarBase64 = "data:image/jpeg;base64,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";
-
         const sliderData = {
             "1": {
                 year: "Giai đoạn trước: Khởi đầu & Công nghiệp truyền thống",
@@ -463,15 +460,13 @@
             setTimeout(() => {
                 btn.classList.remove('card-dealing-anim');
                 const modal = document.getElementById('kietModal');
-                document.getElementById('kietAvatarImg').src = kietAvatarBase64;
-
                 const textContainer = document.getElementById('kietTypewriter');
                 textContainer.innerText = '';
                 if (kietTimer) clearInterval(kietTimer);
 
                 modal.classList.remove('opacity-0', 'pointer-events-none');
 
-                const bioText = "Xin chào cô và các bạn! Em là Võ Tuấn Kiệt (sinh năm 2010), học sinh lớp 11A12 Trường THPT Phú Hòa, Củ Chi. Trưởng nhóm code và là người trực tiếp xây dựng giao diện Knowledge Hub FDI TP.HCM này bằng cả tâm huyết và đam mê công nghệ!";
+                const bioText = "Xin chào cô và các bạn! Em là Võ Tuấn Kiệt (sinh năm 2010), học học sinh lớp 11A12 Trường THPT Phú Hòa, Củ Chi. Trưởng nhóm code và là người trực tiếp xây dựng giao diện Knowledge Hub FDI TP.HCM này bằng cả tâm huyết và đam mê công nghệ!";
                 let idx = 0;
                 kietTimer = setInterval(() => {
                     if (idx < bioText.length) {
@@ -487,7 +482,6 @@
             if (kietTimer) clearInterval(kietTimer);
         }
 
-        // TOGGLE MOBILE MENU
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const icon = document.getElementById('menuIcon');
