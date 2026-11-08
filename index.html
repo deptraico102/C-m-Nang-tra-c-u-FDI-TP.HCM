@@ -66,13 +66,7 @@
         }
 
         
-
-        /* 3. LIQUID & GOOEY CONTAINER FILTER */
-        .gooey-filter {
-            filter: url('#gooey');
-        }
-
-        /* 4. KINETIC TYPOGRAPHY ANIMATION */
+        /* 3. KINETIC TYPOGRAPHY ANIMATION */
         .kinetic-char {
             display: inline-block;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
@@ -83,7 +77,7 @@
             text-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 3px 3px 0px #000;
         }
 
-        /* MANGA STYLE CARD WITH GOOEY SHADOW */
+        /* MANGA STYLE CARD VỚI HIỆU ỨNG GLOW SCANNER */
         .manga-card {
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
@@ -93,11 +87,25 @@
             transform-style: preserve-3d;
             perspective: 1000px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
         .light .manga-card {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid #0f172a;
             box-shadow: 6px 6px 0px #0f172a;
+        }
+        .manga-card::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(0deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+            transform: rotate(45deg) translateY(-100%<b>);</b>
+            transition: transform 0.7s ease;
+        }
+        .manga-card:hover::after {
+            transform: rotate(45deg) translateY(100%);
         }
         .manga-card:hover {
             transform: translateY(-8px) rotateX(3deg) rotateY(-3deg) scale(1.02);
@@ -161,6 +169,18 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* STORYTELLING CHAPTER BADGE */
+        .story-chapter {
+            font-family: monospace;
+            letter-spacing: 0.15em;
+            color: #38bdf8;
+            border-left: 3px solid #38bdf8;
+            padding-left: 8px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
     </style>
 </head>
 <body class="bg-manga-anime text-slate-100 min-h-screen flex flex-col overflow-x-hidden relative">
@@ -172,24 +192,13 @@
     <div class="custom-cursor" id="cursor"></div>
     <div class="custom-cursor-dot" id="cursor-dot"></div>
 
-    <!-- SVG GOOEY FILTER DEFINITION -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
-        <defs>
-            <filter id="gooey">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="gooey" />
-                <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
-            </filter>
-        </defs>
-    </svg>
-
-    <!-- PRELOADER -->
-    <div id="preloader" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-500">
+    <!-- PRELOADER VỚI HIỆU ỨNG MỞ MÀN CINEMATIC -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center transition-all duration-700">
         <div class="relative flex items-center justify-center">
-            <div class="w-20 h-20 border-4 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin"></div>
-            <span class="absolute text-cyan-400 font-black text-xl">3</span>
+            <div class="w-24 h-24 border-4 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin"></div>
+            <span class="absolute text-cyan-400 font-black text-2xl">3</span>
         </div>
-        <p class="mt-4 text-xs tracking-widest text-slate-400 font-mono animate-pulse">LOADING KNOWLEDGE HUB (ANIME EDITION)...</p>
+        <p class="mt-6 text-xs tracking-widest text-cyan-400 font-mono animate-pulse">CHƯƠNG 6: KHỞI ĐỘNG HỆ THỐNG KNOWLEDGE HUB...</p>
     </div>
 
     <!-- CONTAINER THÔNG BÁO TOAST PRIVACY -->
@@ -206,7 +215,7 @@
                     <i class="fa-solid fa-circle-info"></i>
                 </div>
                 <div>
-                    <span class="text-[9px] text-cyan-400 font-mono uppercase tracking-widest">CHI TIẾT • 11A12</span>
+                    <span class="text-[9px] text-cyan-400 font-mono uppercase tracking-widest">STORY ARCHIVE • 11A12</span>
                     <h3 id="modalTitle" class="text-base sm:text-lg font-bold text-adaptive-title leading-snug"></h3>
                 </div>
             </div>
@@ -275,10 +284,11 @@
         </div>
     </header>
 
-    <!-- HERO SECTION VỚI KINETIC TYPOGRAPHY -->
-    <section class="relative py-12 px-4 border-b border-slate-800/50 light:border-slate-200 z-10">
-        <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
-            <span class="px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[11px] font-semibold uppercase tracking-widest inline-block mb-3 icon-3d-float">
+    <!-- HERO SECTION VỚI STORYTELLING & KINETIC TYPOGRAPHY -->
+    <section class="relative py-12 px-4 border-b border-slate-800/50 light:border-slate-200 z-10" data-aos="fade-down">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="story-chapter inline-block">Chương 06 • Hồ Sơ Độc Lập Tổ 3</div>
+            <span class="px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[11px] font-semibold uppercase tracking-widest inline-block mb-3 icon-3d-float ml-2">
                 <i class="fa-solid fa-burst mr-1"></i> Manga Cyberpunk Edition 2026
             </span>
             
@@ -287,7 +297,7 @@
             </h1>
 
             <p class="text-adaptive-desc max-w-xl mx-auto text-xs sm:text-sm px-2">
-                Rê chuột vào các chữ cái tiêu đề để trải nghiệm hiệu ứng Kinetic Typography & bấm tên <strong class="text-cyan-400">Tuấn Kiệt</strong> bên dưới!
+                Trải nghiệm không gian thị giác Manga tương tác. Di chuột qua tiêu đề, kéo thanh thời gian và khám phá hồ sơ bí mật bên dưới!
             </p>
         </div>
     </section>
@@ -297,11 +307,11 @@
         <div class="manga-card p-5 sm:p-7 rounded-3xl relative">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <h3 class="font-bold text-sm sm:text-base text-cyan-400 flex items-center gap-2">
-                    <i class="fa-solid fa-sliders icon-3d-float"></i> Thanh Trượt Giai Đoạn FDI
+                    <i class="fa-solid fa-sliders icon-3d-float"></i> Thanh Trượt Tiến Trình Lịch Sử FDI
                 </h3>
                 <span id="sliderYearBadge" class="px-2.5 py-1 bg-cyan-500/20 text-cyan-400 text-[11px] font-mono font-bold rounded-lg border border-cyan-500/45 self-start sm:self-auto">2026 (Hiện tại)</span>
             </div>
-            <p class="text-xs text-adaptive-desc mb-4">Kéo thanh trượt để quan sát sự chuyển dịch trọng tâm vốn đầu tư:</p>
+            <p class="text-xs text-adaptive-desc mb-4">Kéo thanh trượt để chứng kiến sự chuyển dịch cốt truyện đầu tư qua các mốc thời gian:</p>
             <input type="range" id="fdiSlider" min="1" max="3" value="3" step="1" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer mb-4" oninput="updateSliderContent(this.value)">
             <div id="sliderContentBox" class="p-3.5 sm:p-5 rounded-2xl bg-slate-950/70 light:bg-slate-100 border border-slate-800 light:border-slate-300 transition-all">
                 <h4 id="sliderTitle" class="font-bold text-xs sm:text-sm text-adaptive-title mb-1.5">Định hướng công nghệ cao & Trung tâm tài chính</h4>
@@ -312,6 +322,7 @@
 
     <!-- TỔNG QUAN SỐ LIỆU -->
     <section id="tong-quan" class="py-6 max-w-6xl mx-auto px-4 w-full z-10 relative">
+        <div class="story-chapter mb-4">Dữ liệu cốt lõi • Thống kê chiến lược</div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <div class="manga-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="100" onclick="triggerCardDetail(this, 'du-an')">
                 <div class="flex justify-between items-start mb-3">
@@ -346,6 +357,7 @@
     <main class="max-w-6xl mx-auto px-4 py-4 space-y-8 w-full flex-grow z-10 relative">
 
         <section id="the-manh" class="space-y-4" data-aos="fade-up">
+            <div class="story-chapter">Phần mở rộng • Hạ tầng và Năng lực</div>
             <div class="flex items-center space-x-2.5">
                 <div class="w-2.5 h-6 bg-cyan-400 rounded-full"></div>
                 <h2 class="text-lg sm:text-xl font-bold text-adaptive-title">Thế Mạnh & Hạ Tầng Thu Hút FDI</h2>
@@ -374,20 +386,19 @@
             </div>
         </section>
 
-        <!-- MEMBER CREDIT VỚI SỰ KIỆN GẮN THÔNG BÁO BẢO MẬT -->
+        <!-- MEMBER CREDIT VỚI TÍNH NĂNG BẢO MẬT -->
         <section id="thanh-vien" class="manga-card p-6 sm:p-8 rounded-3xl text-center space-y-5" data-aos="zoom-in">
+            <div class="story-chapter">Đội ngũ thực hiện • Tổ 3 • Lớp 11A12</div>
             <div class="text-[11px] text-adaptive-desc font-mono tracking-widest uppercase">
-                © MMXXVI • TỔ 3 • 11A12 • TRƯỜNG THPT PHÚ HÒA
+                © MMXXVI • TRƯỜNG THPT PHÚ HÒA • CỦ CHI
             </div>
             <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 light:bg-slate-200 border border-cyan-400/40 text-gradient-gold text-xl font-black shadow-lg icon-3d-float">
                 3
             </div>
             <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto text-xs text-adaptive-title font-medium">
-                <!-- Tuấn Kiệt: Mở Modal riêng -->
                 <span id="kietCardBtn" onclick="triggerKietModal()" class="magnetic-btn px-3 py-1.5 bg-cyan-500/30 text-cyan-300 font-bold rounded-lg border border-cyan-400 shadow-lg shadow-cyan-500/20 cursor-pointer hover:bg-cyan-500/40 transition transform hover:scale-105">
                     <i class="fa-solid fa-crown text-amber-400 mr-1"></i> Tuấn Kiệt ( Dev )
                 </span>
-                <!-- Các thành viên khác: Hiện Toast Privacy -->
                 <span onclick="showPrivacyToast('Đức Hoàng')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Đức Hoàng</span>
                 <span onclick="showPrivacyToast('Quốc Thái')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Quốc Thái</span>
                 <span onclick="showPrivacyToast('Bảo Như')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Bảo Như</span>
@@ -400,9 +411,10 @@
                 <span onclick="showPrivacyToast('Trường Thi')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Trường Thi</span>
                 <span onclick="showPrivacyToast('Ngọc Hân')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Ngọc Hân</span>
             </div>
-            <p class="text-[11px] text-slate-400 italic font-mono flex items-center justify-center gap-1.5">
+            <p class="text-[11px] text-slate-400 italic font-mono flex items-center justify-center gap-1.5 pt-2">
                 <i class="fa-solid fa-lock text-cyan-400"></i> Thông tin hồ sơ riêng tư hoặc chưa được công khai bởi Lead Dev
             </p>
+            <p class="text-[10px] text-slate-500 font-mono">Profile information is private or has not been disclosed by the Lead Dev</p>
         </section>
 
     </main>
@@ -410,7 +422,7 @@
     <!-- AOS & JAVASCRIPT MASTER SCRIPT -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        /* HÀM HIỂN THỊ THÔNG BÁO BẢO MẬT CYBERPUNK (PRIVACY TOAST) */
+        /* HÀM TOAST BẢO MẬT */
         function showPrivacyToast(name) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -430,11 +442,7 @@
             `;
 
             container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-4', 'opacity-0');
-            }, 10);
-
+            setTimeout(() => toast.classList.remove('translate-y-4', 'opacity-0'), 10);
             setTimeout(() => {
                 toast.classList.add('translate-y-4', 'opacity-0');
                 setTimeout(() => toast.remove(), 300);
@@ -455,7 +463,6 @@
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(count * 3);
             const colors = new Float32Array(count * 3);
-
             const colorChoices = [new THREE.Color('#38bdf8'), new THREE.Color('#818cf8'), new THREE.Color('#c084fc')];
 
             for(let i = 0; i < count * 3; i += 3) {
@@ -464,21 +471,13 @@
                 positions[i+2] = (Math.random() - 0.5) * 15;
 
                 const c = colorChoices[Math.floor(Math.random() * colorChoices.length)];
-                colors[i] = c.r;
-                colors[i+1] = c.g;
-                colors[i+2] = c.b;
+                colors[i] = c.r; colors[i+1] = c.g; colors[i+2] = c.b;
             }
 
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-            const material = new THREE.PointsMaterial({
-                size: 0.06,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.85
-            });
-
+            const material = new THREE.PointsMaterial({ size: 0.06, vertexColors: true, transparent: true, opacity: 0.85 });
             const points = new THREE.Points(geometry, material);
             scene.add(points);
             camera.position.z = 5;
@@ -493,11 +492,9 @@
                 requestAnimationFrame(animate);
                 points.rotation.y += 0.0015;
                 points.rotation.x += 0.0008;
-
                 camera.position.x += (mouseX - camera.position.x) * 0.05;
                 camera.position.y += (-mouseY - camera.position.y) * 0.05;
                 camera.lookAt(scene.position);
-
                 renderer.render(scene, camera);
             };
             animate();
@@ -509,25 +506,21 @@
             });
         };
 
-        /* CURSOR TRAIL & MAGNETIC BUTTON EFFECT */
+        /* CURSOR TRAIL & MAGNETIC EFFECT */
         const initCustomCursor = () => {
             const cursor = document.getElementById('cursor');
             const dot = document.getElementById('cursor-dot');
-            let mouseX = 0, mouseY = 0;
-            let cursorX = 0, cursorY = 0;
+            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
 
             window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                dot.style.left = mouseX + 'px';
-                dot.style.top = mouseY + 'px';
+                mouseX = e.clientX; mouseY = e.clientY;
+                dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
             });
 
             const renderCursor = () => {
                 cursorX += (mouseX - cursorX) * 0.15;
                 cursorY += (mouseY - cursorY) * 0.15;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
+                cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px';
                 requestAnimationFrame(renderCursor);
             };
             renderCursor();
@@ -549,13 +542,12 @@
             });
         };
 
-        /* KINETIC TYPOGRAPHY SETUP */
+        /* KINETIC TYPOGRAPHY */
         const initKineticTypography = () => {
             const title = document.getElementById('kinetic-title');
             if(!title) return;
             const text = title.innerText;
             title.innerHTML = '';
-            
             [...text].forEach(char => {
                 const span = document.createElement('span');
                 span.className = 'kinetic-char';
