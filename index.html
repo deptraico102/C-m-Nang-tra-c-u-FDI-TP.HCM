@@ -311,5 +311,19 @@
         FDI Knowledge Hub • Lớp 11A12 • Trường THPT Phú Hòa • Thành phố Hồ Chí Minh
     </footer>
 
-</body>
+</body><script>
+    document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
 </html>
