@@ -95,11 +95,11 @@
         }
 
         .zoom-thumbnail {
-            width: 85px;
-            height: 60px;
+            width: 75px;
+            height: 55px;
             object-fit: cover;
-            border-radius: 10px;
-            filter: drop-shadow(0 6px 12px rgba(56, 189, 248, 0.3));
+            border-radius: 8px;
+            filter: drop-shadow(0 4px 8px rgba(56, 189, 248, 0.3));
         }
 
         /* TYPEWRITER CURSOR */
@@ -143,57 +143,58 @@
 
     <!-- MODAL CHI TIẾT CHUNG CHO CARD -->
     <div id="detailModal" class="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4" onclick="closeDetailModal(event)">
-        <div class="relative max-w-3xl w-full bg-slate-900 light:bg-white border border-cyan-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-            <button onclick="closeDetailModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-slate-800 light:bg-slate-200 w-9 h-9 rounded-full flex items-center justify-center transition z-20">
-                <i class="fa-solid fa-xmark text-lg"></i>
+        <div class="relative max-w-2xl w-full bg-slate-900 light:bg-white border border-cyan-500/40 rounded-3xl p-5 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 light:bg-slate-200 w-8 h-8 rounded-full flex items-center justify-center transition z-20">
+                <i class="fa-solid fa-xmark text-base"></i>
             </button>
-            <div class="flex items-center space-x-3 mb-4">
-                <div id="modalIcon" class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl">
+            <div class="flex items-center space-x-3 mb-3 pr-8">
+                <div id="modalIcon" class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg shrink-0">
                     <i class="fa-solid fa-circle-info"></i>
                 </div>
                 <div>
-                    <span class="text-[10px] text-cyan-400 font-mono uppercase tracking-widest">CHI TIẾT CHUYÊN SÂU • 11A12</span>
-                    <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-adaptive-title"></h3>
+                    <span class="text-[9px] text-cyan-400 font-mono uppercase tracking-widest">CHI TIẾT • 11A12</span>
+                    <h3 id="modalTitle" class="text-base sm:text-lg font-bold text-adaptive-title leading-snug"></h3>
                 </div>
             </div>
-            <div class="mb-4 overflow-hidden rounded-2xl border border-slate-700/60 h-48 sm:h-56 w-full">
+            <div class="mb-3 overflow-hidden rounded-xl border border-slate-700/60 h-40 sm:h-48 w-full">
                 <img id="modalImg" src="" alt="Detail Image" class="w-full h-full object-cover">
             </div>
-            <div class="overflow-y-auto flex-grow space-y-3 pr-2 scrollbar-thin">
-                <div id="typewriterText" class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed font-mono typewriter-cursor min-h-[120px]"></div>
+            <div class="overflow-y-auto flex-grow space-y-2 pr-1">
+                <div id="typewriterText" class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed font-mono typewriter-cursor min-h-[100px]"></div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL ĐỘC QUYỀN CHO TUẤN KIỆT (ĐÃ GẮN BASE64 ẢNH CHUẨN) -->
+    <!-- MODAL ĐỘC QUYỀN CHO TUẤN KIỆT -->
     <div id="kietModal" class="fixed inset-0 z-[120] bg-black/90 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4" onclick="closeKietModal()">
-        <div class="relative max-w-lg w-full bg-slate-900 light:bg-white border-2 border-cyan-400 rounded-3xl p-6 text-center shadow-2xl shadow-cyan-500/30" onclick="event.stopPropagation()">
+        <div class="relative max-w-md w-full bg-slate-900 light:bg-white border-2 border-cyan-400 rounded-3xl p-5 sm:p-6 text-center shadow-2xl shadow-cyan-500/30" onclick="event.stopPropagation()">
             <button onclick="closeKietModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 w-8 h-8 rounded-full flex items-center justify-center transition">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="w-32 h-32 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-500/20">
+            <div class="w-28 h-28 mx-auto mb-3 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-500/20">
                 <img id="kietAvatarImg" src="" alt="Võ Tuấn Kiệt" class="w-full h-full object-cover">
             </div>
-            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-[11px] font-mono font-bold uppercase">Lead Developer • 11A12</span>
-            <h3 class="text-xl font-black text-adaptive-title mt-2">VÕ TUẤN KIỆT</h3>
-            <p class="text-xs text-cyan-300 font-mono mt-1">Nhuận Đức, Củ Chi, TP.HCM • THPT Phú Hòa</p>
-            <div class="mt-4 p-4 rounded-xl bg-slate-950/80 light:bg-slate-100 border border-slate-800 text-left">
-                <div id="kietTypewriter" class="text-xs sm:text-sm text-slate-300 light:text-slate-700 font-mono typewriter-cursor min-h-[70px]"></div>
+            <span class="px-3 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 text-[10px] font-mono font-bold uppercase">Lead Developer • 11A12</span>
+            <h3 class="text-lg sm:text-xl font-black text-adaptive-title mt-1.5">VÕ TUẤN KIỆT</h3>
+            <p class="text-[11px] text-cyan-300 font-mono mt-0.5">Nhuận Đức, Củ Chi, TP.HCM • THPT Phú Hòa</p>
+            <div class="mt-3 p-3.5 rounded-xl bg-slate-950/80 light:bg-slate-100 border border-slate-800 text-left">
+                <div id="kietTypewriter" class="text-xs text-slate-300 light:text-slate-700 font-mono typewriter-cursor min-h-[60px]"></div>
             </div>
         </div>
     </div>
 
-    <!-- HEADER -->
-    <header class="sticky top-0 z-40 bg-slate-950/70 light:bg-white/80 backdrop-blur-lg border-b border-slate-800/80 light:border-slate-200">
+    <!-- HEADER & MOBILE NAV -->
+    <header class="sticky top-0 z-40 bg-slate-950/80 light:bg-white/90 backdrop-blur-lg border-b border-slate-800/80 light:border-slate-200">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-bold text-base shadow-lg icon-3d-float">3</div>
+            <div class="flex items-center space-x-2.5">
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-bold text-sm shadow-lg icon-3d-float">3</div>
                 <div>
-                    <div class="text-xs font-extrabold tracking-wider text-cyan-500 uppercase">TỔ 3 • 11A12 • THPT PHÚ HÒA</div>
-                    <div class="text-[11px] text-adaptive-desc">Chủ đề 6: Thu hút đầu tư FDI TP.HCM</div>
+                    <div class="text-[11px] font-extrabold tracking-wider text-cyan-500 uppercase">TỔ 3 • 11A12 • PHÚ HÒA</div>
+                    <div class="text-[10px] text-adaptive-desc">FDI TP.HCM 2026</div>
                 </div>
             </div>
 
+            <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-6 text-xs font-semibold text-adaptive-desc">
                 <a href="#tong-quan" class="hover:text-cyan-400 transition flex items-center gap-1.5"><i class="fa-solid fa-chart-pie text-cyan-400"></i> Tổng Quan</a>
                 <a href="#slider-section" class="hover:text-cyan-400 transition flex items-center gap-1.5"><i class="fa-solid fa-sliders text-indigo-400"></i> Trợ Giúp Slider</a>
@@ -203,103 +204,115 @@
 
             <div class="flex items-center space-x-2">
                 <button onclick="cycleTheme()" class="w-9 h-9 rounded-lg bg-slate-900 light:bg-slate-200 border border-slate-800 light:border-slate-300 text-slate-300 light:text-slate-700 hover:text-cyan-400 flex items-center justify-center transition" title="Đổi giao diện">
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
+                </button>
+                <!-- Hamburger Menu Button for Mobile -->
+                <button onclick="toggleMobileMenu()" class="md:hidden w-9 h-9 rounded-lg bg-slate-900 light:bg-slate-200 border border-slate-800 light:border-slate-300 text-cyan-400 flex items-center justify-center transition">
+                    <i id="menuIcon" class="fa-solid fa-bars text-sm"></i>
                 </button>
             </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 light:bg-white/95 border-b border-slate-800 light:border-slate-200 px-4 py-3 space-y-2.5 text-xs font-semibold">
+            <a href="#tong-quan" onclick="toggleMobileMenu()" class="block py-1.5 text-adaptive-title hover:text-cyan-400"><i class="fa-solid fa-chart-pie text-cyan-400 mr-2"></i> Tổng Quan Số Liệu</a>
+            <a href="#slider-section" onclick="toggleMobileMenu()" class="block py-1.5 text-adaptive-title hover:text-cyan-400"><i class="fa-solid fa-sliders text-indigo-400 mr-2"></i> Thanh Trượt Giai Đoạn</a>
+            <a href="#the-manh" onclick="toggleMobileMenu()" class="block py-1.5 text-adaptive-title hover:text-cyan-400"><i class="fa-solid fa-gem text-emerald-400 mr-2"></i> Thế Mạnh & Hạ Tầng</a>
+            <a href="#thanh-vien" onclick="toggleMobileMenu()" class="block py-1.5 text-adaptive-title hover:text-cyan-400"><i class="fa-solid fa-users text-purple-400 mr-2"></i> Thành Viên Tổ 3</a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative py-16 px-4 border-b border-slate-800/50 light:border-slate-200">
+    <section class="relative py-12 px-4 border-b border-slate-800/50 light:border-slate-200">
         <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
-            <span class="px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-widest inline-block mb-4 icon-3d-float">
-                <i class="fa-solid fa-cube mr-1"></i> Card Deal 3D & Interactive Hub 2026
+            <span class="px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[11px] font-semibold uppercase tracking-widest inline-block mb-3 icon-3d-float">
+                <i class="fa-solid fa-cube mr-1"></i> Card Deal 3D & Mobile Optimized 2026
             </span>
-            <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-4 leading-tight text-adaptive-title">
+            <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3 leading-tight text-adaptive-title">
                 THU HÚT ĐẦU TƯ TRỰC TIẾP NƯỚC NGOÀI (<span class="text-gradient">FDI</span>) TẠI TP.HCM
             </h1>
-            <p class="text-adaptive-desc max-w-2xl mx-auto text-xs sm:text-sm">
-                Bấm vào tên <strong class="text-cyan-400">Tuấn Kiệt</strong> ở phần thành viên bên dưới để kích hoạt hiệu ứng bài Tây lật xoay 360° độc quyền!
+            <p class="text-adaptive-desc max-w-xl mx-auto text-xs sm:text-sm px-2">
+                Bấm vào tên <strong class="text-cyan-400">Tuấn Kiệt</strong> ở phần thành viên bên dưới để khám phá hiệu ứng độc quyền trên điện thoại!
             </p>
         </div>
     </section>
 
     <!-- INTERACTIVE SLIDER SECTION -->
-    <section id="slider-section" class="py-10 max-w-4xl mx-auto px-4 w-full" data-aos="fade-up">
-        <div class="fake-3d-card p-6 sm:p-8 rounded-3xl border border-cyan-500/30 relative">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="font-bold text-base sm:text-lg text-cyan-400 flex items-center gap-2">
-                    <i class="fa-solid fa-sliders icon-3d-float"></i> Thanh Trượt Khám Phá Giai Đoạn Đầu Tư FDI
+    <section id="slider-section" class="py-8 max-w-4xl mx-auto px-4 w-full" data-aos="fade-up">
+        <div class="fake-3d-card p-5 sm:p-7 rounded-3xl border border-cyan-500/30 relative">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <h3 class="font-bold text-sm sm:text-base text-cyan-400 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders icon-3d-float"></i> Thanh Trượt Giai Đoạn FDI
                 </h3>
-                <span id="sliderYearBadge" class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-mono font-bold rounded-lg border border-cyan-500/40">Giai đoạn: 2026 (Hiện tại)</span>
+                <span id="sliderYearBadge" class="px-2.5 py-1 bg-cyan-500/20 text-cyan-400 text-[11px] font-mono font-bold rounded-lg border border-cyan-500/45 self-start sm:self-auto">2026 (Hiện tại)</span>
             </div>
-            <p class="text-xs sm:text-sm text-adaptive-desc mb-6">Kéo thanh trượt bên dưới để quan sát sự chuyển dịch trọng tâm vốn đầu tư của TP.HCM:</p>
-            <input type="range" id="fdiSlider" min="1" max="3" value="3" step="1" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer mb-6" oninput="updateSliderContent(this.value)">
-            <div id="sliderContentBox" class="p-4 sm:p-6 rounded-2xl bg-slate-950/70 light:bg-slate-100 border border-slate-800 light:border-slate-300 transition-all">
-                <h4 id="sliderTitle" class="font-bold text-sm sm:text-base text-adaptive-title mb-2">Định hướng công nghệ cao & Trung tâm tài chính</h4>
-                <p id="sliderDesc" class="text-xs sm:text-sm text-adaptive-desc leading-relaxed">Tập trung hoàn toàn vào chip bán dẫn, trí tuệ nhân tạo (AI) và xây dựng Trung tâm Tài chính Quốc tế tại TP.HCM.</p>
+            <p class="text-xs text-adaptive-desc mb-4">Kéo thanh trượt để quan sát sự chuyển dịch trọng tâm vốn đầu tư:</p>
+            <input type="range" id="fdiSlider" min="1" max="3" value="3" step="1" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer mb-4" oninput="updateSliderContent(this.value)">
+            <div id="sliderContentBox" class="p-3.5 sm:p-5 rounded-2xl bg-slate-950/70 light:bg-slate-100 border border-slate-800 light:border-slate-300 transition-all">
+                <h4 id="sliderTitle" class="font-bold text-xs sm:text-sm text-adaptive-title mb-1.5">Định hướng công nghệ cao & Trung tâm tài chính</h4>
+                <p id="sliderDesc" class="text-xs text-adaptive-desc leading-relaxed">Tập trung hoàn toàn vào chip bán dẫn, trí tuệ nhân tạo (AI) và xây dựng Trung tâm Tài chính Quốc tế tại TP.HCM.</p>
             </div>
         </div>
     </section>
 
     <!-- TỔNG QUAN SỐ LIỆU -->
-    <section id="tong-quan" class="py-8 max-w-6xl mx-auto px-4 w-full">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="fake-3d-card p-6 rounded-2xl relative" data-aos="fade-up" data-aos-delay="100" onclick="triggerCardDetail(this, 'du-an')">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl icon-3d-float"><i class="fa-solid fa-diagram-project"></i></div>
-                    <span class="text-[10px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-1 rounded-md font-mono">Bấm lật bài</span>
+    <section id="tong-quan" class="py-6 max-w-6xl mx-auto px-4 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div class="fake-3d-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="100" onclick="triggerCardDetail(this, 'du-an')">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg icon-3d-float"><i class="fa-solid fa-diagram-project"></i></div>
+                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono">Bấm lật bài</span>
                 </div>
-                <div class="text-3xl font-black mb-1 text-adaptive-title">11.455+</div>
+                <div class="text-2xl sm:text-3xl font-black mb-1 text-adaptive-title">11.455+</div>
                 <div class="text-xs text-adaptive-desc">Dự án đầu tư nước ngoài còn hiệu lực</div>
             </div>
 
-            <div class="fake-3d-card p-6 rounded-2xl relative" data-aos="fade-up" data-aos-delay="200" onclick="triggerCardDetail(this, 'tong-von')">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl icon-3d-float"><i class="fa-solid fa-sack-dollar"></i></div>
-                    <span class="text-[10px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-1 rounded-md font-mono">Bấm lật bài</span>
+            <div class="fake-3d-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="200" onclick="triggerCardDetail(this, 'tong-von')">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg icon-3d-float"><i class="fa-solid fa-sack-dollar"></i></div>
+                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono">Bấm lật bài</span>
                 </div>
-                <div class="text-3xl font-black mb-1 text-adaptive-title">56.34 Tỷ $</div>
+                <div class="text-2xl sm:text-3xl font-black mb-1 text-adaptive-title">56.34 Tỷ $</div>
                 <div class="text-xs text-adaptive-desc">Tổng vốn FDI đăng ký tích lũy</div>
             </div>
 
-            <div class="fake-3d-card p-6 rounded-2xl relative" data-aos="fade-up" data-aos-delay="300" onclick="triggerCardDetail(this, 'cong-nghe')">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl icon-3d-float"><i class="fa-solid fa-microchip"></i></div>
-                    <span class="text-[10px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-1 rounded-md font-mono">Bấm lật bài</span>
+            <div class="fake-3d-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="300" onclick="triggerCardDetail(this, 'cong-nghe')">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg icon-3d-float"><i class="fa-solid fa-microchip"></i></div>
+                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono">Bấm lật bài</span>
                 </div>
-                <div class="text-3xl font-black mb-1 text-adaptive-title">Công Nghệ Cao</div>
+                <div class="text-2xl sm:text-3xl font-black mb-1 text-adaptive-title">Công Nghệ Cao</div>
                 <div class="text-xs text-adaptive-desc">Bán dẫn, AI & Trung tâm tài chính</div>
             </div>
         </div>
     </section>
 
     <!-- NỘI DUNG CHI TIẾT -->
-    <main class="max-w-6xl mx-auto px-4 py-6 space-y-12 w-full flex-grow">
+    <main class="max-w-6xl mx-auto px-4 py-4 space-y-8 w-full flex-grow">
 
-        <section id="the-manh" class="space-y-6" data-aos="fade-up">
-            <div class="flex items-center space-x-3">
-                <div class="w-3 h-7 bg-cyan-400 rounded-full"></div>
-                <h2 class="text-xl font-bold text-adaptive-title">Thế Mạnh & Hạ Tầng Thu Hút FDI</h2>
+        <section id="the-manh" class="space-y-4" data-aos="fade-up">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-2.5 h-6 bg-cyan-400 rounded-full"></div>
+                <h2 class="text-lg sm:text-xl font-bold text-adaptive-title">Thế Mạnh & Hạ Tầng Thu Hút FDI</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="fake-3d-card p-6 rounded-2xl flex items-start justify-between border-l-4 border-l-cyan-400" onclick="triggerCardDetail(this, 'vi-tri')">
-                    <div class="pr-4">
-                        <h3 class="font-bold text-sm sm:text-base text-cyan-400 mb-3 flex items-center gap-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div class="fake-3d-card p-5 rounded-2xl flex items-start justify-between border-l-4 border-l-cyan-400 gap-3" onclick="triggerCardDetail(this, 'vi-tri')">
+                    <div class="pr-2">
+                        <h3 class="font-bold text-xs sm:text-sm text-cyan-400 mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-anchor icon-3d-float"></i> Vị trí chiến lược & Cảng biển
                         </h3>
-                        <p class="text-xs sm:text-sm text-adaptive-desc leading-relaxed">Cửa ngõ hàng hải lớn nhất phía Nam, kết nối toàn cầu qua cụm cảng Cát Lái, Hiệp Phước và sân bay quốc tế Tân Sơn Nhất.</p>
+                        <p class="text-[11px] sm:text-xs text-adaptive-desc leading-relaxed">Cửa ngõ hàng hải lớn nhất phía Nam, kết nối toàn cầu qua cụm cảng Cát Lái, Hiệp Phước và sân bay Tân Sơn Nhất.</p>
                     </div>
                     <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Cảng biển" class="zoom-thumbnail shrink-0">
                 </div>
 
-                <div class="fake-3d-card p-6 rounded-2xl flex items-start justify-between border-l-4 border-l-indigo-400" onclick="triggerCardDetail(this, 'nhan-luc')">
-                    <div class="pr-4">
-                        <h3 class="font-bold text-sm sm:text-base text-indigo-400 mb-3 flex items-center gap-2">
+                <div class="fake-3d-card p-5 rounded-2xl flex items-start justify-between border-l-4 border-l-indigo-400 gap-3" onclick="triggerCardDetail(this, 'nhan-luc')">
+                    <div class="pr-2">
+                        <h3 class="font-bold text-xs sm:text-sm text-indigo-400 mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-user-graduate icon-3d-float"></i> Nguồn nhân lực tri thức
                         </h3>
-                        <p class="text-xs sm:text-sm text-adaptive-desc leading-relaxed">Hội tụ các trường đại học hàng đầu, cung cấp nguồn nhân lực kỹ sư chất lượng cao và năng động trong kỷ nguyên số.</p>
+                        <p class="text-[11px] sm:text-xs text-adaptive-desc leading-relaxed">Hội tụ các trường đại học hàng đầu, cung cấp nguồn nhân lực kỹ sư chất lượng cao và năng động trong kỷ nguyên số.</p>
                     </div>
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Nhân lực" class="zoom-thumbnail shrink-0">
                 </div>
@@ -307,30 +320,30 @@
         </section>
 
         <!-- MEMBER CREDIT -->
-        <section id="thanh-vien" class="fake-3d-card p-8 rounded-3xl text-center space-y-6 border-slate-800 light:border-slate-300" data-aos="zoom-in">
-            <div class="text-xs text-adaptive-desc font-mono tracking-widest uppercase">
+        <section id="thanh-vien" class="fake-3d-card p-6 sm:p-8 rounded-3xl text-center space-y-5 border-slate-800 light:border-slate-300" data-aos="zoom-in">
+            <div class="text-[11px] text-adaptive-desc font-mono tracking-widest uppercase">
                 © MMXXVI • TỔ 3 • 11A12 • TRƯỜNG THPT PHÚ HÒA
             </div>
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-slate-900 light:bg-slate-200 border border-cyan-400/40 text-gradient-gold text-2xl font-black shadow-lg icon-3d-float">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 light:bg-slate-200 border border-cyan-400/40 text-gradient-gold text-xl font-black shadow-lg icon-3d-float">
                 3
             </div>
-            <div class="flex flex-wrap justify-center gap-2.5 max-w-3xl mx-auto text-xs sm:text-sm text-adaptive-title font-medium">
-                <span id="kietCardBtn" onclick="triggerKietModal()" class="px-3.5 py-1.5 bg-cyan-500/30 text-cyan-300 font-bold rounded-lg border border-cyan-400 shadow-lg shadow-cyan-500/20 cursor-pointer hover:bg-cyan-500/40 transition transform hover:scale-105">
+            <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto text-xs text-adaptive-title font-medium">
+                <span id="kietCardBtn" onclick="triggerKietModal()" class="px-3 py-1.5 bg-cyan-500/30 text-cyan-300 font-bold rounded-lg border border-cyan-400 shadow-lg shadow-cyan-500/20 cursor-pointer hover:bg-cyan-500/40 transition transform hover:scale-105">
                     <i class="fa-solid fa-crown text-amber-400 mr-1"></i> Tuấn Kiệt ( Dev )
                 </span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Đức Hoàng</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Quốc Thái</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Bảo Như</span>
-                <span class="px-3.5 py-1.5 bg-cyan-500/20 text-cyan-500 light:text-cyan-700 font-bold rounded-lg border border-cyan-500/40">Thanh Vy ( Tổ Trưởng )</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Cao Duy Gia Bảo</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Hà My</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Thùy Chi</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Yến Ngân</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Thanh Khoa</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Trường Thi</span>
-                <span class="px-3.5 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Ngọc Hân</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Đức Hoàng</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Quốc Thái</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Bảo Như</span>
+                <span class="px-3 py-1.5 bg-cyan-500/20 text-cyan-500 light:text-cyan-700 font-bold rounded-lg border border-cyan-500/40">Thanh Vy ( Tổ Trưởng )</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Cao Duy Gia Bảo</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Hà My</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Thùy Chi</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Yến Ngân</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Thanh Khoa</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Trường Thi</span>
+                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Ngọc Hân</span>
             </div>
-            <p class="text-xs text-slate-500 italic font-mono">"Some chapters end. The memories remain."</p>
+            <p class="text-[11px] text-slate-500 italic font-mono">"Some chapters end. The memories remain."</p>
         </section>
 
     </main>
@@ -338,10 +351,9 @@
     <!-- AOS & JAVASCRIPT -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // CHUỖI BASE64 ẢNH CHÂN DỤNG ĐỌC TRỰC TIẾP TỪ DỮ LIỆU
-        const kietAvatarBase64 = "data:image/jpeg;base64,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";
+        // CHUỖI BASE64 ẢNH CHÂN DỤNG CỦA KIỆT
+        const kietAvatarBase64 = "data:image/jpeg;base64,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";
 
-        // DỮ LIỆU SLIDER (INTERACTIVE SLIDER)
         const sliderData = {
             "1": {
                 year: "Giai đoạn trước: Khởi đầu & Công nghiệp truyền thống",
@@ -372,7 +384,6 @@
             }
         }
 
-        // DATABASE CHO MODAL CHI TIẾT CARD
         const detailDatabase = {
             'vi-tri': {
                 title: "Vị Trí Chiến Lược & Hạ Tầng Cảng Biển TP.HCM",
@@ -444,7 +455,6 @@
             if (typewriterTimer) clearInterval(typewriterTimer);
         }
 
-        // HÀM HIỆU ỨNG RIÊNG CHO TUẤN KIỆT (LẬT BÀI 360 ĐỘ + HIỆN ẢNH BASE64 + TYPEWRITER)
         let kietTimer = null;
         function triggerKietModal() {
             const btn = document.getElementById('kietCardBtn');
@@ -453,8 +463,6 @@
             setTimeout(() => {
                 btn.classList.remove('card-dealing-anim');
                 const modal = document.getElementById('kietModal');
-                
-                // Gán trực tiếp ảnh Base64 vào thẻ img trong modal của Kiệt
                 document.getElementById('kietAvatarImg').src = kietAvatarBase64;
 
                 const textContainer = document.getElementById('kietTypewriter');
@@ -479,7 +487,18 @@
             if (kietTimer) clearInterval(kietTimer);
         }
 
-        // KHỞI TẠO AOS VÀ PRELOADER
+        // TOGGLE MOBILE MENU
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-sm';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-sm';
+            }
+        }
+
         window.addEventListener('load', () => {
             AOS.init({ duration: 700, once: true });
             const preloader = document.getElementById('preloader');
@@ -487,7 +506,6 @@
             setTimeout(() => preloader.style.display = 'none', 500);
         });
 
-        // QUẢN LÝ CHẾ ĐỘ GIAO DIỆN (THEME SWITCHER)
         const themes = ['dark', 'light', 'minimal'];
         let currentThemeIdx = 0;
         function cycleTheme() {
