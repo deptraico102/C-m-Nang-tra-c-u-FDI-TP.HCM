@@ -7,9 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Sử dụng font SF Pro chuẩn Apple kết hợp font hệ thống */
+        /* Font chữ SF Pro chuẩn Apple */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #0b0f19;
             color: #f3f4f6;
             scroll-behavior: smooth;
@@ -29,7 +29,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Ẩn thanh cuộn ngang trên điện thoại cho gọn */
+        /* Ẩn thanh cuộn ngang trên điện thoại cho thẩm mỹ */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -153,7 +153,7 @@
                         <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">HẠ TẦNG GIAO THÔNG QUỐC TẾ</span>
                         <h3 class="text-xl font-bold text-white mt-2">Cửa Ngõ Giao Thương Hàng Không & Hàng Hải</h3>
                         <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-                            Với sự hiện diện của **Sân bay Quốc tế Tân Sơn Nhất** và **Hệ thống Cảng biển Cát Lái**, TP.HCM đóng vai trò là đầu mối xuất nhập khẩu hàng hóa trọng yếu, giúp tối ưu hóa chi phí logistics cho các nhà đầu tư nước ngoài.
+                            Với sự hiện diện của <strong>Sân bay Quốc tế Tân Sơn Nhất</strong> và <strong>Hệ thống Cảng biển Cát Lái</strong>, TP.HCM đóng vai trò là đầu mối xuất nhập khẩu hàng hóa trọng yếu, giúp tối ưu hóa chi phí logistics cho các nhà đầu tư nước ngoài.
                         </p>
                     </div>
                     <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 text-xs text-slate-300 italic">
@@ -311,19 +311,25 @@
         FDI Knowledge Hub • Lớp 11A12 • Trường THPT Phú Hòa • Thành phố Hồ Chí Minh
     </footer>
 
-</body><script>
-    document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+    <!-- SCRIPT ÉP HIỆU ỨNG TRƯỢT MƯỢT TRÊN MỌI ĐIỆN THOẠI -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-    });
-</script>
+    </script>
+</body>
 </html>
