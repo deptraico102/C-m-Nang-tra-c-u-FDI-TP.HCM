@@ -34,7 +34,7 @@
             cursor: default;
         }
 
-        /* 1. BACKGROUND MANGA ANIME CYBERPUNK (HALFTONE & SPEEDLINES) */
+        /* 1. BACKGROUND MANGA ANIME CYBERPUNK */
         .bg-manga-anime {
             background-color: #030712;
             background-image: 
@@ -193,14 +193,14 @@
 </head>
 <body class="bg-manga-anime text-slate-100 min-h-screen flex flex-col overflow-x-hidden relative">
 
-    <!-- 4. WEBGL 3D BACKGROUND CANVAS -->
+    <!-- WEBGL 3D BACKGROUND CANVAS -->
     <canvas id="webgl-bg"></canvas>
 
-    <!-- 2. CUSTOM CURSOR & TRAIL -->
+    <!-- CUSTOM CURSOR & TRAIL -->
     <div class="custom-cursor" id="cursor"></div>
     <div class="custom-cursor-dot" id="cursor-dot"></div>
 
-    <!-- 1. SVG GOOEY FILTER DEFINITION -->
+    <!-- SVG GOOEY FILTER DEFINITION -->
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
         <defs>
             <filter id="gooey">
@@ -219,6 +219,9 @@
         </div>
         <p class="mt-4 text-xs tracking-widest text-slate-400 font-mono animate-pulse">LOADING KNOWLEDGE HUB (ANIME EDITION)...</p>
     </div>
+
+    <!-- CONTAINER THÔNG BÁO TOAST PRIVACY -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-[150] space-y-2 pointer-events-none"></div>
 
     <!-- MODAL CHI TIẾT CHUNG CHO CARD -->
     <div id="detailModal" class="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4" onclick="closeDetailModal(event)">
@@ -300,14 +303,13 @@
         </div>
     </header>
 
-    <!-- HERO SECTION VỚI 3. KINETIC TYPOGRAPHY -->
+    <!-- HERO SECTION VỚI KINETIC TYPOGRAPHY -->
     <section class="relative py-12 px-4 border-b border-slate-800/50 light:border-slate-200 z-10">
         <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
             <span class="px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[11px] font-semibold uppercase tracking-widest inline-block mb-3 icon-3d-float">
                 <i class="fa-solid fa-burst mr-1"></i> Manga Cyberpunk Edition 2026
             </span>
             
-            <!-- KINETIC TYPOGRAPHY BANNER -->
             <h1 id="kinetic-title" class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3 leading-tight text-adaptive-title">
                 THU HÚT ĐẦU TƯ TRỰC TIẾP NƯỚC NGOÀI (<span class="text-gradient-manga">FDI</span>) TẠI TP.HCM
             </h1>
@@ -400,7 +402,7 @@
             </div>
         </section>
 
-        <!-- MEMBER CREDIT -->
+        <!-- MEMBER CREDIT VỚI SỰ KIỆN GẮN THÔNG BÁO BẢO MẬT -->
         <section id="thanh-vien" class="manga-card p-6 sm:p-8 rounded-3xl text-center space-y-5" data-aos="zoom-in">
             <div class="text-[11px] text-adaptive-desc font-mono tracking-widest uppercase">
                 © MMXXVI • TỔ 3 • 11A12 • TRƯỜNG THPT PHÚ HÒA
@@ -409,23 +411,26 @@
                 3
             </div>
             <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto text-xs text-adaptive-title font-medium">
+                <!-- Tuấn Kiệt: Mở Modal riêng -->
                 <span id="kietCardBtn" onclick="triggerKietModal()" class="magnetic-btn px-3 py-1.5 bg-cyan-500/30 text-cyan-300 font-bold rounded-lg border border-cyan-400 shadow-lg shadow-cyan-500/20 cursor-pointer hover:bg-cyan-500/40 transition transform hover:scale-105">
                     <i class="fa-solid fa-crown text-amber-400 mr-1"></i> Tuấn Kiệt ( Dev )
                 </span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Đức Hoàng</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Quốc Thái</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Bảo Như</span>
-                <span class="px-3 py-1.5 bg-cyan-500/20 text-cyan-500 light:text-cyan-700 font-bold rounded-lg border border-cyan-500/40">Thanh Vy ( Tổ Trưởng )</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Cao Duy Gia Bảo</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Hà My</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Thùy Chi</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Yến Ngân</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Thanh Khoa</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Trường Thi</span>
-                <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Ngọc Hân</span>
+                <!-- Các thành viên khác: Hiện Toast Privacy -->
+                <span onclick="showPrivacyToast('Đức Hoàng')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Đức Hoàng</span>
+                <span onclick="showPrivacyToast('Quốc Thái')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Quốc Thái</span>
+                <span onclick="showPrivacyToast('Bảo Như')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Bảo Như</span>
+                <span onclick="showPrivacyToast('Thanh Vy')" class="magnetic-btn px-3 py-1.5 bg-cyan-500/20 text-cyan-500 light:text-cyan-700 font-bold rounded-lg border border-cyan-500/40 cursor-pointer hover:bg-cyan-500/30 transition">Thanh Vy ( Tổ Trưởng )</span>
+                <span onclick="showPrivacyToast('Cao Duy Gia Bảo')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Cao Duy Gia Bảo</span>
+                <span onclick="showPrivacyToast('Hà My')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Hà My</span>
+                <span onclick="showPrivacyToast('Thùy Chi')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Thùy Chi</span>
+                <span onclick="showPrivacyToast('Yến Ngân')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Yến Ngân</span>
+                <span onclick="showPrivacyToast('Thanh Khoa')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Thanh Khoa</span>
+                <span onclick="showPrivacyToast('Trường Thi')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Trường Thi</span>
+                <span onclick="showPrivacyToast('Ngọc Hân')" class="magnetic-btn px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200 cursor-pointer hover:border-cyan-500/50 transition">Ngọc Hân</span>
             </div>
-            <p class="text-[11px] text-slate-500 italic font-mono">Thông tin hồ sơ riêng tư hoặc chưa được công khai bởi Lead Dev
-            Profile information is private or has not been disclosed by the Lead Dev</p>
+            <p class="text-[11px] text-slate-400 italic font-mono flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-lock text-cyan-400"></i> Thông tin hồ sơ riêng tư hoặc chưa được công khai bởi Lead Dev
+            </p>
         </section>
 
     </main>
@@ -433,7 +438,38 @@
     <!-- AOS & JAVASCRIPT MASTER SCRIPT -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        /* 4. THREE.JS IMMERSIVE 3D WEBGL PARTICLES DYNAMIC BACKGROUND */
+        /* HÀM HIỂN THỊ THÔNG BÁO BẢO MẬT CYBERPUNK (PRIVACY TOAST) */
+        function showPrivacyToast(name) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto bg-slate-900/95 light:bg-white border-2 border-cyan-400/80 text-slate-100 light:text-slate-900 px-4 py-3 rounded-2xl shadow-2xl shadow-cyan-500/20 font-mono text-xs max-w-sm flex flex-col space-y-1 transition-all duration-300 transform translate-y-4 opacity-0 border-l-4 border-l-cyan-400';
+            
+            toast.innerHTML = `
+                <div class="flex items-center justify-between text-cyan-400 font-bold text-[11px]">
+                    <span><i class="fa-solid fa-shield-halved mr-1"></i> SYSTEM ACCESS RESTRICTED</span>
+                    <span class="text-[9px] text-slate-500">11A12 • DEV</span>
+                </div>
+                <div class="text-xs text-slate-200 light:text-slate-800">
+                    Hồ sơ của <b>${name}</b>: Thông tin riêng tư hoặc chưa được công khai bởi Lead Dev!
+                </div>
+                <div class="text-[10px] text-slate-400 italic font-mono mt-0.5">
+                    "Profile information is private or has not been disclosed by the Lead Dev."
+                </div>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        /* THREE.JS WEBGL BACKGROUND */
         const initWebGLBg = () => {
             const canvas = document.getElementById('webgl-bg');
             const scene = new THREE.Scene();
@@ -501,7 +537,7 @@
             });
         };
 
-        /* 2. CURSOR TRAIL & MAGNETIC BUTTON EFFECT */
+        /* CURSOR TRAIL & MAGNETIC BUTTON EFFECT */
         const initCustomCursor = () => {
             const cursor = document.getElementById('cursor');
             const dot = document.getElementById('cursor-dot');
@@ -524,7 +560,6 @@
             };
             renderCursor();
 
-            // Magnetic Button Effect
             document.querySelectorAll('.magnetic-btn, .manga-card').forEach(btn => {
                 btn.addEventListener('mouseenter', () => cursor.classList.add('active'));
                 btn.addEventListener('mouseleave', () => {
@@ -542,7 +577,7 @@
             });
         };
 
-        /* 3. KINETIC TYPOGRAPHY SETUP */
+        /* KINETIC TYPOGRAPHY SETUP */
         const initKineticTypography = () => {
             const title = document.getElementById('kinetic-title');
             if(!title) return;
@@ -557,7 +592,6 @@
             });
         };
 
-        /* SLIDER DATA AND LOGIC */
         const sliderData = {
             "1": {
                 year: "Giai đoạn trước: Khởi đầu & Công nghiệp truyền thống",
