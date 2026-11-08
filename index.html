@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cẩm Nang Tra Cứu FDI TP.HCM - Tổ 3 - 11A12</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -18,59 +19,118 @@
             }
         }
     </script>
+
     <!-- FontAwesome & AOS Animation Library -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Three.js Cho Hiệu Ứng 3D WebGL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
             transition: background-color 0.4s ease, color 0.4s ease;
+            cursor: default;
         }
 
-        /* BACKGROUND NGHỆ THUẬT NEON DYNAMIC */
-        .bg-artistic {
-            background-color: #020617;
+        /* 1. BACKGROUND MANGA ANIME CYBERPUNK (HALFTONE & SPEEDLINES) */
+        .bg-manga-anime {
+            background-color: #030712;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.18) 0%, transparent 40%),
-                radial-gradient(circle at 90% 50%, rgba(99, 102, 241, 0.18) 0%, transparent 40%),
-                radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
-                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+                radial-gradient(circle, rgba(56, 189, 248, 0.15) 1.5px, transparent 1.5px),
+                radial-gradient(circle, rgba(99, 102, 241, 0.15) 1.5px, transparent 1.5px),
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.01) 0, rgba(255, 255, 255, 0.01) 10px, transparent 0, transparent 20px);
+            background-size: 24px 24px, 48px 48px, 100% 100%;
+            background-position: 0 0, 12px 12px, 0 0;
             background-attachment: fixed;
         }
-        .light .bg-artistic {
-            background-color: #f1f5f9;
+        .light .bg-manga-anime {
+            background-color: #f8fafc;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 50%, rgba(79, 70, 229, 0.1) 0%, transparent 40%),
-                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+                radial-gradient(circle, rgba(2, 132, 199, 0.12) 1.5px, transparent 1.5px),
+                repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.02) 0, rgba(0, 0, 0, 0.02) 8px, transparent 0, transparent 16px);
+            background-size: 20px 20px, 100% 100%;
         }
-        .minimal .bg-artistic { background: #000000; }
 
-        /* FAKE 3D ANIMATED CARD & ICON */
-        .fake-3d-card {
+        /* WEBGL CANVAS CONTAINER */
+        #webgl-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.65;
+        }
+
+        /* 2. CURSOR TRAIL & MAGNETIC EFFECT */
+        .custom-cursor {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #38bdf8;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out, opacity 0.2s ease, width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+        }
+        .custom-cursor-dot {
+            width: 5px;
+            height: 5px;
+            background: #818cf8;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+        .custom-cursor.active {
+            width: 45px;
+            height: 45px;
+            background: rgba(56, 189, 248, 0.15);
+            border-color: #818cf8;
+        }
+
+        /* 3. LIQUID & GOOEY CONTAINER FILTER */
+        .gooey-filter {
+            filter: url('#gooey');
+        }
+
+        /* 4. KINETIC TYPOGRAPHY ANIMATION */
+        .kinetic-char {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+        }
+        .kinetic-char:hover {
+            transform: translateY(-12px) scale(1.3) rotate(8deg);
+            color: #38bdf8;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 3px 3px 0px #000;
+        }
+
+        /* MANGA STYLE CARD WITH GOOEY SHADOW */
+        .manga-card {
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(56, 189, 248, 0.1);
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+            border: 2px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 6px 6px 0px rgba(56, 189, 248, 0.6);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             transform-style: preserve-3d;
             perspective: 1000px;
             cursor: pointer;
         }
-        .light .fake-3d-card {
+        .light .manga-card {
             background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #0f172a;
+            box-shadow: 6px 6px 0px #0f172a;
         }
-        .minimal .fake-3d-card { background: #0a0a0a; border: 1px solid #333; }
-
-        .fake-3d-card:hover {
-            transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
-            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.35), 0 0 25px rgba(129, 140, 248, 0.3);
+        .manga-card:hover {
+            transform: translateY(-8px) rotateX(3deg) rotateY(-3deg) scale(1.02);
+            box-shadow: 10px 10px 0px rgba(129, 140, 248, 0.8), 0 0 25px rgba(56, 189, 248, 0.4);
+            border-color: #818cf8;
         }
 
         /* HIỆU ỨNG LẬT BÀI TÂY XOAY 360 ĐỘ */
@@ -87,19 +147,20 @@
         /* 3D FLOATING ICON */
         .icon-3d-float {
             animation: iconFloat 3.5s ease-in-out infinite;
-            filter: drop-shadow(0 10px 8px rgba(56, 189, 248, 0.4));
+            filter: drop-shadow(0 8px 12px rgba(56, 189, 248, 0.5));
         }
         @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-6px) scale(1.08); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(5deg); }
         }
 
         .zoom-thumbnail {
-            width: 75px;
-            height: 55px;
+            width: 80px;
+            height: 60px;
             object-fit: cover;
             border-radius: 8px;
-            filter: drop-shadow(0 4px 8px rgba(56, 189, 248, 0.3));
+            border: 1.5px solid rgba(56, 189, 248, 0.5);
+            box-shadow: 3px 3px 0px rgba(56, 189, 248, 0.4);
         }
 
         /* TYPEWRITER CURSOR */
@@ -118,8 +179,8 @@
         .text-adaptive-desc { color: #94a3b8; }
         .light .text-adaptive-desc { color: #475569; }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        .text-gradient-manga {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -130,7 +191,25 @@
         }
     </style>
 </head>
-<body class="bg-artistic text-slate-100 min-h-screen flex flex-col overflow-x-hidden">
+<body class="bg-manga-anime text-slate-100 min-h-screen flex flex-col overflow-x-hidden relative">
+
+    <!-- 4. WEBGL 3D BACKGROUND CANVAS -->
+    <canvas id="webgl-bg"></canvas>
+
+    <!-- 2. CUSTOM CURSOR & TRAIL -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+
+    <!-- 1. SVG GOOEY FILTER DEFINITION -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
+        <defs>
+            <filter id="gooey">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="gooey" />
+                <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
 
     <!-- PRELOADER -->
     <div id="preloader" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-500">
@@ -138,17 +217,17 @@
             <div class="w-20 h-20 border-4 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin"></div>
             <span class="absolute text-cyan-400 font-black text-xl">3</span>
         </div>
-        <p class="mt-4 text-xs tracking-widest text-slate-400 font-mono animate-pulse">ĐANG TẢI KNOWLEDGE HUB...</p>
+        <p class="mt-4 text-xs tracking-widest text-slate-400 font-mono animate-pulse">LOADING KNOWLEDGE HUB (ANIME EDITION)...</p>
     </div>
 
     <!-- MODAL CHI TIẾT CHUNG CHO CARD -->
     <div id="detailModal" class="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4" onclick="closeDetailModal(event)">
-        <div class="relative max-w-2xl w-full bg-slate-900 light:bg-white border border-cyan-500/40 rounded-3xl p-5 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-            <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 light:bg-slate-200 w-8 h-8 rounded-full flex items-center justify-center transition z-20">
+        <div class="relative max-w-2xl w-full bg-slate-900 light:bg-white border-2 border-cyan-400 rounded-3xl p-5 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+            <button onclick="closeDetailModal()" class="magnetic-btn absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 light:bg-slate-200 w-8 h-8 rounded-full flex items-center justify-center transition z-20">
                 <i class="fa-solid fa-xmark text-base"></i>
             </button>
             <div class="flex items-center space-x-3 mb-3 pr-8">
-                <div id="modalIcon" class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg shrink-0">
+                <div id="modalIcon" class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg shrink-0 border border-cyan-400/40">
                     <i class="fa-solid fa-circle-info"></i>
                 </div>
                 <div>
@@ -165,16 +244,16 @@
         </div>
     </div>
 
-    <!-- MODAL ĐỘC QUYỀN CHO TUẤN KIỆT (ĐÃ GẮN LINK HTTPS/.WEBP TRỰC TIẾP) -->
+    <!-- MODAL ĐỘC QUYỀN CHO TUẤN KIỆT -->
     <div id="kietModal" class="fixed inset-0 z-[120] bg-black/90 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 p-4" onclick="closeKietModal()">
         <div class="relative max-w-md w-full bg-slate-900 light:bg-white border-2 border-cyan-400 rounded-3xl p-5 sm:p-6 text-center shadow-2xl shadow-cyan-500/30" onclick="event.stopPropagation()">
-            <button onclick="closeKietModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 w-8 h-8 rounded-full flex items-center justify-center transition">
+            <button onclick="closeKietModal()" class="magnetic-btn absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 w-8 h-8 rounded-full flex items-center justify-center transition">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="w-28 h-28 mx-auto mb-3 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-500/20">
+            <div class="w-28 h-28 mx-auto mb-3 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-500/20 relative">
                 <img id="kietAvatarImg" src="https://i.postimg.cc/PJ50zJJL/kiet.webp" alt="Võ Tuấn Kiệt" class="w-full h-full object-cover">
             </div>
-            <span class="px-3 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 text-[10px] font-mono font-bold uppercase">Lead Developer • 11A12</span>
+            <span class="px-3 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 text-[10px] font-mono font-bold uppercase border border-cyan-400/30">Lead Developer • 11A12</span>
             <h3 class="text-lg sm:text-xl font-black text-adaptive-title mt-1.5">VÕ TUẤN KIỆT</h3>
             <p class="text-[11px] text-cyan-300 font-mono mt-0.5">Nhuận Đức, Củ Chi, TP.HCM • THPT Phú Hòa</p>
             <div class="mt-3 p-3.5 rounded-xl bg-slate-950/80 light:bg-slate-100 border border-slate-800 text-left">
@@ -185,7 +264,7 @@
 
     <!-- HEADER & MOBILE NAV -->
     <header class="sticky top-0 z-40 bg-slate-950/80 light:bg-white/90 backdrop-blur-lg border-b border-slate-800/80 light:border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative z-10">
             <div class="flex items-center space-x-2.5">
                 <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-bold text-sm shadow-lg icon-3d-float">3</div>
                 <div>
@@ -196,18 +275,17 @@
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-6 text-xs font-semibold text-adaptive-desc">
-                <a href="#tong-quan" class="hover:text-cyan-400 transition flex items-center gap-1.5"><i class="fa-solid fa-chart-pie text-cyan-400"></i> Tổng Quan</a>
-                <a href="#slider-section" class="hover:text-cyan-400 transition flex items-center gap-1.5"><i class="fa-solid fa-sliders text-indigo-400"></i> Trợ Giúp Slider</a>
-                <a href="#the-manh" class="hover:text-cyan-400 transition flex items-center gap-1.5"><i class="fa-solid fa-gem text-emerald-400"></i> Thế Mạnh</a>
-                <a href="#thanh-vien" class="hover:text-cyan-400 transition flex items-center gap-1.5"><i class="fa-solid fa-users text-purple-400"></i> Thành Viên</a>
+                <a href="#tong-quan" class="magnetic-btn hover:text-cyan-400 transition flex items-center gap-1.5 py-1 px-2"><i class="fa-solid fa-chart-pie text-cyan-400"></i> Tổng Quan</a>
+                <a href="#slider-section" class="magnetic-btn hover:text-cyan-400 transition flex items-center gap-1.5 py-1 px-2"><i class="fa-solid fa-sliders text-indigo-400"></i> Trợ Giúp Slider</a>
+                <a href="#the-manh" class="magnetic-btn hover:text-cyan-400 transition flex items-center gap-1.5 py-1 px-2"><i class="fa-solid fa-gem text-emerald-400"></i> Thế Mạnh</a>
+                <a href="#thanh-vien" class="magnetic-btn hover:text-cyan-400 transition flex items-center gap-1.5 py-1 px-2"><i class="fa-solid fa-users text-purple-400"></i> Thành Viên</a>
             </nav>
 
             <div class="flex items-center space-x-2">
-                <button onclick="cycleTheme()" class="w-9 h-9 rounded-lg bg-slate-900 light:bg-slate-200 border border-slate-800 light:border-slate-300 text-slate-300 light:text-slate-700 hover:text-cyan-400 flex items-center justify-center transition" title="Đổi giao diện">
+                <button onclick="cycleTheme()" class="magnetic-btn w-9 h-9 rounded-lg bg-slate-900 light:bg-slate-200 border border-slate-800 light:border-slate-300 text-slate-300 light:text-slate-700 hover:text-cyan-400 flex items-center justify-center transition" title="Đổi giao diện">
                     <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
                 </button>
-                <!-- Hamburger Menu Button for Mobile -->
-                <button onclick="toggleMobileMenu()" class="md:hidden w-9 h-9 rounded-lg bg-slate-900 light:bg-slate-200 border border-slate-800 light:border-slate-300 text-cyan-400 flex items-center justify-center transition">
+                <button onclick="toggleMobileMenu()" class="magnetic-btn md:hidden w-9 h-9 rounded-lg bg-slate-900 light:bg-slate-200 border border-slate-800 light:border-slate-300 text-cyan-400 flex items-center justify-center transition">
                     <i id="menuIcon" class="fa-solid fa-bars text-sm"></i>
                 </button>
             </div>
@@ -222,24 +300,27 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative py-12 px-4 border-b border-slate-800/50 light:border-slate-200">
+    <!-- HERO SECTION VỚI 3. KINETIC TYPOGRAPHY -->
+    <section class="relative py-12 px-4 border-b border-slate-800/50 light:border-slate-200 z-10">
         <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
             <span class="px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[11px] font-semibold uppercase tracking-widest inline-block mb-3 icon-3d-float">
-                <i class="fa-solid fa-cube mr-1"></i> Card Deal 3D & Mobile Optimized 2026
+                <i class="fa-solid fa-burst mr-1"></i> Manga Cyberpunk Edition 2026
             </span>
-            <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3 leading-tight text-adaptive-title">
-                THU HÚT ĐẦU TƯ TRỰC TIẾP NƯỚC NGOÀI (<span class="text-gradient">FDI</span>) TẠI TP.HCM
+            
+            <!-- KINETIC TYPOGRAPHY BANNER -->
+            <h1 id="kinetic-title" class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3 leading-tight text-adaptive-title">
+                THU HÚT ĐẦU TƯ TRỰC TIẾP NƯỚC NGOÀI (<span class="text-gradient-manga">FDI</span>) TẠI TP.HCM
             </h1>
+
             <p class="text-adaptive-desc max-w-xl mx-auto text-xs sm:text-sm px-2">
-                Bấm vào tên <strong class="text-cyan-400">Tuấn Kiệt</strong> ở phần thành viên bên dưới để khám phá hiệu ứng độc quyền!
+                Rê chuột vào các chữ cái tiêu đề để trải nghiệm hiệu ứng Kinetic Typography & bấm tên <strong class="text-cyan-400">Tuấn Kiệt</strong> bên dưới!
             </p>
         </div>
     </section>
 
     <!-- INTERACTIVE SLIDER SECTION -->
-    <section id="slider-section" class="py-8 max-w-4xl mx-auto px-4 w-full" data-aos="fade-up">
-        <div class="fake-3d-card p-5 sm:p-7 rounded-3xl border border-cyan-500/30 relative">
+    <section id="slider-section" class="py-8 max-w-4xl mx-auto px-4 w-full z-10 relative" data-aos="fade-up">
+        <div class="manga-card p-5 sm:p-7 rounded-3xl relative">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <h3 class="font-bold text-sm sm:text-base text-cyan-400 flex items-center gap-2">
                     <i class="fa-solid fa-sliders icon-3d-float"></i> Thanh Trượt Giai Đoạn FDI
@@ -256,30 +337,30 @@
     </section>
 
     <!-- TỔNG QUAN SỐ LIỆU -->
-    <section id="tong-quan" class="py-6 max-w-6xl mx-auto px-4 w-full">
+    <section id="tong-quan" class="py-6 max-w-6xl mx-auto px-4 w-full z-10 relative">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            <div class="fake-3d-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="100" onclick="triggerCardDetail(this, 'du-an')">
+            <div class="manga-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="100" onclick="triggerCardDetail(this, 'du-an')">
                 <div class="flex justify-between items-start mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg icon-3d-float"><i class="fa-solid fa-diagram-project"></i></div>
-                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono">Bấm lật bài</span>
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg icon-3d-float border border-cyan-400/30"><i class="fa-solid fa-diagram-project"></i></div>
+                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono border border-slate-700">Bấm lật bài</span>
                 </div>
                 <div class="text-2xl sm:text-3xl font-black mb-1 text-adaptive-title">11.455+</div>
                 <div class="text-xs text-adaptive-desc">Dự án đầu tư nước ngoài còn hiệu lực</div>
             </div>
 
-            <div class="fake-3d-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="200" onclick="triggerCardDetail(this, 'tong-von')">
+            <div class="manga-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="200" onclick="triggerCardDetail(this, 'tong-von')">
                 <div class="flex justify-between items-start mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg icon-3d-float"><i class="fa-solid fa-sack-dollar"></i></div>
-                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono">Bấm lật bài</span>
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg icon-3d-float border border-indigo-400/30"><i class="fa-solid fa-sack-dollar"></i></div>
+                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono border border-slate-700">Bấm lật bài</span>
                 </div>
                 <div class="text-2xl sm:text-3xl font-black mb-1 text-adaptive-title">56.34 Tỷ $</div>
                 <div class="text-xs text-adaptive-desc">Tổng vốn FDI đăng ký tích lũy</div>
             </div>
 
-            <div class="fake-3d-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="300" onclick="triggerCardDetail(this, 'cong-nghe')">
+            <div class="manga-card p-5 rounded-2xl relative" data-aos="fade-up" data-aos-delay="300" onclick="triggerCardDetail(this, 'cong-nghe')">
                 <div class="flex justify-between items-start mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg icon-3d-float"><i class="fa-solid fa-microchip"></i></div>
-                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono">Bấm lật bài</span>
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg icon-3d-float border border-emerald-400/30"><i class="fa-solid fa-microchip"></i></div>
+                    <span class="text-[9px] bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 px-2 py-0.5 rounded font-mono border border-slate-700">Bấm lật bài</span>
                 </div>
                 <div class="text-2xl sm:text-3xl font-black mb-1 text-adaptive-title">Công Nghệ Cao</div>
                 <div class="text-xs text-adaptive-desc">Bán dẫn, AI & Trung tâm tài chính</div>
@@ -288,7 +369,7 @@
     </section>
 
     <!-- NỘI DUNG CHI TIẾT -->
-    <main class="max-w-6xl mx-auto px-4 py-4 space-y-8 w-full flex-grow">
+    <main class="max-w-6xl mx-auto px-4 py-4 space-y-8 w-full flex-grow z-10 relative">
 
         <section id="the-manh" class="space-y-4" data-aos="fade-up">
             <div class="flex items-center space-x-2.5">
@@ -297,7 +378,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div class="fake-3d-card p-5 rounded-2xl flex items-start justify-between border-l-4 border-l-cyan-400 gap-3" onclick="triggerCardDetail(this, 'vi-tri')">
+                <div class="manga-card p-5 rounded-2xl flex items-start justify-between border-l-4 border-l-cyan-400 gap-3" onclick="triggerCardDetail(this, 'vi-tri')">
                     <div class="pr-2">
                         <h3 class="font-bold text-xs sm:text-sm text-cyan-400 mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-anchor icon-3d-float"></i> Vị trí chiến lược & Cảng biển
@@ -307,7 +388,7 @@
                     <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Cảng biển" class="zoom-thumbnail shrink-0">
                 </div>
 
-                <div class="fake-3d-card p-5 rounded-2xl flex items-start justify-between border-l-4 border-l-indigo-400 gap-3" onclick="triggerCardDetail(this, 'nhan-luc')">
+                <div class="manga-card p-5 rounded-2xl flex items-start justify-between border-l-4 border-l-indigo-400 gap-3" onclick="triggerCardDetail(this, 'nhan-luc')">
                     <div class="pr-2">
                         <h3 class="font-bold text-xs sm:text-sm text-indigo-400 mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-user-graduate icon-3d-float"></i> Nguồn nhân lực tri thức
@@ -320,7 +401,7 @@
         </section>
 
         <!-- MEMBER CREDIT -->
-        <section id="thanh-vien" class="fake-3d-card p-6 sm:p-8 rounded-3xl text-center space-y-5 border-slate-800 light:border-slate-300" data-aos="zoom-in">
+        <section id="thanh-vien" class="manga-card p-6 sm:p-8 rounded-3xl text-center space-y-5" data-aos="zoom-in">
             <div class="text-[11px] text-adaptive-desc font-mono tracking-widest uppercase">
                 © MMXXVI • TỔ 3 • 11A12 • TRƯỜNG THPT PHÚ HÒA
             </div>
@@ -328,7 +409,7 @@
                 3
             </div>
             <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto text-xs text-adaptive-title font-medium">
-                <span id="kietCardBtn" onclick="triggerKietModal()" class="px-3 py-1.5 bg-cyan-500/30 text-cyan-300 font-bold rounded-lg border border-cyan-400 shadow-lg shadow-cyan-500/20 cursor-pointer hover:bg-cyan-500/40 transition transform hover:scale-105">
+                <span id="kietCardBtn" onclick="triggerKietModal()" class="magnetic-btn px-3 py-1.5 bg-cyan-500/30 text-cyan-300 font-bold rounded-lg border border-cyan-400 shadow-lg shadow-cyan-500/20 cursor-pointer hover:bg-cyan-500/40 transition transform hover:scale-105">
                     <i class="fa-solid fa-crown text-amber-400 mr-1"></i> Tuấn Kiệt ( Dev )
                 </span>
                 <span class="px-3 py-1.5 bg-slate-900/60 light:bg-white rounded-lg border border-slate-800 light:border-slate-200">Đức Hoàng</span>
@@ -348,9 +429,134 @@
 
     </main>
 
-    <!-- AOS & JAVASCRIPT -->
+    <!-- AOS & JAVASCRIPT MASTER SCRIPT -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        /* 4. THREE.JS IMMERSIVE 3D WEBGL PARTICLES DYNAMIC BACKGROUND */
+        const initWebGLBg = () => {
+            const canvas = document.getElementById('webgl-bg');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const count = 350;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+
+            const colorChoices = [new THREE.Color('#38bdf8'), new THREE.Color('#818cf8'), new THREE.Color('#c084fc')];
+
+            for(let i = 0; i < count * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 15;
+                positions[i+1] = (Math.random() - 0.5) * 15;
+                positions[i+2] = (Math.random() - 0.5) * 15;
+
+                const c = colorChoices[Math.floor(Math.random() * colorChoices.length)];
+                colors[i] = c.r;
+                colors[i+1] = c.g;
+                colors[i+2] = c.b;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 0.06,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.85
+            });
+
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+            camera.position.z = 5;
+
+            let mouseX = 0, mouseY = 0;
+            window.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+            });
+
+            const animate = () => {
+                requestAnimationFrame(animate);
+                points.rotation.y += 0.0015;
+                points.rotation.x += 0.0008;
+
+                camera.position.x += (mouseX - camera.position.x) * 0.05;
+                camera.position.y += (-mouseY - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+            };
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+
+        /* 2. CURSOR TRAIL & MAGNETIC BUTTON EFFECT */
+        const initCustomCursor = () => {
+            const cursor = document.getElementById('cursor');
+            const dot = document.getElementById('cursor-dot');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                dot.style.left = mouseX + 'px';
+                dot.style.top = mouseY + 'px';
+            });
+
+            const renderCursor = () => {
+                cursorX += (mouseX - cursorX) * 0.15;
+                cursorY += (mouseY - cursorY) * 0.15;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                requestAnimationFrame(renderCursor);
+            };
+            renderCursor();
+
+            // Magnetic Button Effect
+            document.querySelectorAll('.magnetic-btn, .manga-card').forEach(btn => {
+                btn.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                btn.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('active');
+                    btn.style.transform = '';
+                });
+                btn.addEventListener('mousemove', (e) => {
+                    if(!btn.classList.contains('manga-card')) {
+                        const rect = btn.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                    }
+                });
+            });
+        };
+
+        /* 3. KINETIC TYPOGRAPHY SETUP */
+        const initKineticTypography = () => {
+            const title = document.getElementById('kinetic-title');
+            if(!title) return;
+            const text = title.innerText;
+            title.innerHTML = '';
+            
+            [...text].forEach(char => {
+                const span = document.createElement('span');
+                span.className = 'kinetic-char';
+                span.innerText = char === ' ' ? '\u00A0' : char;
+                title.appendChild(span);
+            });
+        };
+
+        /* SLIDER DATA AND LOGIC */
         const sliderData = {
             "1": {
                 year: "Giai đoạn trước: Khởi đầu & Công nghiệp truyền thống",
@@ -466,7 +672,7 @@
 
                 modal.classList.remove('opacity-0', 'pointer-events-none');
 
-                const bioText = "Xin chào cô và các bạn! Em là Võ Tuấn Kiệt (sinh năm 2010) - học sinh lớp 11A12 Trường THPT Phú Hòa, Củ Chi. Trưởng nhóm code và là người trực tiếp xây dựng giao diện Knowledge Hub FDI TP.HCM này bằng cả tâm huyết và đam mê công nghệ!";
+                const bioText = "Xin chào cô và các bạn! Em là Võ Tuấn Kiệt (sinh năm 2010), học sinh lớp 11A12 Trường THPT Phú Hòa, Củ Chi. Trưởng nhóm code và là người trực tiếp xây dựng giao diện Knowledge Hub FDI TP.HCM này bằng cả tâm huyết và đam mê công nghệ!";
                 let idx = 0;
                 kietTimer = setInterval(() => {
                     if (idx < bioText.length) {
@@ -494,7 +700,11 @@
         }
 
         window.addEventListener('load', () => {
+            initKineticTypography();
+            initWebGLBg();
+            initCustomCursor();
             AOS.init({ duration: 700, once: true });
+            
             const preloader = document.getElementById('preloader');
             preloader.classList.add('opacity-0');
             setTimeout(() => preloader.style.display = 'none', 500);
