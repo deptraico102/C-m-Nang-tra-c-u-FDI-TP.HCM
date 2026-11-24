@@ -1,296 +1,1325 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cẩm Nang Tra Cứu FDI TP.HCM - Tổ 3 - 11A12 - THPT Phú Hòa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            scroll-behavior: smooth;
-        }
-        .glass-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Knowledge Hub - Thu hút FDI tại TP.HCM - Tổ 3 • 11A12 • THPT Phú Hòa">
+<meta name="theme-color" content="#030712">
+<title>Knowledge Hub - Tổ 3 • 11A12 • THPT Phú Hòa</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap&subset=vietnamese" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+:root{--sky:#38BDF8}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Be Vietnam Pro","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background:#0e0d12;color:#f8fafc;min-height:100vh}
+.mono{font-family:inherit;letter-spacing:.01em}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+.orb{position:fixed;z-index:0;pointer-events:none;border-radius:50%}
+#vn-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#000}
+#vn-bg-img{width:100%;height:100%;object-fit:cover;opacity:.72;filter:brightness(.74) contrast(1.06);transition:opacity .45s ease,filter .45s ease,transform .6s ease}
+#vn-bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.78) 100%);transition:background .45s ease}
+body.fdi-dim-bg #vn-bg-img{opacity:.2;filter:brightness(.36) blur(2px);transform:scale(1.02)}
+body.fdi-dim-bg #vn-bg-scrim{background:linear-gradient(180deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.93) 100%)}
+.o1{top:-15%;left:15%;width:550px;height:550px;background:radial-gradient(circle,rgba(56,189,248,.14),transparent 70%);filter:blur(60px)}
+.o2{bottom:10%;right:10%;width:500px;height:500px;background:radial-gradient(circle,rgba(125,211,252,.1),transparent 70%);filter:blur(70px)}
+.glow,.silver{padding:.14em 0;line-height:1.3}
+.glow{background:linear-gradient(180deg,#fff,#94a3b8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.silver{background:linear-gradient(135deg,#fff,#E2E8F0 50%,#38BDF8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.glass{background:rgba(15,23,42,.65);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(56,189,248,.18);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#38BDF8,#fff)}
+/* viền thẻ */
+.sb{--c:#fff;--trail:#38BDF8;--d:4s;--r:12px;--g:.6;position:relative;display:inline-flex;border-radius:var(--r);padding:1.5px;overflow:hidden;isolation:isolate;cursor:pointer}
+.sb::before,.sb::after{content:'';position:absolute;inset:-150%;animation:orbit var(--d) linear infinite}
+.sb::before{background:conic-gradient(from var(--a),transparent 0 240deg,color-mix(in srgb,var(--trail) 40%,transparent) 290deg,var(--trail) 345deg,var(--c) 358deg,transparent 360deg);z-index:-2}
+.sb::after{background:conic-gradient(from var(--a),transparent 0 270deg,var(--c) 355deg,transparent 360deg);filter:blur(calc(12px*var(--g)));opacity:var(--g);z-index:-1}
+.sb:hover::before,.sb:hover::after{animation-duration:calc(var(--d)*.42)}
+.sbi{position:relative;width:100%;border-radius:calc(var(--r) - 1.5px);background:rgba(10,15,29,.92);z-index:1}
+.sb.full{display:flex;width:100%}
+@keyframes orbit{to{--a:360deg}}
+@supports not (background:conic-gradient(from var(--a),red,blue)){.sb{border:1px solid rgba(56,189,248,.4)}}
+.pulse{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:10;animation:pulse .6s forwards}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #fff;opacity:.9}100%{box-shadow:0 0 24px 8px transparent;opacity:0}}
+/* model */
+.float{animation:float 4.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+/* bento */
+.card{overflow:hidden;position:relative;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.card:hover{transform:translateY(-4px)}
+.card::before{content:'';position:absolute;top:var(--my,-100px);left:var(--mx,-100px);width:320px;height:320px;background:radial-gradient(circle,rgba(56,189,248,.26),transparent 70%);transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .3s}
+.card:hover::before{opacity:1}
+/* accordion */
+.acc{display:flex;gap:16px;height:400px}
+.acc-i{flex:1;border-radius:24px;overflow:hidden;position:relative;cursor:pointer;border:1px solid rgba(56,189,248,.2);background:#0f172a;transition:flex .65s cubic-bezier(.16,1,.3,1),filter .35s;text-align:left}
+.acc:hover .acc-i:not(:hover){filter:blur(1.5px) brightness(.75)}
+.acc-i:hover,.acc-i:focus-visible{flex:4}
+.acc-i img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.acc-i:hover img{transform:scale(1.06)}
+.acc-o{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,7,18,.95),rgba(3,7,18,.3) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+@media(max-width:767px){.acc{flex-direction:column;height:auto}.acc-i{flex:none;height:140px}.acc:hover .acc-i:not(:hover){filter:none}}
+/* orbit */
+#orbit{position:relative;height:460px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+#orbit.drag{cursor:grabbing}
+.o-ring{position:absolute;left:50%;top:50%;width:76%;height:52%;transform:translate(-50%,-50%);border:1px dashed rgba(56,189,248,.28);border-radius:50%;pointer-events:none}
+.o-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#fff;background:radial-gradient(circle,rgba(56,189,248,.45),rgba(56,189,248,.05) 70%);box-shadow:0 0 60px rgba(56,189,248,.4);pointer-events:none}
+.oc{position:absolute;left:50%;top:50%;width:150px;height:190px;border-radius:18px;overflow:hidden;border:1px solid rgba(56,189,248,.4);background:#0f172a;box-shadow:0 18px 36px rgba(0,0,0,.7);will-change:transform;padding:0}
+.oc img{width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+.oc span{position:absolute;inset:auto 0 0 0;padding:26px 10px 9px;text-align:left;font-size:12px;font-weight:700;color:#bae6fd;background:linear-gradient(0deg,rgba(3,7,18,.95),transparent);line-height:1.3}
+.oc small{display:block;font-size:10px;font-weight:500;color:#cbd5e1}
+@media(max-width:640px){#orbit{height:380px}.oc{width:106px;height:140px}.oc span{font-size:10px;padding-top:18px}.oc small{display:none}}
+/* modal */
+#modal{transition:opacity .3s}
+#modal.hide{opacity:0;pointer-events:none}
+.enter{animation:menter .42s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes menter{0%{opacity:0;transform:scale(.9) translateY(24px);filter:blur(16px)}60%{filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
+.cur::after{content:'|';animation:blink .7s infinite;color:#38BDF8;font-weight:700}
+@keyframes blink{50%{opacity:0}}
+.toast{transition:all .3s;transform:translateY(16px);opacity:0}
+.toast.in{transform:none;opacity:1}
+#preloader{transition:opacity .7s}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+#hdr.sc{background:rgba(14,13,18,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+section[id]{scroll-margin-top:90px}
+
+/* ===== APPLE STYLE ===== */
+body{background:#000;color:#f5f5f7}
+#hdr .max-w-6xl{padding-top:0;padding-bottom:0;height:48px}
+#hdr.sc{background:rgba(22,22,23,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.1)}
+#hdr nav a{font-size:12px;opacity:.82;color:#f5f5f7!important}
+#hdr nav a:hover{opacity:1}
+#logo3,#snd,#lang{background:transparent!important;border:none!important;border-radius:980px;color:#e8e8ed}
+#logo3{width:30px;height:30px;font-size:15px}
+#snd,#lang{height:30px;font-size:12px}
+#snd:hover,#lang:hover,#logo3:hover{background:rgba(255,255,255,.1)!important}
+#home span:first-child{letter-spacing:.12em}
+.glass{background:#1d1d1f;backdrop-filter:none;-webkit-backdrop-filter:none;border:none;box-shadow:none;border-radius:28px}
+#mcard.glass{background:rgba(29,29,31,.94);backdrop-filter:blur(24px)}
+.sb::before,.sb::after{display:none}
+.sb{padding:0;border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .3s}
+.sb:hover{border-color:rgba(255,255,255,.2)}
+.sb.full:hover{transform:scale(1.015)}
+.sb:not(.full){border-radius:980px}
+.sb:not(.full) .sbi{border-radius:980px}
+.sbi{background:#1d1d1f}
+.card::before{display:none}
+.card:hover{transform:none}
+#bento h3{font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.01em}
+#bento p{font-size:15px;line-height:1.5;color:#a1a1a6!important}
+#bento .card{padding:2rem}
+.glow,.silver{background:none!important;-webkit-text-fill-color:#f5f5f7;color:#f5f5f7}
+#wrap h2,#wrap h3.silver{font-size:clamp(30px,4.6vw,52px);font-weight:600;letter-spacing:-.025em;line-height:1.15;text-align:center;color:#f5f5f7!important;-webkit-text-fill-color:#f5f5f7}
+#wrap h2 i,#wrap h3.silver i{display:none}
+#wrap h2 .mono{font-family:inherit}
+.text-slate-300,.text-slate-200{color:#a1a1a6!important}
+.text-sky-400,.text-sky-300{color:#2997ff!important}
+#wrap .text-sky-400{color:#2997ff!important}
+.acc-i{border:none;border-radius:28px}
+.mono{letter-spacing:0}
+#members button,#members .sb{border-radius:980px}
+#members button{background:#1d1d1f;border:none;color:#e8e8ed}
+#members button:hover{background:#2a2a2d}
+#pills button{border-radius:980px;border:none;background:#2a2a2d!important;color:#e8e8ed!important;font-size:13px}
+#pills button.bg-sky-500\/30{background:#f5f5f7!important;color:#1d1d1f!important}
+.toast{border-radius:18px}
+#px{position:relative;height:min(92vh,860px);overflow:hidden;border-radius:28px;background:#1d1d1f}
+#px::before,#px::after{content:'';position:absolute;left:0;right:0;height:90px;z-index:3;pointer-events:none}
+#px::before{top:0;background:linear-gradient(#1d1d1f,transparent)}
+#px::after{bottom:0;background:linear-gradient(transparent,#1d1d1f)}
+#px .grid3{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 14px}
+.px-col{display:flex;flex-direction:column;gap:14px;will-change:transform}
+.px-col:nth-child(1){margin-top:-18vh}.px-col:nth-child(2){margin-top:-42vh}.px-col:nth-child(3){margin-top:-8vh}
+.pxc{position:relative;display:block;width:100%;height:clamp(200px,36vh,360px);border-radius:20px;overflow:hidden;background:#0f0f10;padding:0;cursor:pointer;flex:none}
+.pxc img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.pxc:hover img{transform:scale(1.06)}
+.pxc span{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;text-align:left;font-size:14px;font-weight:600;color:#f5f5f7;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent)}
+.pxc small{display:block;font-size:12px;font-weight:400;color:#a1a1a6}
+@media(max-width:640px){#px .grid3{gap:8px;padding:0 8px}.px-col{gap:8px}.pxc{border-radius:14px}.pxc span{font-size:11px;padding:24px 8px 8px}.pxc small{display:none}}
+
+/* ===== TRANG CHỦ ===== */
+#heroFx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;-webkit-mask-image:radial-gradient(ellipse at center,#000 35%,transparent 78%);mask-image:radial-gradient(ellipse at center,#000 35%,transparent 78%)}
+.rise{opacity:0;transform:translateY(22px);animation:rise .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{to{opacity:1;transform:none}}
+.hw{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(14px);animation:hw .95s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(1s + var(--i)*65ms)}
+@keyframes hw{to{opacity:1;transform:none;filter:blur(0)}}
+.fdi .hw{background:linear-gradient(90deg,#2997ff,#7dd3fc,#fff,#7dd3fc,#2997ff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:hw .95s cubic-bezier(.16,1,.3,1) forwards,shine 6s linear infinite;animation-delay:calc(1s + var(--i)*65ms),0s}
+@keyframes shine{to{background-position:-300% 0}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border-radius:980px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-size:12px;color:#d2d2d7;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:#30d158;animation:dotp 2s infinite}
+@keyframes dotp{0%{box-shadow:0 0 0 0 rgba(48,209,88,.6)}100%{box-shadow:0 0 0 9px rgba(48,209,88,0)}}
+.hero-rot{font-size:clamp(16px,2.2vw,22px);color:#a1a1a6;min-height:1.7em}
+#rot{display:inline-block;color:#2997ff;font-weight:600}
+.rin{animation:rin .6s cubic-bezier(.16,1,.3,1)}
+@keyframes rin{from{opacity:0;transform:translateY(12px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.btn-shine{position:relative;overflow:hidden}
+.btn-shine::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:sweep 3.6s ease-in-out 3s infinite}
+@keyframes sweep{0%{left:-60%}35%,100%{left:130%}}
+.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding-top:26px}
+.hc{display:flex;align-items:center;gap:12px;padding:12px 18px;border-radius:20px;background:rgba(29,29,31,.7);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);text-align:left;animation:bob 6s ease-in-out infinite}
+.hc i{color:#2997ff;font-size:18px}
+.hc b{display:block;font-size:17px;font-weight:600;color:#f5f5f7;letter-spacing:-.01em}
+.hc small{font-size:12px;color:#a1a1a6}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.hero-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:5}
+.cue-m{display:block;width:24px;height:38px;border:2px solid rgba(255,255,255,.4);border-radius:14px;position:relative}
+.cue-m i{position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:#f5f5f7;animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+@media(max-width:640px){.hero-cue{display:none}.hc{padding:10px 14px}}
+/* ===== SỐ LIỆU NỔI BẬT ===== */
+.num{font-size:clamp(44px,5.4vw,72px);font-weight:600;letter-spacing:-.035em;line-height:1.05;margin-bottom:.5rem;font-variant-numeric:tabular-nums;background:linear-gradient(135deg,#f5f5f7 20%,#2997ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* ===== GIỚI THIỆU TOÀN MÀN HÌNH ===== */
+#se{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.se-track{position:relative}
+.se-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000}
+.se-frame{position:absolute;inset:0;overflow:hidden;will-change:clip-path;clip-path:inset(21% 29% 21% 29% round 24px)}
+.se-media{width:100%;height:100%;object-fit:cover;transform-origin:center;will-change:transform;display:block;transform:scale(1.35)}
+.se-scrim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.se-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:0;will-change:opacity,transform}
+.se-overlay h3{font-size:clamp(28px,5vw,60px);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:#f5f5f7}
+.se-overlay p{margin-top:14px;max-width:640px;font-size:clamp(15px,2vw,21px);color:#d2d2d7}
+.se-title{position:absolute;z-index:2;left:0;right:0;text-align:center;padding:0 20px;pointer-events:none;font-weight:600;letter-spacing:-.03em;line-height:1.1;font-size:var(--se-title-size,56px);color:#f5f5f7;text-shadow:0 2px 30px rgba(0,0,0,.6);will-change:opacity,transform}
+.se-hint{position:absolute;z-index:2;bottom:6vh;left:0;right:0;text-align:center;font-size:13px;color:#a1a1a6;pointer-events:none;letter-spacing:.04em}
+</style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="flex flex-col overflow-x-hidden relative">
+<div id="progress"></div>
+<div id="vn-bg" aria-hidden="true">
+  <img id="vn-bg-img" src="https://phuongtanphuoc.com/wp/2025/TPHCM/anh-dep-tp-HCM%20%283%29.jpg" alt="">
+  <div id="vn-bg-scrim"></div>
+</div>
 
-    <!-- NAVIGATION HEADER -->
-    <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 font-bold text-sm">3</div>
-                <div>
-                    <div class="text-xs font-bold tracking-wider text-cyan-400 uppercase">TỔ 3 • 11A12 • THPT PHÚ HÒA</div>
-                    <div class="text-xs text-slate-400 hidden sm:block">Chủ đề 6: FDI tại TP. Hồ Chí Minh</div>
-                </div>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-xs font-semibold text-slate-300">
-                <a href="#tong-quan" class="hover:text-cyan-400 transition">Tổng Quan</a>
-                <a href="#vai-tro" class="hover:text-cyan-400 transition">Vai Trò</a>
-                <a href="#the-manh" class="hover:text-cyan-400 transition">Thế Mạnh</a>
-                <a href="#thach-thuc" class="hover:text-cyan-400 transition">Thách Thức</a>
-                <a href="#so-lieu" class="hover:text-cyan-400 transition">Số Liệu</a>
-                <a href="#ket-luan" class="hover:text-cyan-400 transition">Kết Luận</a>
-            </nav>
-            <div class="text-xs font-mono text-slate-500 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-                THPT PHÚ HÒA • 2026
-            </div>
+<div id="preloader" class="fixed inset-0 z-[200] bg-[#030712] flex flex-col items-center justify-center cursor-pointer" role="status">
+  <div class="relative flex items-center justify-center mb-6">
+    <div class="absolute w-32 h-32 rounded-full border-2 border-sky-400/30 animate-ping"></div>
+    <div class="sb" style="--r:24px;--d:2.5s;--g:.85"><div class="sbi w-24 h-24 flex items-center justify-center text-white text-4xl font-black">3</div></div>
+  </div>
+  <h2 class="text-xs font-bold tracking-[.3em] text-sky-400 uppercase mono" data-i="org"></h2>
+  <p class="text-[11px] text-slate-400 mono animate-pulse mt-2" data-i="load"></p>
+</div>
+
+<div id="toasts" class="fixed bottom-6 right-4 sm:right-6 z-[150] space-y-3 pointer-events-none" aria-live="polite"></div>
+
+<!-- Modal dùng chung -->
+<div id="modal" class="hide fixed inset-0 z-[130] bg-black/80 backdrop-blur-xl flex items-center justify-center p-4" role="dialog" aria-modal="true">
+  <div id="mcard" class="relative max-w-2xl w-full glass rounded-3xl p-7 sm:p-9 max-h-[90vh] flex flex-col border border-sky-400/40">
+    <button id="mclose" aria-label="Close" class="absolute top-5 right-5 text-slate-400 hover:text-white bg-slate-900/80 w-9 h-9 rounded-full flex items-center justify-center z-20"><i class="fa-solid fa-xmark"></i></button>
+    <div id="mbody" class="overflow-y-auto"></div>
+  </div>
+</div>
+
+<header id="hdr" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2.5">
+      <button id="logo3" class="w-9 h-9 rounded-xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition" aria-label="3">3</button>
+      <button id="home" class="text-left leading-tight"><span class="block text-[11px] sm:text-xs font-bold tracking-widest text-white uppercase" data-i="org"></span><span class="block text-[10px] text-slate-400">3D Knowledge Hub</span></button>
+    </div>
+    <nav class="hidden md:flex items-center gap-9 text-sm text-slate-300">
+      <a href="#figures" class="hover:text-white transition" data-i="nv1"></a>
+      <a href="#gallery" class="hover:text-white transition" data-i="nv2"></a>
+      <a href="#model" class="hover:text-white transition" data-i="nv3"></a>
+    </nav>
+    <div class="flex items-center gap-2 text-sm">
+      <button id="snd" class="w-9 h-9 rounded-xl bg-white/10 text-slate-200 border border-white/10 hover:bg-white/20 transition" aria-label="Sound"><i class="fa-solid fa-volume-high"></i></button>
+      <button id="lang" class="px-3 h-9 rounded-xl bg-white/10 text-slate-100 border border-white/10 font-semibold hover:bg-white/20 transition"><i class="fa-solid fa-globe mr-1"></i><span id="langT">EN</span></button>
+      <button id="t2" class="px-3.5 h-8 rounded-full bg-[#0071e3] text-white text-xs font-medium hover:bg-[#0077ed] transition"><span data-i="t2"></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="topic" class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow z-10 relative">
+<div id="wrap" class="space-y-28">
+
+  <section id="hero" class="hero relative min-h-[100svh] -mt-8 flex flex-col justify-center items-center text-center pt-16 pb-16">
+    <canvas id="heroFx" aria-hidden="true"></canvas>
+    <div id="heroIn" class="relative z-10 max-w-4xl mx-auto space-y-6">
+      <div class="hero-badge rise" style="--d:.9s"><span class="dot"></span><span data-i="badge"></span></div>
+      <h1 id="h1" class="text-5xl sm:text-7xl font-semibold tracking-[-0.03em] leading-[1.12] text-[#f5f5f7]"><span data-i="h1a"></span> <span class="fdi">(FDI)</span> <span data-i="h1b"></span></h1>
+      <div class="hero-rot rise" style="--d:1.7s"><span data-i="rotLead"></span> <span id="rot"></span></div>
+      <p class="rise text-lg sm:text-2xl font-normal leading-snug max-w-2xl mx-auto" style="--d:1.85s;color:#a1a1a6" data-i="desc"></p>
+      <div class="rise flex flex-wrap items-center justify-center gap-x-8 gap-y-4 pt-2" style="--d:2s">
+        <a href="#figures" class="btn-shine inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0071e3] text-white text-base font-normal hover:bg-[#0077ed] transition"><span data-i="c1"></span><i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+        <a href="#model" class="inline-flex items-center text-base hover:underline"><span data-i="c2"></span><i class="fa-solid fa-chevron-right text-[10px] ml-1.5"></i></a>
+      </div>
+      <div id="heroChips" class="hero-chips"></div>
+    </div>
+    <a id="heroCue" href="#se" class="hero-cue" aria-label="Scroll"><span class="cue-m"><i></i></span></a>
+  </section>
+
+  <section id="se" aria-label="Giới thiệu TP.HCM">
+    <div class="se-track" id="se-track">
+      <div class="se-stage" id="se-stage">
+        <div class="se-frame" id="se-frame">
+          <img id="se-media" class="se-media" alt="TP.HCM" draggable="false"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80">
+          <div class="se-scrim" id="se-scrim"></div>
+          <div class="se-overlay" id="se-overlay">
+            <h3 data-i="seH"></h3>
+            <p data-i="seD"></p>
+          </div>
         </div>
-    </header>
+        <div class="se-title" id="se-title" data-i="seT"></div>
+        <div class="se-hint" id="se-hint"><i class="fa-solid fa-chevron-down mr-1.5"></i><span data-i="seHint"></span></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- HERO SECTION -->
-    <section id="tong-quan" class="py-16 px-4 max-w-6xl mx-auto text-center space-y-6">
-        <span class="px-3.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-xs font-bold tracking-widest uppercase inline-block">
-            TỔ 3 • LỚP 11A12 • TRƯỜNG THPT PHÚ HÒA
-        </span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight max-w-4xl mx-auto">
-            Tìm Hiểu Về Thu Hút Đầu Tư Trực Tiếp Nước Ngoài <span class="text-gradient">(FDI)</span> Tại TP.HCM
-        </h1>
-        <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-            Hệ thống hóa toàn bộ kiến thức về vai trò, tiềm năng, thách thức và số liệu thống kê dòng vốn FDI tại thành phố mang tên Bác.
-        </p>
-    </section>
+  <section id="model" class="space-y-4 text-center">
+    <div class="inline-flex px-4 py-2.5 rounded-2xl bg-slate-900/80 border border-white/15 items-center gap-2.5 text-xs text-slate-200"><i class="fa-solid fa-hand-pointer animate-bounce"></i><span data-i="hint"></span></div>
+    <div class="sb full max-w-4xl mx-auto" style="--r:28px;--d:5s;--g:.65">
+      <div class="sbi p-3 sm:p-4 rounded-[26px] relative overflow-hidden">
+        <div class="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 border border-sky-400/30 text-[10px] text-sky-300"><span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>FDI TP.HCM • 3D</div>
+        <button id="reset" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-slate-950/80 border border-white/15 text-slate-300 hover:text-sky-400 text-xs" aria-label="Reset camera"><i class="fa-solid fa-rotate-right"></i></button>
+        <canvas id="fdi3d" class="block w-full" style="height:min(520px,80vw);min-height:320px;cursor:grab;touch-action:pan-y"></canvas>
+        <p id="cap" class="text-xs sm:text-sm text-slate-300 px-3 pb-3 min-h-[2.75rem]"></p>
+        <div id="pills" class="flex flex-wrap justify-center items-center gap-2 z-10"></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- MAIN CONTENT CONTAINERS -->
-    <main class="max-w-6xl mx-auto px-4 pb-20 space-y-16 flex-1">
+  <section class="glass p-6 sm:p-9 rounded-3xl text-center" data-aos="fade-up">
+    <h3 class="text-xl font-bold silver mb-1"><i class="fa-solid fa-circle-notch mr-2"></i><span data-i="carT"></span></h3>
+    <p class="text-xs text-slate-300 mb-2 mono" data-i="carS"></p>
+    <div id="orbit"><div class="o-ring"></div><div class="o-core">FDI</div></div>
+  </section>
 
-        <!-- VAI TRÒ -->
-        <section id="vai-tro" class="space-y-6">
-            <div class="border-l-4 border-cyan-400 pl-4">
-                <h2 class="text-2xl font-bold text-white">I. Vai Trò Của FDI Đối Với TP.HCM</h2>
-                <p class="text-xs text-slate-400 mt-1">Ý nghĩa chiến lược thúc đẩy sự phát triển toàn diện của thành phố</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-2xl space-y-3 border-t-2 border-t-blue-500">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg"><i class="fa-solid fa-coins"></i></div>
-                    <h3 class="font-bold text-white text-lg">Bổ Sung Nguồn Vốn</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Tăng cường nguồn lực đầu tư phát triển kinh tế, mở rộng quy mô sản xuất và hiện đại hóa hệ thống hạ tầng đô thị.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-3 border-t-2 border-t-emerald-500">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg"><i class="fa-solid fa-users"></i></div>
-                    <h3 class="font-bold text-white text-lg">Tạo Việc Làm & Đời Sống</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Giải quyết việc làm cho hàng triệu lao động địa phương lẫn các tỉnh lân cận, nâng cao thu nhập và cải thiện đời sống.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-3 border-t-2 border-t-purple-500">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg"><i class="fa-solid fa-microchip"></i></div>
-                    <h3 class="font-bold text-white text-lg">Chuyển Giao Công Nghệ</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Tiếp cận công nghệ sản xuất tiên tiến trên thế giới, nâng cao trình độ quản lý và đào tạo nguồn nhân lực chất lượng cao.</p>
-                </div>
-            </div>
-        </section>
+  <section class="glass p-4 sm:p-6 rounded-3xl space-y-3" data-aos="fade-up">
+    <h2 class="text-lg font-bold text-sky-400 tracking-wide"><i class="fa-solid fa-braille mr-2"></i><span data-i="htT"></span></h2>
+    <p class="text-xs text-slate-300 mono" data-i="htS"></p>
+    <div class="rounded-2xl overflow-hidden border border-white/10 bg-[#030712]"><canvas id="halftone" class="block w-full" style="height:min(480px,70vw);min-height:280px;cursor:crosshair;touch-action:pan-y"></canvas></div>
+  </section>
 
-        <!-- THẾ MẠNH -->
-        <section id="the-manh" class="space-y-6">
-            <div class="border-l-4 border-emerald-400 pl-4">
-                <h2 class="text-2xl font-bold text-white">II. Thế Mạnh Nổi Bật & Hạ Tầng</h2>
-                <p class="text-xs text-slate-400 mt-1">Các yếu tố giúp TP.HCM luôn là "thỏi nam châm" hút vốn đầu tư</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="p-3 bg-cyan-500/10 text-cyan-400 rounded-xl text-xl"><i class="fa-solid fa-map-location-dot"></i></div>
-                        <div>
-                            <h3 class="font-bold text-white text-base">Vị Trí Địa Lý Chiến Lược</h3>
-                            <p class="text-slate-400 text-xs mt-1 leading-relaxed">Nằm ở trung tâm vùng Đông Nam Bộ, kết nối giao thông đường bộ, đường thủy và đường hàng không huyết mạch.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 border-t border-slate-800/80 pt-4">
-                        <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl text-xl"><i class="fa-solid fa-people-roof"></i></div>
-                        <div>
-                            <h3 class="font-bold text-white text-base">Dân Số & Thị Trường Lớn</h3>
-                            <p class="text-slate-400 text-xs mt-1 leading-relaxed">Sở hữu lực lượng lao động trẻ, trình độ cao cùng thị trường tiêu thụ nội địa năng động hàng đầu cả nước.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4 border-t border-slate-800/80 pt-4">
-                        <div class="p-3 bg-purple-500/10 text-purple-400 rounded-xl text-xl"><i class="fa-solid fa-building-flag"></i></div>
-                        <div>
-                            <h3 class="font-bold text-white text-base">Trung Tâm Công Nghệ Cao (SHTP)</h3>
-                            <p class="text-slate-400 text-xs mt-1 leading-relaxed">Quy tụ nhiều tập đoàn công nghệ toàn cầu hàng đầu như Intel, Samsung, Nidec đầu tư nhà máy lớn.</p>
-                        </div>
-                    </div>
-                </div>
+  <section id="figures" class="space-y-5">
+    <h2 class="text-lg font-bold text-sky-400 mono tracking-wider"><i class="fa-solid fa-table-cells-large mr-2"></i><span data-i="bentoH"></span></h2>
+    <div id="bento" class="grid grid-cols-1 md:grid-cols-4 gap-5"></div>
+  </section>
 
-                <!-- HIGHLIGHT CARD -->
-                <div class="glass-card p-6 rounded-2xl border-emerald-500/30 flex flex-col justify-between space-y-4">
-                    <div>
-                        <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">HẠ TẦNG GIAO THÔNG QUỐC TẾ</span>
-                        <h3 class="text-xl font-bold text-white mt-2">Cửa Ngõ Giao Thương Hàng Không & Hàng Hải</h3>
-                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-                            Với sự hiện diện của **Sân bay Quốc tế Tân Sơn Nhất** và **Hệ thống Cảng biển Cát Lái**, TP.HCM đóng vai trò là đầu mối xuất nhập khẩu hàng hóa trọng yếu, giúp tối ưu hóa chi phí logistics cho các nhà đầu tư nước ngoài.
-                        </p>
-                    </div>
-                    <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 text-xs text-slate-300 italic">
-                        💡 Đây là lợi thế cạnh tranh cốt lõi giúp TP.HCM luôn duy trì vị trí top đầu cả nước về thu hút dự án FDI trong nhiều thập kỷ.
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="gallery" class="space-y-5" data-aos="fade-up">
+    <h2 class="text-lg font-bold text-sky-400 mono tracking-wider"><i class="fa-solid fa-images mr-2"></i><span data-i="accH"></span></h2>
+    <div id="acc" class="acc"></div>
+  </section>
 
-        <!-- THÁCH THỨC -->
-        <section id="thach-thuc" class="space-y-6">
-            <div class="border-l-4 border-rose-400 pl-4">
-                <h2 class="text-2xl font-bold text-white">III. Hạn Chế & Thách Thức Cần Tháo Gỡ</h2>
-                <p class="text-xs text-slate-400 mt-1">Những điểm nghẽn ảnh hưởng đến tốc độ giải ngân vốn đầu tư</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-2xl space-y-3 border-t-2 border-t-rose-500">
-                    <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-lg"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <h3 class="font-bold text-white text-lg">Hạ Tầng Chưa Đồng Bộ</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Áp lực ùn tắc giao thông vào giờ cao điểm và nguy cơ ngập úng do triều cường, mưa lớn còn xảy ra ở một số khu vực.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-3 border-t-2 border-t-amber-500">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg"><i class="fa-solid fa-file-signature"></i></div>
-                    <h3 class="font-bold text-white text-lg">Thủ Tục Hành Chính</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Quy trình cấp phép, giải quyết thủ tục pháp lý liên quan đến dự án đầu tư đôi khi chưa được tinh gọn tối đa.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-3 border-t-2 border-t-blue-500">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg"><i class="fa-solid fa-ruler-combined"></i></div>
-                    <h3 class="font-bold text-white text-lg">Quỹ Đất Thu Hẹp</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Quỹ đất dành cho phát triển các khu công nghiệp mới bị hạn chế, chi phí đền bù mặt bằng có xu hướng tăng cao.</p>
-                </div>
-            </div>
-        </section>
+  <section id="parallax" class="space-y-4" data-aos="fade-up">
+    <h2><span data-i="pxT"></span></h2>
+    <p class="text-center text-base sm:text-lg max-w-xl mx-auto" style="color:#a1a1a6" data-i="pxS"></p>
+    <div id="px" class="mt-6"><div class="grid3"><div class="px-col"></div><div class="px-col"></div><div class="px-col"></div></div></div>
+  </section>
 
-        <!-- SỐ LIỆU -->
-        <section id="so-lieu" class="space-y-6">
-            <div class="border-l-4 border-amber-400 pl-4">
-                <h2 class="text-2xl font-bold text-white">IV. Quy Mô & Cơ Cấu Ngành Lĩnh Vực</h2>
-                <p class="text-xs text-slate-400 mt-1">Dữ liệu thống kê giai đoạn 2020 – 2023</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Data Highlights -->
-                <div class="space-y-6">
-                    <div class="glass-card p-6 rounded-2xl border-cyan-500/20">
-                        <div class="text-xs text-cyan-400 font-bold uppercase tracking-wider">TỔNG SỐ DỰ ÁN LŨY KẾ</div>
-                        <div class="text-4xl font-extrabold text-white mt-2">11.455+ Dự Án</div>
-                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">Số lượng dự án đầu tư nước ngoài còn hiệu lực lũy kế đến giai đoạn 2020–2023, giúp TP.HCM đứng đầu cả nước.</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl border-emerald-500/20">
-                        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">TỔNG VỐN ĐĂNG KÝ</div>
-                        <div class="text-4xl font-extrabold text-white mt-2">$56.34 Tỷ USD</div>
-                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">Chiếm tỷ trọng lớn nhất toàn quốc, tiếp tục giữ vững danh hiệu đầu tàu kinh tế của Việt Nam.</p>
-                    </div>
-                </div>
+  <section class="glass p-7 sm:p-9 rounded-3xl text-center space-y-5" data-aos="zoom-in">
+    <div class="text-xs text-sky-400 mono uppercase tracking-[.2em] font-bold" data-i="foot1"></div>
+    <div id="members" class="flex flex-wrap justify-center items-center gap-2.5 max-w-3xl mx-auto text-xs font-medium"></div>
+    <p class="text-xs text-slate-300 mono italic pt-2"><i class="fa-solid fa-shield-halved text-sky-400 mr-1.5"></i><span data-i="foot2"></span></p>
+  </section>
+</div>
+</main>
 
-                <!-- Progress Bars -->
-                <div class="glass-card p-6 rounded-2xl space-y-5 flex flex-col justify-center">
-                    <h3 class="font-bold text-white text-lg flex items-center gap-2">
-                        <i class="fa-solid fa-chart-pie text-cyan-400"></i> Cơ Cấu Dòng Vốn Theo Ngành
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-xs font-semibold mb-1">
-                                <span class="text-slate-300">Công nghiệp chế biến, chế tạo</span>
-                                <span class="text-cyan-400 font-bold">36.63%</span>
-                            </div>
-                            <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-cyan-400 rounded-full" style="width: 36.63%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-semibold mb-1">
-                                <span class="text-slate-300">Kinh doanh bất động sản</span>
-                                <span class="text-emerald-400 font-bold">30.85%</span>
-                            </div>
-                            <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-emerald-400 rounded-full" style="width: 30.85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-semibold mb-1">
-                                <span class="text-slate-300">Bán buôn, bán lẻ (3.067 dự án)</span>
-                                <span class="text-purple-400 font-bold">20.50%</span>
-                            </div>
-                            <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-purple-400 rounded-full" style="width: 20.5%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<button id="top" class="fixed bottom-6 left-4 sm:left-6 z-40 w-11 h-11 rounded-full glass text-sky-300 hover:text-white opacity-0 pointer-events-none transition" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-        <!-- KẾT LUẬN -->
-        <section id="ket-luan" class="glass-card p-8 md:p-10 rounded-3xl border-cyan-500/30 space-y-6 relative overflow-hidden">
-            <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="border-l-4 border-cyan-400 pl-4">
-                <h2 class="text-2xl md:text-3xl font-extrabold text-white">V. Phần Kết Luận & Định Hướng Tương Lai</h2>
-                <p class="text-xs text-cyan-300 mt-1 uppercase font-semibold tracking-wider">Tổng kết đánh giá chiến lược từ Tổ 3</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 space-y-2">
-                    <h3 class="font-bold text-amber-400 text-base flex items-center gap-2">
-                        <i class="fa-solid fa-rocket"></i> Đòn Bẩy Đột Phá Kinh Tế
-                    </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        FDI chính là nguồn động lực quan trọng giúp TP.HCM giữ vững tốc độ tăng trưởng kinh tế cao, đẩy nhanh quá trình công nghiệp hóa - hiện đại hóa và hội nhập kinh tế toàn cầu.
-                    </p>
-                </div>
-                <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 space-y-2">
-                    <h3 class="font-bold text-emerald-400 text-base flex items-center gap-2">
-                        <i class="fa-solid fa-leaf"></i> Định Hướng Thu Hút FDI Bền Vững
-                    </h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Thành phố ưu tiên lựa chọn các dự án công nghệ cao, kinh tế xanh, kinh tế tuần hoàn, thân thiện với môi trường và giảm bớt các dự án thâm dụng lao động đơn thuần.
-                    </p>
-                </div>
-            </div>
-            <div class="p-4 bg-cyan-950/40 border border-cyan-500/30 rounded-2xl text-center">
-                <p class="text-cyan-200 font-medium text-sm md:text-base italic">
-                    "TP.HCM không chỉ duy trì danh hiệu đầu tàu thu hút vốn, mà đang hướng tới mục tiêu trở thành trung tâm đổi mới sáng tạo và tài chính hàng đầu khu vực!"
-                </p>
-            </div>
-        </section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const U=(id)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=80`;
 
-        <!-- MEMBER CREDIT -->
-        <section class="glass-card p-8 rounded-3xl text-center space-y-6 border-slate-800">
-            <div class="text-xs text-slate-400 font-mono tracking-widest uppercase">
-                © MMXXVI • TỔ 3 • 11A12 • TRƯỜNG THPT PHÚ HÒA
-            </div>
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-900 border border-cyan-400/40 text-gradient-gold text-2xl font-black">
-                3
-            </div>
-            <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto text-xs sm:text-sm text-slate-300 font-medium">
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Tuấn Kiệt (Tổ trưởng)</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Đức Hoàng</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Quốc Thái</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Bảo Như</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Thanh Vy</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Cao Duy Gia Bảo</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Hà My</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Thùy Chi</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Yến Ngân</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Thanh Khoa</span>
-                <span class="px-3 py-1.5 bg-slate-900 rounded-lg border border-slate-800">Trường Thi</span>
-            </div>
-            <p class="text-xs text-slate-500 italic">"Some chapters end. The memories remain."</p>
-        </section>
+/* ---------- DỮ LIỆU SONG NGỮ ---------- */
+const T={
+vi:{org:"TỔ 3 • 11A12 • PHÚ HÒA",load:"ĐANG TẢI 3D KNOWLEDGE HUB...",t1:"Chủ Đề 1 (FDI TP.HCM)",t2:"Chủ Đề 2",
+badge:"Chủ đề 01 • GDĐP 11 • Bản tương tác 3D",h1a:"Thu hút đầu tư trực tiếp nước ngoài",h1b:"tại TP.HCM",nv1:"Số liệu",pxT:"Những lĩnh vực thu hút vốn FDI",pxS:"Từ hạ tầng, logistics đến công nghệ cao và nhân lực: các thế mạnh giúp TP.HCM giữ vị trí dẫn đầu. Nhấn vào ảnh để xem chi tiết.",nv2:"Thư viện",nv3:"Mô hình 3D",c1:"Khám phá ngay",c2:"Xem mô hình 3D",
+seT:"TP.HCM - Điểm đến của dòng vốn FDI",seH:"11.455+ dự án • 56,34 tỷ USD",seD:"Trung tâm kinh tế lớn nhất Việt Nam tiếp tục dẫn đầu cả nước về thu hút đầu tư trực tiếp nước ngoài.",seHint:"Cuộn xuống để mở rộng",rotLead:"Sức hút từ",rot:["công nghệ cao","cảng & logistics","tài chính quốc tế","nhân lực chất lượng cao","bán dẫn & AI"],
+chips:[["fa-chart-line","11.455+","dự án FDI còn hiệu lực"],["fa-vault","56,34 tỷ USD","vốn đầu tư tích lũy"],["fa-trophy","Top 1","cả nước về số dự án"]],
+desc:"Khám phá dòng vốn đầu tư nước ngoài vào trung tâm kinh tế lớn nhất Việt Nam qua mô hình 3D, thư viện hình ảnh và kho dữ liệu số hóa.",
+hint:"Kéo để xoay 360° • Cuộn để thu phóng • Chạm vào mặt nước để tạo sóng",mloading:"Đang tải mô hình...",
+m:["Đô thị TP.HCM","Cảng Cát Lái","Chip & Bán dẫn"],cap:["Landmark 81, Bitexco và khu đô thị Thủ Thiêm bên sông Sài Gòn: trung tâm tài chính - dịch vụ thu hút dòng vốn FDI.","Cụm cảng Cát Lái với cần cẩu, tàu và container: cửa ngõ xuất nhập khẩu của các doanh nghiệp FDI.","Chip bán dẫn: định hướng thu hút FDI công nghệ cao, vi mạch và AI của TP.HCM."],
+carT:"Năm thế mạnh thu hút FDI",carS:"Kéo ngang để xem lần lượt • Nhấn vào ảnh để xem chi tiết",htT:"Cửa ngõ logistics của dòng vốn FDI",htS:"Rê chuột (hoặc chạm) lên ảnh để nhìn rõ cụm cảng và hoạt động xuất nhập khẩu.",
+bentoH:"Số liệu nổi bật",accH:"Thư viện hình ảnh FDI TP.HCM",
+dev:"Tuấn Kiệt (Dev)",lead:"Thanh Vy (Tổ Trưởng)",
+foot1:"© MMXXVI • TỔ 3 • LỚP 11A12 • THPT PHÚ HÒA",foot2:"© 2026 Tổ 3 - 11A12. Sản phẩm nội bộ, vui lòng không sao chép dưới mọi hình thức.",
+g3b:"HỒ SƠ TẬP THỂ • 11A12",g3t:"Ý NGHĨA SỐ 3 & TỔ 3",g3a:"Biểu tượng vững chắc:",g3at:"Số 3 là kiềng ba chân bền vững, tinh thần đoàn kết và tư duy công nghệ đột phá.",g3c:"Tập thể Tổ 3 (11A12 THPT Phú Hòa):",g3ct:"Đội ngũ luôn đổi mới sáng tạo, trực tiếp xây dựng hệ thống Knowledge Hub FDI TP.HCM.",
+t2b:"SẮP RA MẮT",t2t:"CHỦ ĐỀ TIẾP THEO",t2d:"Thông tin về chủ đề tiếp theo sẽ sớm được Tổ 3 - 11A12 - THPT Phú Hòa công bố!",
+kb:"Trưởng nhóm phát triển • 11A12",kl:"Củ Chi, TP.HCM • THPT Phú Hòa",kbio:"Người đứng sau toàn bộ hệ thống Knowledge Hub FDI TP.HCM.",
+pv:n=>`Hồ sơ của <b>${n}</b>: thông tin riêng tư hoặc chưa được công khai.`,pt:"HỒ SƠ BỊ GIỚI HẠN",merr:"Không tải được mô hình 3D. Kiểm tra kết nối mạng.",close:"Đóng"},
+en:{org:"GROUP 3 • 11A12 • PHU HOA",load:"LOADING 3D KNOWLEDGE HUB...",t1:"Topic 1 (HCMC FDI)",t2:"Topic 2",
+badge:"Topic 01 • Local Education 11 • 3D Interactive Edition",h1a:"Foreign Direct Investment",h1b:"in Ho Chi Minh City",nv1:"Figures",pxT:"Sectors attracting FDI",pxS:"From infrastructure and logistics to high-tech and talent: the strengths keeping HCMC in the lead. Tap an image for details.",nv2:"Gallery",nv3:"3D model",c1:"Explore now",c2:"View 3D model",
+seT:"HCMC - Where FDI flows",seH:"11,455+ projects • $56.34B",seD:"Vietnam's largest economic hub keeps leading the country in attracting foreign direct investment.",seHint:"Scroll to expand",rotLead:"Powered by",rot:["high technology","ports & logistics","international finance","a skilled workforce","semiconductors & AI"],
+chips:[["fa-chart-line","11,455+","active FDI projects"],["fa-vault","$56.34B","accumulated capital"],["fa-trophy","No. 1","nationwide by projects"]],
+desc:"Explore foreign investment flowing into Vietnam's largest economic hub through 3D models, an image gallery and a digital data bank.",
+hint:"Drag to rotate 360° • Scroll to zoom • Tap the water to make waves",mloading:"Loading model...",
+m:["HCMC Skyline","Cat Lai Port","Chips & Semis"],cap:["Landmark 81, Bitexco and the Thu Thiem urban area along the Saigon River: a finance and services hub drawing FDI.","Cat Lai port with cranes, ships and containers: the export-import gateway for FDI enterprises.","Semiconductor chip: HCMC's high-tech FDI focus on microchips and AI."],
+carT:"Five strengths that attract FDI",carS:"Drag sideways to browse • Tap an image for details",htT:"The logistics gateway for FDI capital",htS:"Hover (or touch) the image to look closely at the port cluster and trade activity.",
+bentoH:"Key figures",accH:"HCMC FDI image library",
+dev:"Tuan Kiet (Dev)",lead:"Thanh Vy (Leader)",
+foot1:"© MMXXVI • GROUP 3 • 11A12 • PHU HOA HIGH SCHOOL",foot2:"© 2026 Group 3 - 11A12. Internal work, reproduction in any form is prohibited.",
+g3b:"TEAM PROFILE • 11A12",g3t:"MEANING OF NUMBER 3 & GROUP 3",g3a:"Solid foundation:",g3at:"Three is a stable tripod: solidarity, teamwork and a breakthrough technology mindset.",g3c:"Group 3 (11A12 Phu Hoa):",g3ct:"An innovative team building the HCMC FDI Knowledge Hub.",
+t2b:"COMING SOON",t2t:"NEXT TOPIC",t2d:"Group 3 - 11A12 - Phu Hoa High School will announce the next topic soon!",
+kb:"Lead Developer • 11A12",kl:"Cu Chi, HCMC • Phu Hoa High School",kbio:"The mastermind behind the HCMC FDI Knowledge Hub.",
+pv:n=>`Profile of <b>${n}</b>: private or not made public.`,pt:"PROFILE RESTRICTED",merr:"Could not load the 3D model. Check your connection.",close:"Close"}
+};
+const ITEMS=[
+{k:'du-an',ic:'fa-chart-line',col:'#38BDF8',img:U('photo-1486406146926-c627a92ad1ab'),
+ num:{to:11455,dec:0,suf:'+'},vi:{bh:"Dự án FDI còn hiệu lực",h:"11.455+ Dự Án FDI Còn Hiệu Lực",d:"TP.HCM dẫn đầu cả nước về số lượng dự án đầu tư nước ngoài, tập trung vào công nghệ cao và dịch vụ thương mại.",t:"Dự Án FDI",s:"11.455+ dự án",x:"Liên tục giữ vị trí số 1 cả nước về số lượng dự án đầu tư trực tiếp nước ngoài còn hiệu lực, khẳng định môi trường kinh doanh hấp dẫn bậc nhất Việt Nam."},
+ en:{bh:"Active FDI projects",h:"11,455+ Active FDI Projects",d:"HCMC leads the country in foreign investment projects, focusing on high-tech and commercial services.",t:"FDI Projects",s:"11,455+ projects",x:"Consistently ranked #1 nationwide in active foreign direct investment projects, confirming one of Vietnam's most attractive business environments."}},
+{k:'tong-von',ic:'fa-vault',col:'#818cf8',img:U('photo-1559526324-4b87b5e36e44'),
+ num:{to:56.34,dec:2},vi:{bh:"Vốn đầu tư tích lũy",ns:" tỷ USD",h:"56,34 Tỷ USD Vốn Tích Lũy",d:"Dòng vốn lớn đóng góp trực tiếp vào tăng trưởng GRDP và chuyển dịch cơ cấu kinh tế thành phố.",t:"Vốn Tích Lũy",s:"56,34 tỷ USD",x:"Dòng vốn FDI chảy mạnh vào bất động sản, công nghiệp chế tạo và dịch vụ tài chính, tạo động lực nâng tầm quy mô GRDP của thành phố."},
+ en:{bh:"Accumulated investment capital",np:"$",ns:"B",h:"$56.34B Accumulated Capital",d:"Large capital inflows contribute directly to GRDP growth and the city's economic restructuring.",t:"Capital",s:"$56.34B",x:"FDI capital flows strongly into real estate, manufacturing and financial services, driving the growth of the city's GRDP."}},
+{k:'cong-nghe',ic:'fa-microchip',col:'#34d399',img:U('photo-1518770660439-4636190af475'),
+ vi:{h:"Bán Dẫn & AI 2026",d:"Định hướng thu hút FDI công nghệ cao thế hệ mới, phát triển Trung tâm Tài chính Quốc tế.",t:"Khu Công Nghệ Cao",s:"Bán Dẫn & AI",x:"Chiến lược thu hút FDI thế hệ mới: đẩy mạnh vi mạch bán dẫn, trí tuệ nhân tạo, công nghệ sinh học và hình thành Trung tâm Tài chính Quốc tế tại Thủ Thiêm."},
+ en:{h:"Semiconductor & AI 2026",d:"Attracting next-generation high-tech FDI and developing the International Financial Center.",t:"High-Tech Park",s:"Semiconductor & AI",x:"A next-generation FDI strategy: promoting microchips, AI and biotechnology, and building the International Financial Center in Thu Thiem."}},
+{k:'vi-tri',ic:'fa-anchor',col:'#fbbf24',img:U('photo-1586528116311-ad8dd3c8310d'),
+ vi:{h:"Cụm Cảng & Logistics",d:"Cảng Cát Lái và Hiệp Phước giúp tối ưu chi phí xuất nhập khẩu cho cả vùng kinh tế trọng điểm.",t:"Cảng Cát Lái",s:"Logistics",x:"TP.HCM là cửa ngõ logistics hàng hải lớn nhất phía Nam. Cụm cảng Cát Lái và Hiệp Phước đảm nhận phần lớn lượng hàng container xuất nhập khẩu cả nước, giúp giảm chi phí vận tải cho các tập đoàn FDI."},
+ en:{h:"Port Clusters & Logistics",d:"Cat Lai and Hiep Phuoc ports optimize import-export costs across the key economic region.",t:"Cat Lai Port",s:"Logistics",x:"HCMC is the largest maritime logistics gateway in the South. The Cat Lai and Hiep Phuoc port clusters handle most of the country's container cargo, lowering transport costs for FDI corporations."}},
+{k:'nhan-luc',ic:'fa-user-graduate',col:'#fb7185',img:U('photo-1522071820081-009f0129c71c'),
+ vi:{h:"Nguồn Nhân Lực Chất Lượng Cao",d:"Nguồn cung kỹ sư và chuyên gia trẻ, năng động cho các doanh nghiệp FDI.",t:"Nhân Lực Trẻ",s:"Chuyên gia",x:"Nơi tập trung nhiều trường đại học hàng đầu, mỗi năm đào tạo hàng chục nghìn kỹ sư công nghệ và chuyên gia tài chính - kinh tế chất lượng cao."},
+ en:{h:"High-Quality Human Resources",d:"A dynamic pool of young engineers and experts for FDI enterprises.",t:"Young Talents",s:"Experts",x:"Home to many leading universities that train tens of thousands of tech engineers and finance-economics experts every year."}}
+];
+const MODELS=[['','fa-city'],['','fa-anchor'],['','fa-microchip']];
+const MEMBERS=["Đức Hoàng","Quốc Thái","Bảo Như","Cao Duy Gia Bảo","Hà My","Thùy Chi","Yến Ngân","Thanh Khoa","Trường Thi","Ngọc Hân"];
 
-    </main>
+let lang=localStorage.getItem('lang')||'vi', modelIdx=0;
+const t=k=>T[lang][k];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const imgTag=(src,alt,cls='')=>`<img src="${src}" alt="${esc(alt)}" loading="lazy" class="${cls}" onerror="this.style.opacity=0">`;
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-900 py-6 text-center text-xs text-slate-500">
-        FDI Knowledge Hub • Lớp 11A12 • Trường THPT Phú Hòa • Thành phố Hồ Chí Minh
-    </footer>
+/* ---------- ÂM THANH CINEMATIC (1 AudioContext dùng chung) ---------- */
+let actx=null, masterGain=null, noiseBuf=null, muted=localStorage.getItem('mute')==='1', introPlayed=false, lastHover=0;
+const SND={
+ tine:{d:1.2,l:-17.5,lp:7500,L:[[587.33,0,.7],[880,.13,.9]]},
+ wrap:{d:.35,l:-18.5,lp:7000,L:[[880,0,.12],[587.33,.11,.18]]},
+ undo:{d:.2,l:-19.5,lp:6500,L:[[700,0,.12]]}
+};
+function ensureAudio(){
+ if(muted)return null;
+ try{
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return null;
+  if(!actx){
+   actx=new AudioCtx();
+   masterGain=actx.createGain();
+   masterGain.gain.value=1;
+   masterGain.connect(actx.destination);
+  }
+  if(actx.state==='suspended')actx.resume().catch(()=>{});
+  return actx;
+ }catch(e){return null}
+}
+function getWarmNoise(dur=0.8){
+ const c=ensureAudio(); if(!c)return null;
+ if(noiseBuf&&noiseBuf.duration>=dur)return noiseBuf;
+ const len=Math.floor(c.sampleRate*dur), buf=c.createBuffer(1,len,c.sampleRate), ch=buf.getChannelData(0);
+ let prev=0;
+ for(let i=0;i<len;i++){
+  const w=Math.random()*2-1;
+  prev=(prev+.045*w)/1.045;
+  ch[i]=prev*2.4;
+ }
+ noiseBuf=buf; return buf;
+}
+function playIntro(){
+ if(muted||reduce||introPlayed)return;
+ const c=ensureAudio(); if(!c||c.state!=='running')return;
+ introPlayed=true;
+ const now=c.currentTime, notes=[110,164.81,220,329.63];
+ const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.Q.value=2;
+ lp.frequency.setValueAtTime(150,now);
+ lp.frequency.exponentialRampToValueAtTime(1400,now+.9);
+ lp.frequency.exponentialRampToValueAtTime(380,now+2.2);
+ const bus=c.createGain();
+ bus.gain.setValueAtTime(.0001,now);
+ bus.gain.linearRampToValueAtTime(.19,now+.35);
+ bus.gain.exponentialRampToValueAtTime(.0001,now+2.25);
+ lp.connect(bus); bus.connect(masterGain);
+ notes.forEach((fr,idx)=>{
+  const osc=c.createOscillator(), g=c.createGain();
+  osc.type=idx%2===0?'triangle':'sine';
+  osc.frequency.setValueAtTime(fr*.995,now);
+  osc.frequency.exponentialRampToValueAtTime(fr,now+.75);
+  osc.detune.setValueAtTime((idx-1.5)*5,now);
+  g.gain.value=1/(idx*.35+1);
+  osc.connect(g); g.connect(lp);
+  osc.start(now); osc.stop(now+2.3);
+ });
+}
+function playWhoosh(){
+ if(muted||reduce)return;
+ const c=ensureAudio(), buf=getWarmNoise(.6); if(!c||!buf)return;
+ const now=c.currentTime, src=c.createBufferSource(); src.buffer=buf;
+ const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.Q.value=1.5;
+ bp.frequency.setValueAtTime(210,now);
+ bp.frequency.exponentialRampToValueAtTime(1550,now+.22);
+ bp.frequency.exponentialRampToValueAtTime(280,now+.52);
+ const g=c.createGain();
+ g.gain.setValueAtTime(.0001,now);
+ g.gain.linearRampToValueAtTime(.16,now+.17);
+ g.gain.exponentialRampToValueAtTime(.0001,now+.55);
+ src.connect(bp); bp.connect(g); g.connect(masterGain);
+ src.start(now); src.stop(now+.56);
+}
+function playRipple(){
+ if(muted||reduce)return;
+ const c=ensureAudio(); if(!c)return;
+ const now=c.currentTime, osc=c.createOscillator(), g=c.createGain();
+ osc.type='sine';
+ osc.frequency.setValueAtTime(250,now);
+ osc.frequency.exponentialRampToValueAtTime(110,now+.36);
+ g.gain.setValueAtTime(.0001,now);
+ g.gain.linearRampToValueAtTime(.13,now+.02);
+ g.gain.exponentialRampToValueAtTime(.0001,now+.38);
+ osc.connect(g); g.connect(masterGain);
+ osc.start(now); osc.stop(now+.4);
+}
+function playHover(){
+ if(muted||reduce)return;
+ const ms=performance.now(); if(ms-lastHover<110)return; lastHover=ms;
+ const c=ensureAudio(); if(!c||c.state!=='running')return;
+ const now=c.currentTime, osc=c.createOscillator(), g=c.createGain();
+ osc.type='sine';
+ osc.frequency.setValueAtTime(520,now);
+ osc.frequency.exponentialRampToValueAtTime(250,now+.03);
+ g.gain.setValueAtTime(.0001,now);
+ g.gain.linearRampToValueAtTime(.025,now+.004);
+ g.gain.exponentialRampToValueAtTime(.0001,now+.035);
+ osc.connect(g); g.connect(masterGain);
+ osc.start(now); osc.stop(now+.04);
+}
+function play(name){
+ if(muted)return;
+ if(name==='intro')return playIntro();
+ if(name==='whoosh')return playWhoosh();
+ if(name==='ripple')return playRipple();
+ if(name==='hover')return playHover();
+ try{
+  const c=ensureAudio(); if(!c)return;
+  const spec=SND[name]||SND.tine, now=c.currentTime, g=c.createGain(), f=c.createBiquadFilter();
+  g.gain.value=Math.pow(10,spec.l/20)*2.5; f.type='lowpass'; f.frequency.value=spec.lp;
+  g.connect(f); f.connect(masterGain);
+  spec.L.forEach(([fr,at,dec])=>{
+   const o=c.createOscillator(), e=c.createGain(), s=now+at;
+   o.frequency.value=fr; e.gain.setValueAtTime(.0001,s);
+   e.gain.linearRampToValueAtTime(1,s+.005); e.gain.exponentialRampToValueAtTime(.0001,s+.015+dec);
+   o.connect(e); e.connect(g); o.start(s); o.stop(s+dec+.1);
+  });
+ }catch(e){}
+}
+function syncSnd(){
+ $('#snd i').className='fa-solid '+(muted?'fa-volume-xmark':'fa-volume-high');
+ if(masterGain&&actx)masterGain.gain.setTargetAtTime(muted?0:1,actx.currentTime,.04);
+}
+$('#snd').onclick=()=>{muted=!muted;localStorage.setItem('mute',muted?'1':'0');syncSnd();if(!muted){ensureAudio();play('tine')}};
 
+/* ---------- RENDER ---------- */
+function applyStatic(){
+ $$('[data-i]').forEach(el=>{const v=t(el.dataset.i); if(typeof v==='string')el.textContent=v});
+ document.documentElement.lang=lang;
+ $('#langT').textContent=lang==='vi'?'EN':'VI';
+ splitHero();
+ document.title=lang==='vi'?'Knowledge Hub - Tổ 3 • 11A12 • THPT Phú Hòa':'Knowledge Hub - Group 3 • 11A12 • Phu Hoa High School';
+}
+function renderPills(){ queueMicrotask(()=>{const c=$('#cap');if(c)c.textContent=t('cap')[modelIdx]});
+ $('#pills').innerHTML=MODELS.map((m,i)=>`<button data-m="${i}" class="px-3 py-1 rounded-xl text-[11px] mono border transition ${i===modelIdx?'bg-sky-500/30 text-white border-sky-400/60':'bg-slate-900/80 text-slate-300 border-white/10 hover:border-sky-400/40'}"><i class="fa-solid ${m[1]} mr-1"></i>${esc(t('m')[i])}</button>`).join('');
+}
+function renderBento(){
+ $('#bento').innerHTML=ITEMS.map((it,i)=>{const d=it[lang];
+  return `<div class="sb full ${i===ITEMS.length-1?'md:col-span-4':'md:col-span-2'}" style="--trail:${it.col};--r:22px;--d:${4.8+i*.3}s;--g:.5" data-k="${it.k}" role="button" tabindex="0" data-aos="fade-up" data-aos-delay="${i*90}">
+  <div class="sbi card p-6"><div class="w-12 h-12 rounded-2xl flex items-center justify-center text-xl mb-4 border shadow-lg" style="color:${it.col};background:${it.col}22;border-color:${it.col}55"><i class="fa-solid ${it.ic}"></i></div>
+  ${it.num?`<div class="num" data-to="${it.num.to}" data-dec="${it.num.dec}" data-pre="${esc(d.np||'')}" data-suf="${esc((it.num.suf||'')+(d.ns||''))}">${fmtNum(0,it.num.dec,d.np,(it.num.suf||'')+(d.ns||''))}</div>`:''}
+  <h3 class="text-xl font-bold glow mb-2">${esc(it.num?d.bh:d.h)}</h3><p class="text-xs text-slate-300 leading-relaxed mono">${esc(d.d)}</p></div></div>`}).join('');
+ watchNums();
+}
+const fmtNum=(v,dec,pre,suf)=>(pre||'')+v.toLocaleString(lang==='vi'?'vi-VN':'en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+(suf||'');
+function countUp(el){
+ const to=+el.dataset.to,dec=+el.dataset.dec,pre=el.dataset.pre,suf=el.dataset.suf;
+ if(reduce){el.textContent=fmtNum(to,dec,pre,suf);return}
+ const t0=performance.now(),D=1800;
+ const step=now=>{const k=Math.min(1,(now-t0)/D),e=k===1?1:1-Math.pow(2,-10*k);
+  el.textContent=fmtNum(to*e,dec,pre,suf);if(k<1)requestAnimationFrame(step)};
+ requestAnimationFrame(step);
+}
+let numIO=null;
+function watchNums(){
+ const els=$$('#bento .num');
+ if(!('IntersectionObserver' in window)){els.forEach(el=>el.textContent=fmtNum(+el.dataset.to,+el.dataset.dec,el.dataset.pre,el.dataset.suf));return}
+ numIO&&numIO.disconnect();
+ numIO=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){countUp(en.target);numIO.unobserve(en.target)}}),{threshold:.6});
+ els.forEach(el=>numIO.observe(el));
+}
+function renderAcc(){
+ $('#acc').innerHTML=['vi-tri','cong-nghe','nhan-luc','tong-von'].map(k=>{const it=ITEMS.find(x=>x.k===k),d=it[lang];
+  return `<button class="acc-i" data-k="${k}">${imgTag(it.img,d.t)}<div class="acc-o"><h4 class="font-bold text-base" style="color:${it.col}">${esc(d.h)}</h4><p class="text-xs text-slate-300 truncate mono">${esc(d.s)}</p></div></button>`}).join('');
+}
+function renderMembers(){
+ $('#members').innerHTML=`<div class="sb" data-kiet style="--d:3.5s;--g:.75" role="button" tabindex="0"><span class="sbi px-4 py-2 text-sky-300 font-bold flex items-center hover:text-white transition"><i class="fa-solid fa-crown text-amber-400 mr-1.5"></i>${esc(t('dev'))}</span></div>`
+ +MEMBERS.slice(0,3).map(n=>chip(n)).join('')
+ +`<button data-n="Thanh Vy" class="px-4 py-2 bg-sky-500/20 text-sky-400 font-bold rounded-xl border border-sky-500/40 hover:bg-sky-500/30 transition">${esc(t('lead'))}</button>`
+ +MEMBERS.slice(3).map(n=>chip(n)).join('');
+}
+const chip=n=>`<button data-n="${esc(n)}" class="px-3.5 py-2 bg-slate-900/80 rounded-xl border border-white/10 hover:border-sky-500/50 transition">${esc(n)}</button>`;
+function renderAll(){applyStatic();renderChips();rotTick();renderPills();renderBento();renderAcc();renderMembers();buildCarousel();buildParallax();window.AOS&&AOS.refreshHard&&AOS.refreshHard()}
+
+/* ---------- MODAL ---------- */
+let typer=null, lastFocus=null;
+function type(el,text){
+ clearInterval(typer); el.textContent='';
+ if(reduce){el.textContent=text;return}
+ let i=0; el.classList.add('cur');
+ typer=setInterval(()=>{el.textContent=text.slice(0,++i);if(i>=text.length){clearInterval(typer);el.classList.remove('cur')}},15);
+}
+function openModal(html,after){
+ lastFocus=document.activeElement;
+ $('#mbody').innerHTML=html;
+ $('#modal').classList.remove('hide');
+ const c=$('#mcard'); c.classList.remove('enter'); void c.offsetWidth; c.classList.add('enter');
+ document.body.style.overflow='hidden'; $('#mclose').focus();
+ if(after)after();
+}
+function closeModal(){
+ if($('#modal').classList.contains('hide'))return;
+ play('undo'); clearInterval(typer);
+ $('#modal').classList.add('hide'); document.body.style.overflow='';
+ if(lastFocus&&lastFocus.focus)lastFocus.focus();
+}
+$('#mclose').onclick=closeModal;
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+const head=(icon,badge,title)=>`<div class="flex items-center gap-3.5 mb-4 pr-10"><div class="w-11 h-11 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl shrink-0 border border-sky-400/40"><i class="fa-solid ${icon}"></i></div><div><span class="text-[10px] text-sky-400 mono tracking-widest font-bold">${esc(badge)}</span><h3 class="text-lg sm:text-xl font-bold glow leading-snug">${esc(title)}</h3></div></div>`;
+function openDetail(k){
+ const it=ITEMS.find(x=>x.k===k); if(!it)return; const d=it[lang]; play('tine');
+ openModal(head(it.ic,'FDI DATA BANK • 11A12',d.h)
+  +`<div class="mb-5 overflow-hidden rounded-2xl border border-white/10 h-48 sm:h-56 bg-slate-900">${imgTag(it.img,d.h,'w-full h-full object-cover')}</div>
+  <div id="tw" class="text-sm text-slate-200 leading-relaxed mono min-h-[100px] whitespace-pre-wrap break-words"></div>`,
+  ()=>type($('#tw'),d.x));
+}
+function openGroup3(){play('tine');
+ openModal(`<div class="text-center"><div class="w-20 h-20 mx-auto mb-4 rounded-3xl bg-sky-500/20 border border-sky-400/60 flex items-center justify-center text-sky-300 text-3xl font-black">3</div>
+ <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-[10px] mono font-bold border border-sky-400/30">${esc(t('g3b'))}</span>
+ <h3 class="text-2xl font-black glow mt-2 mb-4">${esc(t('g3t'))}</h3></div>
+ <div class="p-5 rounded-2xl bg-slate-950/90 border border-sky-500/30 text-slate-300 mono text-sm leading-relaxed space-y-3">
+ <p><i class="fa-solid fa-star text-amber-400 mr-2"></i><b>${esc(t('g3a'))}</b> ${esc(t('g3at'))}</p>
+ <p><i class="fa-solid fa-users text-sky-400 mr-2"></i><b>${esc(t('g3c'))}</b> ${esc(t('g3ct'))}</p></div>`);
+}
+function openTopic2(){play('whoosh');
+ openModal(`<div class="text-center"><div class="w-16 h-16 mx-auto mb-4 rounded-3xl bg-sky-500/20 border border-sky-400/50 flex items-center justify-center text-sky-400 text-3xl"><i class="fa-solid fa-rocket animate-bounce"></i></div>
+ <span class="px-3.5 py-1 rounded-full bg-sky-500/20 text-sky-400 text-[10px] mono font-bold border border-sky-400/30">${esc(t('t2b'))}</span>
+ <h3 class="text-2xl font-black glow mt-2 mb-4">${esc(t('t2t'))}</h3>
+ <div class="p-5 rounded-2xl bg-slate-950/90 border border-sky-500/30 text-sky-300 mono text-sm leading-relaxed">${esc(t('t2d'))}</div></div>`);
+}
+function openKiet(){play('tine');
+ openModal(`<div class="text-center"><div class="w-28 h-28 mx-auto mb-4 rounded-3xl overflow-hidden border-2 border-sky-400 shadow-xl shadow-sky-500/30 bg-slate-900">${imgTag('https://i.postimg.cc/PJ50zJJL/kiet.webp','Võ Tuấn Kiệt','w-full h-full object-cover')}</div>
+ <span class="px-3.5 py-1 rounded-full bg-sky-500/20 text-sky-400 text-[10px] mono font-bold border border-sky-400/40">${esc(t('kb'))}</span>
+ <h3 class="text-2xl font-black glow mt-2">VÕ TUẤN KIỆT</h3><p class="text-[11px] text-sky-300 mono mt-1">${esc(t('kl'))}</p>
+ <div class="mt-4 p-4 rounded-2xl bg-slate-950/90 border border-white/10 text-left"><div id="tw" class="text-xs text-slate-200 mono min-h-[40px] whitespace-pre-wrap"></div></div></div>`,
+ ()=>type($('#tw'),t('kbio')));
+}
+
+/* ---------- TOAST ---------- */
+function toast(html,title){
+ const el=document.createElement('div');
+ el.className='toast pointer-events-auto bg-slate-900/95 border-2 border-sky-400/80 border-l-4 text-slate-100 px-4 py-3 rounded-2xl shadow-2xl mono text-xs max-w-[calc(100vw-2rem)] sm:max-w-sm space-y-1 backdrop-blur-lg';
+ el.innerHTML=(title?`<div class="text-sky-400 font-bold text-[11px]"><i class="fa-solid fa-shield-halved mr-1.5"></i>${esc(title)}</div>`:'')+`<div>${html}</div>`;
+ $('#toasts').appendChild(el); requestAnimationFrame(()=>el.classList.add('in'));
+ setTimeout(()=>{el.classList.remove('in');setTimeout(()=>el.remove(),300)},3500);
+}
+
+/* ---------- 3D FDI TP.HCM (Three.js - Landmark 81, Bitexco, Cầu nối Thủ Thiêm, Đường & Xe cộ) ---------- */
+$('#pills').addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(!b)return;modelIdx=+b.dataset.m;play('tine');renderPills();window.setFDIScene&&setFDIScene(modelIdx)});
+$('#reset').onclick=()=>{play('tine');window.fdiReset&&fdiReset()};
+function initFDI3D(){
+ const cv=$('#fdi3d');
+ if(typeof THREE==='undefined'){cv.replaceWith(Object.assign(document.createElement('p'),{className:'p-10 text-sm text-slate-300',textContent:'Cần kết nối mạng để tải Three.js / Requires internet to load Three.js'}));return}
+ let R;try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){return}
+ R.setPixelRatio(Math.min(devicePixelRatio||1,2));
+ R.shadowMap.enabled=true;
+ R.shadowMap.type=THREE.PCFSoftShadowMap;
+ R.toneMapping=THREE.ACESFilmicToneMapping;
+ R.toneMappingExposure=1.08;
+
+ const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,100),pivot=new THREE.Group();
+ sc.add(new THREE.HemisphereLight(0xbae6fd,0x334155,.78));
+ sc.add(new THREE.AmbientLight(0xbfdfff,.45));
+ const dl=new THREE.DirectionalLight(0xfff7ed,1.15);
+ dl.position.set(7,12,8);
+ dl.castShadow=true;
+ dl.shadow.mapSize.set(1024,1024);
+ dl.shadow.camera.near=1;
+ dl.shadow.camera.far=35;
+ const dCam=8.5;
+ dl.shadow.camera.left=-dCam; dl.shadow.camera.right=dCam;
+ dl.shadow.camera.top=dCam; dl.shadow.camera.bottom=-dCam;
+ dl.shadow.bias=-0.0005;
+ sc.add(dl);
+
+ const pl=new THREE.PointLight(0x38bdf8,1.35,40);pl.position.set(-6,5,-4);sc.add(pl);
+ const warmRim=new THREE.PointLight(0xf59e0b,1.25,35);warmRim.position.set(6,4.5,5);sc.add(warmRim);
+
+ pivot.position.y=-1.3;sc.add(pivot);
+ let cur=null,anim=[],born=0,ry=.6,rx=.45,dist=15,drag=false,wasDrag=false,px=0,py=0,lastInt=0,vis=true;
+ const M=(c,e=0,i=0,m=.3,r=.48)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,emissive:e,emissiveIntensity:i});
+ const bx=(g,w,h,d,mat,x,y,z,edge,castS=true,recvS=true)=>{
+  const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
+  m.position.set(x,y+h/2,z);
+  m.castShadow=castS; m.receiveShadow=recvS;
+  if(edge)m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0xe2e8f0,transparent:true,opacity:.22})));
+  g.add(m);return m;
+ };
+ const rng=seed=>{let sd=seed;return()=>(sd=sd*16807%2147483647)/2147483647};
+ let tNow=0,waters=[],lastF=performance.now(),mv=0;
+
+ function makeWater(w,d,nx,nz,col){
+  const geo=new THREE.PlaneGeometry(w,d,nx,nz);geo.rotateX(-Math.PI/2);
+  const mesh=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:col,emissive:0x0369a1,emissiveIntensity:.45,roughness:.18,metalness:.68,transparent:true,opacity:.92,flatShading:true}));
+  mesh.receiveShadow=true;
+  const pos=geo.attributes.position,b0=new Float32Array(pos.array),rip=[];
+  const H=(x,z,t)=>{let h=.045*Math.sin(x*2.3+t*1.7)+.04*Math.sin(z*1.6-t*1.35)+.022*Math.sin((x+z)*3.4+t*2.5);
+   for(const r of rip){const age=t-r.t;if(age<0)continue;const k=Math.hypot(x-r.x,z-r.z)-age*1.3;h+=.11*Math.exp(-age*.8)*Math.exp(-k*k*12)*Math.cos(k*13)}
+   return h};
+  function ripple(x,z){rip.push({x:x,z:z,t:tNow});if(rip.length>14)rip.shift()}
+  function update(t){
+   if(rip.length&&t-rip[0].t>4)rip.shift();
+   for(let i=0;i<pos.count;i++){pos.setY(i,H(b0[i*3],b0[i*3+2],t))}
+   pos.needsUpdate=true;
+   geo.computeVertexNormals();
+  }
+  const o={mesh:mesh,H:H,ripple:ripple,update:update};
+  waters.push(o);return o;
+ }
+
+ function floater(obj,w,sx,sz,base,k,c){
+  let y=base,vy=0,rx=0,rz=0;
+  return (t,dt)=>{const x=sx(),z=sz(),h=w.H(x,z,t);
+   vy+=((base+h-y)*k-vy*c)*dt;y+=vy*dt;obj.position.y=y;
+   const e=.2,hx=(w.H(x+e,z,t)-w.H(x-e,z,t))/(2*e),hz=(w.H(x,z+e,t)-w.H(x,z-e,t))/(2*e),a=Math.min(1,dt*6);
+   rz+=(Math.atan(hx)-rz)*a;rx+=(-Math.atan(hz)-rx)*a;obj.rotation.z=rz;obj.rotation.x=rx};
+ }
+
+ /* Landmark 81: cụm tháp giật tầng lệch tâm, bục đế rộng, đỉnh nhọn & kim thu lôi */
+ function makeLandmark81(){
+  const g=new THREE.Group();
+  const glassMain=new THREE.MeshStandardMaterial({color:0x38bdf8,emissive:0x0284c7,emissiveIntensity:0.32,roughness:0.18,metalness:0.78});
+  const glassAccent=new THREE.MeshStandardMaterial({color:0xe0f2fe,emissive:0x38bdf8,emissiveIntensity:0.25,roughness:0.22,metalness:0.82});
+  const trimLight=new THREE.MeshStandardMaterial({color:0xfef08a,emissive:0xf59e0b,emissiveIntensity:0.9,roughness:0.3});
+  const addPart=(w,h,d,mat,x,y,z,edge=true)=>{
+   const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
+   m.position.set(x,y+h/2,z);
+   m.castShadow=true;m.receiveShadow=true;
+   if(edge)m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:0.28})));
+   g.add(m);return m;
+  };
+  addPart(1.35,0.28,1.35,glassAccent,0,0,0);
+  addPart(0.95,0.45,0.85,glassMain,-0.12,0.28,0.08);
+  addPart(0.82,0.75,0.76,glassAccent,0.14,0.28,-0.12);
+  const tiers=[
+   [0.68,0.72,0.68,0,0.73,0],
+   [0.58,0.72,0.58,0.03,1.45,0.02],
+   [0.49,0.72,0.49,0.06,2.17,0.04],
+   [0.40,0.68,0.40,0.09,2.89,0.05],
+   [0.32,0.64,0.32,0.11,3.57,0.06],
+   [0.24,0.56,0.24,0.13,4.21,0.07]
+  ];
+  let topY=4.77;
+  tiers.forEach(([w,h,d,x,y,z],idx)=>{
+   addPart(w,h,d,idx%2===0?glassMain:glassAccent,x,y,z);
+   if(idx===2||idx===4){
+    const band=new THREE.Mesh(new THREE.BoxGeometry(w+0.04,0.04,d+0.04),trimLight);
+    band.position.set(x,y+h*0.85,z);g.add(band);
+   }
+   topY=y+h;
+  });
+  const crown=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.62,4),glassAccent);
+  crown.rotation.y=Math.PI/4;
+  crown.position.set(0.13,topY+0.31,0.07);
+  crown.castShadow=true;g.add(crown);
+  const spire=new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.04,0.85,10),trimLight);
+  spire.position.set(0.13,topY+0.62+0.425,0.07);
+  spire.castShadow=true;g.add(spire);
+  return {group:g,spire,glassMain};
+ }
+
+ /* Bitexco: thân tháp vát thon dần, đường gân dọc, đỉnh vuốt nhọn & sân đỗ trực thăng */
+ function makeBitexco(){
+  const g=new THREE.Group();
+  const towerMat=new THREE.MeshStandardMaterial({color:0xbae6fd,emissive:0x0284c7,emissiveIntensity:0.28,roughness:0.18,metalness:0.8});
+  const ribMat=new THREE.LineBasicMaterial({color:0xf8fafc,transparent:true,opacity:0.35});
+  const plinth=new THREE.Mesh(new THREE.CylinderGeometry(0.56,0.64,0.24,16),new THREE.MeshStandardMaterial({color:0x475569,roughness:0.55,metalness:0.4}));
+  plinth.position.y=0.12;plinth.castShadow=true;plinth.receiveShadow=true;g.add(plinth);
+  const bodyH=2.65;
+  const bodyGeo=new THREE.CylinderGeometry(0.24,0.46,bodyH,18,6);
+  const body=new THREE.Mesh(bodyGeo,towerMat);
+  body.position.y=0.24+bodyH/2;body.castShadow=true;body.receiveShadow=true;
+  body.add(new THREE.LineSegments(new THREE.EdgesGeometry(bodyGeo),ribMat));
+  g.add(body);
+  const padY=1.92;
+  const arm=new THREE.Mesh(new THREE.BoxGeometry(0.45,0.07,0.22),new THREE.MeshStandardMaterial({color:0x64748b,roughness:0.4,metalness:0.7}));
+  arm.position.set(0.26,padY,0);arm.castShadow=true;g.add(arm);
+  const padRing=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.32,0.07,20),new THREE.MeshStandardMaterial({color:0xfbbf24,emissive:0xd97706,emissiveIntensity:0.35,roughness:0.3,metalness:0.65}));
+  padRing.position.set(0.52,padY,0);padRing.castShadow=true;g.add(padRing);
+  const padDeck=new THREE.Mesh(new THREE.CylinderGeometry(0.25,0.25,0.08,20),new THREE.MeshStandardMaterial({color:0x1e293b,roughness:0.6,metalness:0.3}));
+  padDeck.position.set(0.52,padY+0.005,0);g.add(padDeck);
+  const cap=new THREE.Mesh(new THREE.ConeGeometry(0.24,0.38,18),towerMat);
+  cap.position.set(0,0.24+bodyH+0.19,0);cap.castShadow=true;g.add(cap);
+  return {group:g,padRing};
+ }
+
+ /* Cầu bắc qua sông Sài Gòn nối khu đô thị sang khu Thủ Thiêm */
+ function makeSaigonBridge(){
+  const g=new THREE.Group();
+  const deckMat=M(0x475569,0x0f172a,.15,.45,.52);
+  const steelMat=M(0x38bdf8,0x0284c7,.3,.65,.28);
+  const lightMat=M(0xfef08a,0xf59e0b,.85,.1,.3);
+  const bridgeLen=2.15, bridgeW=.62;
+  bx(g,bridgeLen,.09,bridgeW,deckMat,0,.18,0,true,true,true);
+  bx(g,bridgeLen-.1,.02,.04,lightMat,0,.27,0,false,false,false);
+  [-bridgeW/2+.02,bridgeW/2-.02].forEach(z=>{
+   bx(g,bridgeLen,.08,.03,steelMat,0,.27,z,false,false,false);
+  });
+  const towerMat=M(0x94a3b8,0x1e293b,.15,.6,.35);
+  [-.55,.55].forEach(px=>{
+   [-.16,.16].forEach(pz=>{
+    bx(g,.07,.78,.07,towerMat,px,.24,pz,true,true,false);
+    const beacon=new THREE.Mesh(new THREE.SphereGeometry(.035,8,8),lightMat);
+    beacon.position.set(px,1.04,pz);
+    g.add(beacon);
+   });
+   bx(g,.08,.07,.39,towerMat,px,.95,0,true,false,false);
+   [-.32,-.16,.16,.32].forEach(dx=>{
+    const cable=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,.56,6),steelMat);
+    cable.position.set(px+dx,.56,.16);
+    cable.rotation.z=dx>0?-0.42:0.42;
+    g.add(cable);
+   });
+  });
+  return g;
+ }
+
+ /* Tạo xe hơi / xe buýt nhỏ cho đường phố TP.HCM */
+ function makeCar(bodyColor,isBus=false){
+  const c=new THREE.Group();
+  const w=isBus?.22:.18, h=isBus?.18:.1, l=isBus?.48:.34;
+  bx(c,w,h,l,M(bodyColor,bodyColor,.12,.35,.35),0,.03,0,true,true,false);
+  bx(c,w*.82,isBus?.08:.07,l*.62,M(0xbae6fd,0x0284c7,.25,.2,.15),0,.03+h,isBus?0:-.02,false,false,false);
+  const hl=M(0xfef08a,0xfde047,.9,.1,.3);
+  [-w*.32,w*.32].forEach(wx=>bx(c,.035,.035,.02,hl,wx,.05,l/2+.005,false,false,false));
+  return c;
+ }
+
+ /* Cảnh 1: Đô thị TP.HCM */
+ function city(){
+  const g=new THREE.Group(),rnd=rng(7);
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(6.4,6.65,.35,64),M(0x1e293b,0x0f172a,.2,.15,.82));
+  base.position.y=-.175;base.receiveShadow=true;g.add(base);
+
+  const riverX=3.75, riverW=1.45;
+  bx(g,riverW+.28,.02,11.4,M(0x64748b,0x1e293b,.1,.2,.7),riverX,.005,0,false,false,true);
+  const wr=makeWater(riverW,11.2,10,48,0x0284c7);
+  wr.mesh.position.set(riverX,.045,0);
+  g.add(wr.mesh);
+
+  [0,.5].forEach((ph,bi)=>{
+   const b=new THREE.Group();b.position.x=riverX+(bi?.28:-.28);g.add(b);
+   bx(b,.26,.1,.62,M(0xf8fafc,0,0,.25,.35),0,.02,0,true);
+   bx(b,.15,.09,.22,M(bi?0xf59e0b:0xe11d48,0x9f1239,.25,.2,.4),0,.12,-.06,true,false);
+   const fl=floater(b,wr,()=>b.position.x-riverX,()=>b.position.z,.05,60,6);let wk=0;
+   anim.push((t,dt)=>{b.position.z=4.8-((t*.28+ph)%1)*9.6;fl(t,dt);wk+=dt;if(wk>.7){wk=0;wr.ripple(b.position.x-riverX,b.position.z+.35)}});
+  });
+
+  const roadMat=M(0x0f172a,0x020617,.15,.15,.88);
+  const lineMat=M(0xfacc15,0xeab308,.45,.1,.4);
+  const roadZ=[-2.2,1.1];
+  const roadX=[-2.5,.2];
+  roadZ.forEach(rz=>{
+   bx(g,5.8,.018,.56,roadMat,-.3,.005,rz,false,false,true);
+   for(let s=-2.7;s<=2.2;s+=.65)bx(g,.28,.022,.035,lineMat,s,.008,rz,false,false,false);
+  });
+  roadX.forEach(rx=>{
+   bx(g,.56,.018,8.8,roadMat,rx,.005,0,false,false,true);
+   for(let s=-3.8;s<=3.8;s+=.65)bx(g,.035,.022,.28,lineMat,rx,.008,s,false,false,false);
+  });
+
+  const bridge=makeSaigonBridge();
+  bridge.position.set(3.78,0,-1.1);
+  g.add(bridge);
+
+  const pal=[
+   M(0x334155,0x0f172a,.15,.35,.55),
+   M(0x475569,0x1e293b,.15,.25,.62),
+   M(0x0369a1,0x0c4a6e,.2,.65,.24),
+   M(0x64748b,0x1e293b,.15,.4,.48)
+  ];
+  const parkMat=M(0x15803d,0x052e16,.15,.05,.86);
+  const winMat=M(0xfef08a,0xf59e0b,.85,.1,.3);
+
+  const onRoad=(x,z)=>roadZ.some(rz=>Math.abs(z-rz)<.46)||roadX.some(rx=>Math.abs(x-rx)<.46)||(Math.abs(z+1.1)<.46&&x>2.65&&x<5.05);
+  const onRiver=(x,z)=>x>riverX-riverW*.55-0.25&&Math.abs(z)<5.75;
+
+  for(let i=-5;i<=5;i++)for(let j=-5;j<=5;j++){
+   const x=i*1.02+(rnd()-.5)*.14,z=j*1.02+(rnd()-.5)*.14;
+   if(Math.hypot(x,z)>5.65)continue;
+   if(onRoad(x,z)||onRiver(x,z))continue;
+   if(Math.hypot(x+1.35,z+.55)<1.05||Math.hypot(x-1.25,z+2.35)<.95)continue;
+   const distC=Math.hypot(x,z);
+   const isPark=distC>3.2&&rnd()<.18;
+   const h=isPark?.08:.28+rnd()*Math.max(.35,1.25-distC*.11);
+   const m=bx(g,isPark?.68:.56,h,isPark?.68:.56,isPark?parkMat:pal[(rnd()*4)|0],x,0,z,!isPark);
+   if(!isPark&&h>.75&&rnd()<.45){
+    const wy=.2+rnd()*(h-.35);
+    const w=bx(g,.58,.055,.12,winMat,x,wy,z,false,false,false);
+    w.rotation.y=(rnd()-.5)*.35;
+   }
+  }
+
+  const l81=makeLandmark81();
+  l81.group.position.set(-1.35,0,-.55);
+  g.add(l81.group);
+
+  const btx=makeBitexco();
+  btx.group.position.set(1.25,0,2.35);
+  g.add(btx.group);
+
+  const ttCols=[0x0284c7,0xf59e0b,0x38bdf8,0x64748b];
+  [1.5,2.1,1.3,1.8].forEach((h,k)=>{
+   const tx=4.85+(k%2)*.42, tz=-2.2+k*1.45;
+   if(Math.hypot(tx,tz)<5.65&&Math.abs(tz+1.1)>.45)bx(g,.52,h,.52,M(ttCols[k],0x0f172a,.12,.55,.32),tx,0,tz,true);
+  });
+
+  const carColors=[0xf8fafc,0xfbbf24,0xef4444,0x38bdf8,0x22c55e];
+  const traffic=[];
+  roadZ.forEach((rz,ri)=>{
+   for(let c=0;c<2;c++){
+    const dir=c===0?1:-1;
+    const car=makeCar(carColors[(ri*2+c)%carColors.length],c===0&&ri===0);
+    car.rotation.y=dir>0?Math.PI/2:-Math.PI/2;
+    car.position.set(0,.018,rz+dir*.13);
+    g.add(car);
+    traffic.push({car,axis:'x',lane:rz+dir*.13,dir,speed:.75+c*.25,span:2.65,phase:c*.5+ri*.27});
+   }
+  });
+  roadX.forEach((rx,ri)=>{
+   for(let c=0;c<2;c++){
+    const dir=c===0?1:-1;
+    const car=makeCar(carColors[(c*2+ri+1)%carColors.length],false);
+    car.rotation.y=dir>0?0:Math.PI;
+    car.position.set(rx-dir*.13,.018,0);
+    g.add(car);
+    traffic.push({car,axis:'z',lane:rx-dir*.13,dir,speed:.68+c*.22,span:3.6,phase:c*.45+ri*.35});
+   }
+  });
+
+  anim.push(t=>{
+   l81.spire.material.emissiveIntensity=.65+.45*Math.sin(t*3);
+   l81.glassMain.emissiveIntensity=.28+.12*Math.sin(t*1.5);
+   btx.padRing.material.emissiveIntensity=.35+.2*Math.sin(t*2.4);
+   for(const tr of traffic){
+    const u=((t*tr.speed*.2+tr.phase)%1);
+    const pos=-tr.span+u*(tr.span*2);
+    if(tr.axis==='x'){tr.car.position.x=tr.dir>0?pos:-pos;tr.car.position.z=tr.lane}
+    else{tr.car.position.z=tr.dir>0?pos:-pos;tr.car.position.x=tr.lane}
+   }
+  });
+  return g;
+ }
+
+ /* Cảnh 2: Cảng Cát Lái - GIỮ NGUYÊN */
+ function port(){
+  const g=new THREE.Group(),rnd=rng(11);
+  bx(g,8.8,.25,6.2,M(0x1e293b,0x0f172a,.12,.15,.85),-1.1,-.25,0,true);
+  const laneMat=M(0xeab308,0xca8a04,.2,.1,.6);
+  [-1.5,0,1.5].forEach(z=>bx(g,7.6,.02,.05,laneMat,-1.4,.005,z,false,false));
+
+  bx(g,2.4,.12,6.2,M(0x0369a1,0x0284c7,.22,.5,.25),4.5,-.32,0,false);
+  const pw=makeWater(2.4,6.2,8,26,0x0284c7);pw.mesh.position.set(4.5,-.12,0);g.add(pw.mesh);
+
+  const contHex=[0xdc2626,0x1d4ed8,0xd97706,0x15803d,0x475569,0x0e7490];
+  const mats=contHex.map(c=>M(c,0x090d16,.08,.35,.42));
+  for(let c=0;c<8;c++)for(let r=0;r<6;r++){const n=1+((rnd()*3)|0),m=mats[(rnd()*contHex.length)|0];for(let k=0;k<n;k++)bx(g,.85,.36,.4,m,-5+c*.95,k*.38,-2+r*.8,true)}
+
+  const cm=M(0xfacc15,0xa16207,.2,.6,.35),darkSteel=M(0x1e293b,0,0,.7,.45);
+  [-1.5,1.5].forEach(z=>{[2.3,3.2].forEach(x=>bx(g,.15,2.9,.15,cm,x,0,z));bx(g,6.3,.17,.17,cm,2.5,2.9,z)});
+  [2.3,3.2].forEach(x=>bx(g,.17,.17,3.2,darkSteel,x,2.9,0));
+
+  const tr=new THREE.Group();tr.position.set(2.9,3.07,0);g.add(tr);
+  bx(tr,.52,.19,.92,darkSteel,0,-.095,0);
+  const pd=new THREE.Group();pd.position.y=-.095;tr.add(pd);
+  bx(pd,.035,1.3,.035,M(0xe2e8f0,0,0,.8,.25),0,-1.31,0,false,false);
+  bx(pd,.85,.36,.4,mats[0],0,-1.71,0,true);
+
+  const sh=new THREE.Group(),sp=new THREE.Group();sp.position.set(4.55,0,0);sh.position.x=-4.55;sp.add(sh);g.add(sp);
+  bx(sh,1.52,.52,5.4,M(0x991b1b,0x450a0a,.12,.4,.45),4.55,-.1,0,true);
+  for(let r=0;r<5;r++)[4.25,4.85].forEach(x=>{const n=1+((rnd()*2)|0),m=mats[(rnd()*contHex.length)|0];for(let k=0;k<n;k++)bx(sh,.55,.36,.8,m,x,.42+k*.38,-2+r*.9,true)});
+  bx(sh,1.12,.92,.62,M(0xf8fafc,0,0,.3,.3),4.55,.42,2.4);
+
+  const fs=floater(sp,pw,()=>sp.position.x-4.5,()=>0,-.08,60,6);let th=0,om=0;
+  anim.push((t,dt)=>{
+   tr.position.x=2.9+1.9*Math.sin(t*.9);const a=-1.9*.81*Math.sin(t*.9),L=1.5;
+   for(let s=0;s<2;s++){const h=dt/2;om+=(-(9.8/L)*Math.sin(th)-(a/L)*Math.cos(th)-1.1*om)*h;th+=om*h}
+   pd.rotation.z=th;fs(t,dt)});
+  return g;
+ }
+
+ /* Cảnh 3: Chip bán dẫn - GIỮ NGUYÊN */
+ function chip(){
+  const g=new THREE.Group();
+  bx(g,9,.2,9,M(0x0b1b2e,0x0b3a5a,.3),0,-.2,0,true);
+  const tm=M(0x38bdf8,0x38bdf8,.6,.2),gold=M(0xfbbf24,0xb45309,.3,.8),pk=new THREE.SphereGeometry(.08,12,12),pm=M(0xffffff,0xffffff,1);
+  for(let s=0;s<4;s++){
+   const tg=new THREE.Group();tg.rotation.y=s*Math.PI/2;g.add(tg);
+   for(let i=0;i<10;i++){
+    const off=-1.35+i*.3;
+    bx(tg,.12,.06,.5,gold,off,0,1.95);bx(tg,.05,.03,2.1,tm,off,0,3.25);
+    if(i%2===0){const m=new THREE.Mesh(pk,pm);m.position.set(off,.1,3);tg.add(m);const ph=(i*.173+s*.31)%1;anim.push(t=>{m.position.z=4.3-((t*.5+ph)%1)*2.1})}
+   }
+  }
+  bx(g,3.4,.5,3.4,M(0x0f172a,0,0,.8),0,0,0,true);bx(g,3,.08,3,M(0x94a3b8,0,0,.9),0,.5,0);
+  const dm=M(0x0c4a6e,0x38bdf8,1,.3);bx(g,1.5,.06,1.5,dm,0,.58,0,true);
+  const rnd=rng(5);for(let i=0;i<14;i++){const a=rnd()*6.28,r=3.4+rnd()*.9;bx(g,.28,.16,.18,M(0x334155,0,0,.6),Math.cos(a)*r,0,Math.sin(a)*r)}
+  anim.push(t=>{dm.emissiveIntensity=.8+.5*Math.sin(t*3)});
+  const N=240,pa=new Float32Array(N*3),pcol=new Float32Array(N*3),life=new Float32Array(N),mxl=new Float32Array(N),vy=new Float32Array(N),ph=new Float32Array(N);
+  const pgeo=new THREE.BufferGeometry();pgeo.setAttribute('position',new THREE.BufferAttribute(pa,3));pgeo.setAttribute('color',new THREE.BufferAttribute(pcol,3));
+  const heat=new THREE.Points(pgeo,new THREE.PointsMaterial({size:.16,vertexColors:true,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+  heat.frustumCulled=false;g.add(heat);
+  const reset=i=>{pa[i*3]=(Math.random()-.5)*1.5;pa[i*3+1]=.64;pa[i*3+2]=(Math.random()-.5)*1.5;life[i]=0;mxl[i]=2+Math.random()*1.6;vy[i]=.55+Math.random()*.5;ph[i]=Math.random()*6.28};
+  for(let i=0;i<N;i++){reset(i);life[i]=Math.random()*mxl[i];pa[i*3+1]+=life[i]*vy[i]*.8}
+  anim.push((t,dt)=>{dt=dt||.016;
+   for(let i=0;i<N;i++){
+    life[i]+=dt;if(life[i]>mxl[i])reset(i);
+    const k=life[i]/mxl[i],j=i*3;
+    pa[j]+=Math.sin(t*1.8+ph[i]+pa[j+1]*2.6)*.5*dt*(.4+k);
+    pa[j+2]+=Math.cos(t*1.5+ph[i]*1.3+pa[j+1]*2.2)*.5*dt*(.4+k);
+    pa[j+1]+=vy[i]*dt*(1-.35*k);
+    const f=Math.sin(Math.PI*k);pcol[j]=f*(1-.8*k);pcol[j+1]=f*(.55+.25*k);pcol[j+2]=f*(.2+.8*k);
+   }
+   pgeo.attributes.position.needsUpdate=true;pgeo.attributes.color.needsUpdate=true});
+  return g;
+ }
+
+ const B=[city,port,chip];
+ function setScene(i){
+  if(cur){pivot.remove(cur);cur.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)o.material.dispose&&o.material.dispose()})}
+  anim=[];waters=[];cur=B[i]();cur.scale.setScalar(.01);born=performance.now();pivot.add(cur);
+ }
+ window.setFDIScene=setScene;
+ window.fdiReset=()=>{ry=.6;rx=.45;dist=15};
+
+ const fit=()=>{const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};
+ new ResizeObserver(fit).observe(cv);
+ new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
+ cv.addEventListener('pointerdown',e=>{mv=0;drag=true;wasDrag=false;px=e.clientX;py=e.clientY;lastInt=performance.now();cv.style.cursor='grabbing';cv.setPointerCapture(e.pointerId)});
+ cv.addEventListener('pointermove',e=>{if(!drag)return;const d=Math.abs(e.clientX-px)+Math.abs(e.clientY-py);mv+=d;if(mv>6)wasDrag=true;ry+=(e.clientX-px)*.008;rx=Math.max(.1,Math.min(1.3,rx+(e.clientY-py)*.005));px=e.clientX;py=e.clientY;lastInt=performance.now()});
+ const up=()=>{drag=false;cv.style.cursor='grab';lastInt=performance.now();setTimeout(()=>{wasDrag=false},50)};
+ cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+ cv.addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(8,Math.min(22,dist+e.deltaY*.012));lastInt=performance.now()},{passive:false});
+ cam.position.set(0,0,dist);
+ const rc=new THREE.Raycaster(),v2=new THREE.Vector2();
+ cv.addEventListener('click',e=>{
+  if(wasDrag||mv>6||!waters.length)return;
+  const r=cv.getBoundingClientRect();v2.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);rc.setFromCamera(v2,cam);
+  const hit=rc.intersectObjects(waters.map(w=>w.mesh))[0];if(!hit)return;
+  const w=waters.find(x=>x.mesh===hit.object),p=hit.object.worldToLocal(hit.point.clone());w.ripple(p.x,p.z);play('ripple');
+ });
+ function frame(now){
+  requestAnimationFrame(frame);
+  const dt=Math.min(.05,(now-lastF)/1000);lastF=now;
+  if(!vis||document.hidden||!cur)return;
+  if(!drag&&!reduce&&now-lastInt>1500)ry+=.003;
+  pivot.rotation.x=rx;pivot.rotation.y=ry;
+  cam.position.z+=(dist-cam.position.z)*.1;
+  const k=Math.min(1,(now-born)/600);cur.scale.setScalar(.01+.99*(1-Math.pow(1-k,3)));
+  const t=now/1000;tNow=t;waters.forEach(w=>w.update(t));anim.forEach(f=>f(t,dt));
+  R.render(sc,cam);
+ }
+ fit();setScene(modelIdx);requestAnimationFrame(frame);
+}
+
+/* ---------- KHỐI THƯ VIỆN 1 ---------- */
+const orb=$('#orbit'); let ang=0,vel=0,odrag=false,omoved=0,osx=0,ohover=false,ovis=true,olast=performance.now();
+function buildCarousel(){
+ orb.querySelectorAll('.oc').forEach(e=>e.remove());
+ ITEMS.forEach(it=>{const d=it[lang],b=document.createElement('button');
+  b.className='oc';b.dataset.k=it.k;b.setAttribute('aria-label',d.t);
+  b.innerHTML=imgTag(it.img,d.t)+`<span>${esc(d.t)}<small>${esc(d.s)}</small></span>`;orb.appendChild(b)});
+ layoutOrbit();
+}
+function layoutOrbit(){
+ const w=orb.clientWidth,h=orb.clientHeight,rx=w*.38,ry=h*.26,cs=orb.querySelectorAll('.oc'),n=cs.length;
+ cs.forEach((el,i)=>{
+  const th=i/n*Math.PI*2+ang,c=Math.cos(th),sn=Math.sin(th),k=(sn+1)/2;
+  el.style.transform=`translate(calc(-50% + ${(c*rx).toFixed(1)}px),calc(-50% + ${(sn*ry).toFixed(1)}px)) scale(${(.68+.32*k).toFixed(3)})`;
+  el.style.opacity=(.4+.6*k).toFixed(2);
+  el.style.filter=`brightness(${(.6+.4*k).toFixed(2)})`;
+  el.style.zIndex=Math.round(k*100);
+ });
+}
+function orbitLoop(now){
+ const dt=Math.min(now-olast,50);olast=now;
+ if(ovis&&!document.hidden){
+  if(!odrag){ if(Math.abs(vel)>.0003){ang+=vel;vel*=.94} else if(!ohover&&!reduce)ang+=dt*.00022 }
+  layoutOrbit();
+ }
+ requestAnimationFrame(orbitLoop);
+}
+new IntersectionObserver(e=>ovis=e[0].isIntersecting).observe(orb);
+orb.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')ohover=true});
+orb.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')ohover=false});
+orb.addEventListener('pointerdown',e=>{odrag=true;omoved=0;osx=e.clientX;vel=0;orb.classList.add('drag')});
+addEventListener('pointermove',e=>{if(!odrag)return;const dx=e.clientX-osx;osx=e.clientX;omoved+=Math.abs(dx);ang+=dx*.006;vel=dx*.006});
+addEventListener('pointerup',()=>{odrag=false;orb.classList.remove('drag')});
+orb.addEventListener('click',e=>{const c=e.target.closest('.oc');if(c&&omoved<6)openDetail(c.dataset.k)});
+addEventListener('resize',layoutOrbit);
+
+/* ---------- KHỐI THƯ VIỆN 2 ---------- */
+const pxEl=$('#px'),PX_ORDER=[[0,3,1,4,2],[2,4,0,3,1],[1,0,4,2,3]],PX_AMP=[-420,320,-220];let pxCols=[];
+function buildParallax(){
+ pxCols=[...pxEl.querySelectorAll('.px-col')];
+ pxCols.forEach((col,ci)=>{col.innerHTML=PX_ORDER[ci].map(i=>{const it=ITEMS[i],d=it[lang];
+  return `<button class="pxc" data-k="${it.k}" aria-label="${esc(d.t)}">${imgTag(it.img,d.t)}<span>${esc(d.t)}<small>${esc(d.s)}</small></span></button>`}).join('')});
+ pxUpdate();
+}
+function pxUpdate(){
+ if(reduce||!pxCols.length)return;
+ const r=pxEl.getBoundingClientRect();if(r.bottom<-300||r.top>innerHeight+300)return;
+ const p=(innerHeight-r.top)/(innerHeight+r.height);
+ pxCols.forEach((c,i)=>c.style.transform=`translate3d(0,${((p-.5)*PX_AMP[i]).toFixed(1)}px,0)`);
+}
+pxEl.addEventListener('click',e=>{const c=e.target.closest('.pxc');if(c)openDetail(c.dataset.k)});
+addEventListener('resize',pxUpdate);
+
+/* ---------- KHỐI HÌNH ẢNH TƯƠNG TÁC ---------- */
+function initHalftone(){
+ const cv=$('#halftone'),ctx=cv.getContext('2d'),img=new Image();
+ img.crossOrigin='anonymous'; img.src=ITEMS[3].img;
+ let W=0,H=0,dpr=1,cell=10,cols=0,rows=0,lum=null,px=0,py=0,rad=0,tr=0,intro=0,vis=false,last=performance.now();
+ const cover=(c,w,h)=>{const s=Math.max(w/img.width,h/img.height),iw=img.width*s,ih=img.height*s;c.drawImage(img,(w-iw)/2,(h-ih)/2,iw,ih)};
+ function setup(){
+  const r=cv.getBoundingClientRect();if(!r.width)return;
+  dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;
+  cell=W<500?7:10;cols=Math.ceil(W/cell);rows=Math.ceil(H/cell);lum=null;
+  if(!img.complete||!img.naturalWidth)return;
+  try{const o=document.createElement('canvas');o.width=cols;o.height=rows;const oc=o.getContext('2d');cover(oc,cols,rows);
+   const d=oc.getImageData(0,0,cols,rows).data;lum=new Float32Array(cols*rows);
+   for(let i=0;i<lum.length;i++)lum[i]=(.2126*d[i*4]+.7152*d[i*4+1]+.0722*d[i*4+2])/255;
+  }catch(e){lum=null}
+ }
+ function draw(dt){
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  if(intro<1){intro=Math.min(1,intro+dt/3000);px=W*(.12+.76*intro);py=H/2+Math.sin(intro*7)*H*.22;tr=140}
+  rad+=(tr-rad)*.14;
+  ctx.fillStyle='#38BDF8';
+  for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
+   const l=lum?lum[y*cols+x]:.55+.35*Math.sin(x*.3)*Math.cos(y*.3),r=cell*.52*Math.sqrt(l);
+   if(r<.5)continue;
+   const cx=x*cell+cell/2,cy=y*cell+cell/2,dist=Math.hypot(cx-px,cy-py),fade=dist<rad?Math.max(0,(dist-rad*.6)/(rad*.4)):1;
+   ctx.globalAlpha=(.3+.7*l)*fade;ctx.beginPath();ctx.arc(cx,cy,r,0,6.2832);ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  if(rad>2&&img.naturalWidth){
+   ctx.save();ctx.beginPath();ctx.arc(px,py,rad,0,6.2832);ctx.clip();cover(ctx,W,H);ctx.restore();
+   ctx.strokeStyle='rgba(125,211,252,.7)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(px,py,rad,0,6.2832);ctx.stroke();
+  }
+ }
+ function loop(now){const dt=Math.min(now-last,50);last=now;if(vis&&!document.hidden)draw(dt);requestAnimationFrame(loop)}
+ const move=e=>{const r=cv.getBoundingClientRect();px=e.clientX-r.left;py=e.clientY-r.top;intro=1;tr=150};
+ cv.addEventListener('pointerenter',move);cv.addEventListener('pointermove',move);
+ cv.addEventListener('pointerleave',()=>{tr=0});
+ cv.addEventListener('pointerdown',move);
+ img.addEventListener('load',setup);img.addEventListener('error',()=>{img.removeAttribute('src');lum=null},{once:true});
+ new ResizeObserver(setup).observe(cv);
+ new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis&&intro>=1&&reduce)intro=.5}).observe(cv);
+ setup();requestAnimationFrame(loop);
+}
+
+/* ---------- NỀN ẢNH VIỆT NAM ---------- */
+function initVnBg(){
+ const targets=document.querySelectorAll('#topic, #bento, #figures, #model, #parallax');
+ if(!targets.length||!('IntersectionObserver' in window))return;
+ const active=new Set();
+ const io=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+   if(en.isIntersecting)active.add(en.target);
+   else active.delete(en.target);
+  });
+  document.body.classList.toggle('fdi-dim-bg',active.size>0);
+ },{threshold:.2});
+ targets.forEach(el=>io.observe(el));
+}
+
+/* ---------- KHỐI GIỚI THIỆU ---------- */
+function initScrollExpand(){
+ const track=$('#se-track'),stage=$('#se-stage'),frame=$('#se-frame'),media=$('#se-media'),
+  title=$('#se-title'),scrim=$('#se-scrim'),overlay=$('#se-overlay'),hint=$('#se-hint');
+ if(!track)return;
+ const C={startWidth:42,startHeight:58,startRadius:24,endRadius:0,mediaZoom:1.35,
+  scrollDistance:1.2,holdDistance:.35,smoothing:.1,overlayScrim:.45};
+ const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+ const smooth=(a,b,x)=>{const t=clamp((x-a)/((b-a)||1e-6),0,1);return t*t*(3-2*t)};
+ let cur=0,target=0,stageH=0,raf=0,running=false;
+
+ function apply(p){
+  const e=smooth(0,1,p);
+  const w=C.startWidth+(100-C.startWidth)*e, h=C.startHeight+(100-C.startHeight)*e;
+  const ix=Math.max(0,(100-w)/2), iy=Math.max(0,(100-h)/2);
+  const r=C.startRadius+(C.endRadius-C.startRadius)*e;
+  frame.style.clipPath=`inset(${iy}% ${ix}% ${iy}% ${ix}% round ${r}px)`;
+  media.style.transform=`scale(${C.mediaZoom+(1-C.mediaZoom)*e})`;
+  scrim.style.opacity=C.overlayScrim*e;
+  const out=smooth(.4,.88,p);
+  title.style.opacity=1-out;
+  title.style.transform=`translate3d(0,${-28*out}px,0) scale(${1+.06*out})`;
+  const gone=smooth(0,.12,p);
+  hint.style.opacity=1-gone;
+  hint.style.transform=`translate3d(0,${8*gone}px,0)`;
+  const inn=smooth(.68,1,p);
+  overlay.style.opacity=inn;
+  overlay.style.transform=`translate3d(0,${18*(1-inn)}px,0)`;
+ }
+ function measure(){
+  stageH=innerHeight; if(stageH<=0)return;
+  track.style.height=stageH*(1+C.scrollDistance+C.holdDistance)+'px';
+  stage.style.setProperty('--se-title-size',clamp(innerWidth*.075,20,84)+'px');
+ }
+ const read=()=>clamp(-track.getBoundingClientRect().top/(stageH*C.scrollDistance),0,1);
+ function tick(){
+  const k=1-Math.exp(-1/(60*C.smoothing));
+  cur+=(target-cur)*k;
+  if(Math.abs(target-cur)<.0004){cur=target;running=false}
+  apply(cur);
+  raf=running?requestAnimationFrame(tick):0;
+ }
+ function onScroll(){
+  target=read();
+  if(reduce){cur=target;apply(cur);return}
+  if(!running){running=true;if(!raf)raf=requestAnimationFrame(tick)}
+ }
+ function onResize(){measure();target=read();cur=target;apply(cur)}
+ measure();target=read();cur=target;apply(cur);
+ addEventListener('scroll',onScroll,{passive:true});
+ addEventListener('resize',onResize);
+}
+
+/* ---------- TRANG CHỦ ---------- */
+function splitHero(){
+ const h=$('#h1'); if(!h)return; let i=0;
+ [...h.children].forEach(el=>{
+  el.innerHTML=el.textContent.trim().split(/\s+/).map(w=>`<span class="hw" style="--i:${i++}">${esc(w)}</span>`).join(' ');
+ });
+}
+function renderChips(){
+ const box=$('#heroChips'); if(!box)return;
+ box.innerHTML=t('chips').map((c,i)=>`<div class="rise" style="--d:${2.15+i*.12}s"><div class="hc" style="animation-delay:${i*.9}s"><i class="fa-solid ${c[0]}"></i><div><b>${esc(c[1])}</b><small>${esc(c[2])}</small></div></div></div>`).join('');
+}
+let rotI=0;
+function rotTick(){
+ const el=$('#rot'); if(!el)return; const a=t('rot');
+ el.classList.remove('rin'); void el.offsetWidth; el.textContent=a[rotI++%a.length]; el.classList.add('rin');
+}
+const heroIn=$('#heroIn'), heroCue=$('#heroCue');
+function heroScroll(){
+ if(reduce)return; const y=scrollY; if(y>innerHeight*1.5)return;
+ const k=Math.min(1,y/(innerHeight*.8));
+ heroIn.style.transform=`translate3d(0,${(y*.22).toFixed(1)}px,0) scale(${(1-.05*k).toFixed(3)})`;
+ heroIn.style.opacity=(1-k*.9).toFixed(2);
+ heroCue.style.opacity=(1-Math.min(1,y/120)).toFixed(2);
+}
+function initHero(){
+ const hero=$('#hero'),cv=$('#heroFx'),ctx=cv.getContext('2d');
+ let W=0,H=0,dpr=1,pts=[],vis=true;
+ const mk=()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+.6});
+ function size(){
+  const r=hero.getBoundingClientRect(); if(!r.width)return;
+  W=r.width;H=r.height;dpr=Math.min(devicePixelRatio||1,2);cv.width=W*dpr;cv.height=H*dpr;
+  const n=Math.max(24,Math.min(80,Math.round(W*H/16000)));
+  pts=Array.from({length:n},mk);
+ }
+ function draw(){
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+   if(!reduce){
+    p.vx*=.995;p.vy*=.995;p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=W;else if(p.x>W)p.x=0;
+    if(p.y<0)p.y=H;else if(p.y>H)p.y=0;
+   }
+  }
+  ctx.lineWidth=1;
+  for(let i=0;i<pts.length;i++){
+   const a=pts[i];
+   for(let j=i+1;j<pts.length;j++){
+    const b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<120){ctx.strokeStyle=`rgba(125,211,252,${((1-d/120)*.22).toFixed(3)})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+   }
+   ctx.fillStyle='rgba(186,230,253,.75)';ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,6.2832);ctx.fill();
+  }
+ }
+ function loop(){if(vis&&!document.hidden)draw();requestAnimationFrame(loop)}
+ new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
+ new ResizeObserver(()=>{size();if(reduce)draw()}).observe(hero);
+ setInterval(()=>{if(!document.hidden&&vis)rotTick()},2400);
+ size();if(reduce)draw();else requestAnimationFrame(loop);
+}
+
+/* ---------- SỰ KIỆN CHUNG ---------- */
+document.addEventListener('click',e=>{
+ const el=e.target instanceof Element?e.target:e.target&&e.target.parentElement;
+ if(!el||typeof el.closest!=='function')return;
+ const k=el.closest('#bento [data-k], #acc [data-k]'); if(k)openDetail(k.dataset.k);
+ const n=el.closest('[data-n]'); if(n){play('wrap');toast(t('pv')(esc(n.dataset.n)),t('pt'))}
+ if(el.closest('[data-kiet]'))openKiet();
+ const sb=el.closest('.sb'); if(sb){const p=document.createElement('span');p.className='pulse';sb.appendChild(p);setTimeout(()=>p.remove(),650)}
+});
+document.addEventListener('pointerenter',e=>{
+ if(e.pointerType!=='mouse')return;
+ const el=e.target instanceof Element?e.target:e.target&&e.target.parentElement;
+ if(el&&typeof el.closest==='function'&&el.closest('button, a, .sb, .oc, .pxc, .acc-i'))play('hover');
+},{capture:true,passive:true});
+document.addEventListener('keydown',e=>{
+ if((e.key==='Enter'||e.key===' ')&&e.target instanceof Element&&e.target.matches('.sb[role=button]')){e.preventDefault();e.target.click()}
+});
+document.addEventListener('pointermove',e=>{
+ const el=e.target instanceof Element?e.target:e.target&&e.target.parentElement;
+ const c=el&&typeof el.closest==='function'?el.closest('.card'):null; if(!c)return;
+ const r=c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px');
+});
+$('#logo3').onclick=openGroup3;
+$('#t2').onclick=openTopic2;
+$('#home').onclick=()=>{play('tine');scrollTo({top:0,behavior:'smooth'})};
+$('#top').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+$('#lang').onclick=()=>{lang=lang==='vi'?'en':'vi';localStorage.setItem('lang',lang);play('tine');closeModal();renderAll()};
+
+/* ---------- CUỘN: thanh tiến độ + hiệu ứng mờ chuyển động nhẹ ---------- */
+const wrap=$('#wrap'), seSec=$('#se'); let lastY=scrollY, ticking=false, blurTimer=null;
+addEventListener('scroll',()=>{
+ if(ticking)return; ticking=true;
+ requestAnimationFrame(()=>{
+  const y=scrollY, dy=y-lastY; lastY=y;
+  const h=document.documentElement.scrollHeight-innerHeight;
+  $('#progress').style.width=(h>0?y/h*100:0)+'%';
+  pxUpdate();heroScroll();$('#hdr').classList.toggle('sc',y>20);const top=$('#top'); top.classList.toggle('opacity-0',y<600); top.classList.toggle('pointer-events-none',y<600);
+  const sr=seSec.getBoundingClientRect(), inSE=sr.top<innerHeight&&sr.bottom>0;
+  if(!reduce&&!inSE&&Math.abs(dy)>25){
+   wrap.style.filter=`blur(${Math.min(Math.abs(dy)*.03,2.5).toFixed(2)}px)`;
+   clearTimeout(blurTimer); blurTimer=setTimeout(()=>wrap.style.filter='',120);
+  }else if(inSE&&wrap.style.filter){wrap.style.filter=''}
+  ticking=false;
+ });
+},{passive:true});
+
+/* ---------- KHỞI TẠO ---------- */
+renderAll(); syncSnd(); initVnBg(); initHalftone(); initFDI3D(); initScrollExpand(); initHero(); requestAnimationFrame(orbitLoop);
+addEventListener('load',()=>{
+ AOS.init({duration:800,once:true,disable:()=>reduce});
+ const pre=$('#preloader'); let done=false;
+ const hide=()=>{
+  if(done)return; done=true;
+  if(actx&&actx.state==='running')play('intro'); else play('tine');
+  pre.style.opacity=0; pre.style.pointerEvents='none';
+  setTimeout(()=>pre.remove(),700);
+ };
+ ['pointerdown','keydown'].forEach(evt=>{
+  window.addEventListener(evt,()=>{
+   const c=ensureAudio();
+   if(c&&c.state==='running')play('intro');
+  },{once:true,passive:true});
+ });
+ pre.addEventListener('click',hide); setTimeout(hide,1200);
+});
+</script>
 </body>
 </html>
