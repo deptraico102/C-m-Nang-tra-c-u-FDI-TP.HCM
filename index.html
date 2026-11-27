@@ -68,7 +68,8 @@ body.fdi-dim-bg #vn-bg-scrim{background:linear-gradient(180deg,rgba(0,0,0,.78) 0
 .acc-o{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,7,18,.95),rgba(3,7,18,.3) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
 @media(max-width:767px){.acc{flex-direction:column;height:auto}.acc-i{flex:none;height:140px}.acc:hover .acc-i:not(:hover){filter:none}}
 /* orbit */
-#orbit{position:relative;height:460px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+#orbit{position:relative;height:460px;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
+@media(max-width:640px){#orbit.drag{touch-action:none}}
 #orbit.drag{cursor:grabbing}
 .o-ring{position:absolute;left:50%;top:50%;width:76%;height:52%;transform:translate(-50%,-50%);border:1px dashed rgba(56,189,248,.28);border-radius:50%;pointer-events:none}
 .o-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#fff;background:radial-gradient(circle,rgba(56,189,248,.45),rgba(56,189,248,.05) 70%);box-shadow:0 0 60px rgba(56,189,248,.4);pointer-events:none}
@@ -189,6 +190,68 @@ body{background:#000;color:#f5f5f7}
 .se-overlay p{margin-top:14px;max-width:640px;font-size:clamp(15px,2vw,21px);color:#d2d2d7}
 .se-title{position:absolute;z-index:2;left:0;right:0;text-align:center;padding:0 20px;pointer-events:none;font-weight:600;letter-spacing:-.03em;line-height:1.1;font-size:var(--se-title-size,56px);color:#f5f5f7;text-shadow:0 2px 30px rgba(0,0,0,.6);will-change:opacity,transform}
 .se-hint{position:absolute;z-index:2;bottom:6vh;left:0;right:0;text-align:center;font-size:13px;color:#a1a1a6;pointer-events:none;letter-spacing:.04em}
+
+/* ===== MOBILE UI POLISH (< 640px) ===== */
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+  section[id] { scroll-margin-top: 68px; }
+  #wrap { gap: 4.5rem !important; }
+  .space-y-28 > :not([hidden]) ~ :not([hidden]) { margin-top: 4.5rem !important; }
+
+  #hdr .max-w-6xl { height: 52px; padding-left: 12px; padding-right: 12px; gap: 6px; }
+  #home span:first-child { font-size: 10px !important; letter-spacing: .06em !important; max-width: 126px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #home span:last-child { font-size: 9px !important; }
+  #logo3 { width: 28px !important; height: 28px !important; font-size: 13px !important; }
+  #snd { width: 32px !important; height: 32px !important; font-size: 12px !important; }
+  #lang { padding-left: 8px !important; padding-right: 8px !important; height: 32px !important; font-size: 11px !important; }
+  #t2 { padding-left: 10px !important; padding-right: 10px !important; height: 30px !important; font-size: 11px !important; white-space: nowrap; }
+
+  #hero { padding-top: 64px !important; padding-bottom: 36px !important; min-height: 92svh !important; }
+  #heroIn { gap: 1rem !important; }
+  #h1 { font-size: clamp(2.1rem, 9.2vw, 3rem) !important; line-height: 1.15 !important; }
+  .hero-badge { padding: 5px 12px; font-size: 11px; }
+  .hero-rot { font-size: 15px !important; min-height: 1.6em; }
+  #hero p[data-i="desc"] { font-size: 14.5px !important; line-height: 1.55 !important; padding-left: 4px; padding-right: 4px; }
+  .hero-chips { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; padding-top: 12px !important; width: 100%; }
+  .hero-chips > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .hc { padding: 10px 12px !important; border-radius: 16px !important; gap: 9px !important; justify-content: flex-start; }
+  .hc i { font-size: 15px !important; }
+  .hc b { font-size: 14px !important; }
+  .hc small { font-size: 11px !important; line-height: 1.25; display: block; }
+
+  #model canvas#fdi3d { height: 56svh !important; min-height: 320px !important; max-height: 440px !important; }
+  #model .cine-stage > div:last-child { margin-top: -16px !important; padding-bottom: 22px !important; gap: 10px !important; }
+  #pills { gap: 6px !important; }
+  #pills button { padding: 7px 12px !important; font-size: 12px !important; }
+  #cap { font-size: 13px !important; line-height: 1.45 !important; min-height: 2.6rem !important; }
+
+  .glass { border-radius: 22px !important; }
+  #bento { gap: 12px !important; }
+  #bento .card { padding: 1.25rem !important; }
+  .num { font-size: clamp(2rem, 9vw, 2.75rem) !important; }
+  #bento h3 { font-size: 19px !important; }
+  #bento p { font-size: 13.5px !important; }
+
+  #orbit { height: 320px !important; }
+  .o-core { width: 68px !important; height: 68px !important; font-size: 16px !important; }
+  .oc { width: 96px !important; height: 128px !important; border-radius: 14px !important; }
+
+  .acc { gap: 10px !important; }
+  .acc-i { height: 116px !important; border-radius: 20px !important; }
+  .acc-o { padding: 14px 16px !important; }
+  .acc-o h4 { font-size: 14px !important; }
+
+  #px { height: min(72vh, 560px) !important; border-radius: 22px !important; }
+  #wrap h2, #wrap h3.silver { font-size: clamp(1.55rem, 6.8vw, 2.15rem) !important; }
+
+  #members { gap: 8px !important; }
+  #members button, #members .sb span { padding: 8px 12px !important; font-size: 11.5px !important; }
+
+  #mcard { padding: 18px !important; border-radius: 22px !important; max-height: 90svh !important; }
+  #m3d-canvas { height: 48svh !important; min-height: 260px !important; }
+  #top { width: 38px !important; height: 38px !important; bottom: 14px !important; left: 12px !important; font-size: 12px !important; }
+}
+
 </style>
 </head>
 <body class="flex flex-col overflow-x-hidden relative">
@@ -281,7 +344,7 @@ body{background:#000;color:#f5f5f7}
         <span class="text-xs sm:text-sm font-semibold tracking-wide text-slate-200 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-sky-400"></span>FDI TP.HCM • 3D</span>
         <button id="reset" class="pointer-events-auto w-9 h-9 rounded-full bg-black/55 hover:bg-black/80 text-slate-200 hover:text-white text-xs flex items-center justify-center transition" aria-label="Reset camera"><i class="fa-solid fa-rotate-right"></i></button>
       </div>
-      <canvas id="fdi3d" class="block w-full" style="height:min(74vh,660px);min-height:420px;cursor:grab;touch-action:pan-y"></canvas>
+      <canvas id="fdi3d" class="block w-full" style="height:min(74vh,660px);min-height:420px;cursor:grab;touch-action:none"></canvas>
       <div class="relative z-10 max-w-3xl mx-auto px-4 pb-6 -mt-12 space-y-3">
         <div id="pills" class="flex flex-wrap justify-center items-center gap-2"></div>
         <p id="cap" class="text-sm sm:text-base text-slate-100 leading-relaxed min-h-[3rem]"></p>
@@ -625,6 +688,69 @@ function openKiet(){play('tine');
  ()=>type($('#tw'),t('kbio')));
 }
 
+function bindOrbitPinchTap(canvas, opts){
+ const ptrs=new Map();
+ let prevPinch=null, moved=0, downTime=0, wasPinch=false;
+ const pinchDist=()=>{const[a,b]=[...ptrs.values()];return Math.hypot(a.x-b.x,a.y-b.y)};
+
+ canvas.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  try{canvas.setPointerCapture(e.pointerId)}catch(_){}
+  opts.onInteract&&opts.onInteract();
+  if(ptrs.size===1){
+   moved=0; downTime=performance.now(); wasPinch=false;
+   canvas.style.cursor='grabbing';
+   opts.onSingleStart&&opts.onSingleStart(e);
+  }else if(ptrs.size>=2){
+   wasPinch=true;
+   prevPinch=pinchDist();
+   opts.onPinchStart&&opts.onPinchStart();
+  }
+ });
+
+ canvas.addEventListener('pointermove',e=>{
+  if(!ptrs.has(e.pointerId))return;
+  const prev=ptrs.get(e.pointerId);
+  const curr={x:e.clientX,y:e.clientY};
+  ptrs.set(e.pointerId,curr);
+  opts.onInteract&&opts.onInteract();
+
+  if(ptrs.size===1&&!wasPinch){
+   const dx=curr.x-prev.x, dy=curr.y-prev.y;
+   moved+=Math.abs(dx)+Math.abs(dy);
+   opts.onDrag&&opts.onDrag(dx,dy,moved,e);
+  }else if(ptrs.size>=2){
+   const d=pinchDist();
+   if(prevPinch&&d>0){
+    opts.onPinch&&opts.onPinch(prevPinch-d);
+   }
+   prevPinch=d;
+  }
+ });
+
+ const onRelease=e=>{
+  const had=ptrs.get(e.pointerId);
+  ptrs.delete(e.pointerId);
+  if(ptrs.size<2)prevPinch=null;
+  if(ptrs.size===0){
+   canvas.style.cursor='grab';
+   opts.onInteract&&opts.onInteract();
+   const elapsed=performance.now()-downTime;
+   const isTap=!wasPinch&&moved<=10&&elapsed<550;
+   const pt=had||{x:e.clientX,y:e.clientY};
+   opts.onEnd&&opts.onEnd(isTap,pt,e);
+   wasPinch=false;
+  }else if(ptrs.size===1){
+   const rem=[...ptrs.values()][0];
+   opts.onSingleStart&&opts.onSingleStart({clientX:rem.x,clientY:rem.y});
+  }
+ };
+
+ canvas.addEventListener('pointerup',onRelease);
+ canvas.addEventListener('pointercancel',onRelease);
+}
+
 function openModelZoom(){
  if(typeof THREE==='undefined')return;
  play('tine');
@@ -640,16 +766,19 @@ function openModelZoom(){
   </div>`,
   ()=>{
    const zcv=$('#m3d-canvas'); if(!zcv)return;
-   let ZR; try{ZR=new THREE.WebGLRenderer({canvas:zcv,antialias:true,alpha:true})}catch(e){return}
-   ZR.setPixelRatio(Math.min(devicePixelRatio||1,2));
-   ZR.shadowMap.enabled=true; ZR.shadowMap.type=THREE.PCFSoftShadowMap;
+   const isMobile=innerWidth<768;
+   let ZR; try{ZR=new THREE.WebGLRenderer({canvas:zcv,antialias:!isMobile,alpha:true,powerPreference:isMobile?'low-power':'high-performance'})}catch(e){return}
+   ZR.setPixelRatio(Math.min(devicePixelRatio||1,isMobile?1.5:2));
+   ZR.shadowMap.enabled=true; ZR.shadowMap.type=isMobile?THREE.BasicShadowMap:THREE.PCFSoftShadowMap;
    ZR.toneMapping=THREE.ACESFilmicToneMapping; ZR.toneMappingExposure=1.08;
 
    const zsc=new THREE.Scene(), zcam=new THREE.PerspectiveCamera(42,1,.1,100), zpivot=new THREE.Group();
    zsc.add(new THREE.HemisphereLight(0xbae6fd,0x334155,.78));
    zsc.add(new THREE.AmbientLight(0xbfdfff,.45));
    const zdl=new THREE.DirectionalLight(0xfff7ed,1.15);
-   zdl.position.set(7,12,8); zdl.castShadow=true; zdl.shadow.mapSize.set(1024,1024);
+   zdl.position.set(7,12,8); zdl.castShadow=true;
+   const sm=isMobile?512:1024;
+   zdl.shadow.mapSize.set(sm,sm);
    const zd=9.5; zdl.shadow.camera.left=-zd; zdl.shadow.camera.right=zd; zdl.shadow.camera.top=zd; zdl.shadow.camera.bottom=-zd;
    zsc.add(zdl);
    const zpl=new THREE.PointLight(0x38bdf8,1.35,40); zpl.position.set(-6,5,-4); zsc.add(zpl);
@@ -679,25 +808,37 @@ function openModelZoom(){
     zcur.scale.setScalar(.01); zpivot.add(zcur);
    });
 
-   let zmv=0;
-   zcv.addEventListener('pointerdown',e=>{zmv=0;zdrag=true;zpx=e.clientX;zpy=e.clientY;zlastInt=performance.now();zcv.style.cursor='grabbing';zcv.setPointerCapture(e.pointerId)});
-   zcv.addEventListener('pointermove',e=>{if(!zdrag)return;zmv+=Math.abs(e.clientX-zpx)+Math.abs(e.clientY-zpy);zry+=(e.clientX-zpx)*.008;zrx=Math.max(.1,Math.min(1.25,zrx+(e.clientY-zpy)*.005));zpx=e.clientX;zpy=e.clientY;zlastInt=performance.now()});
-   const zup=()=>{zdrag=false;zcv.style.cursor='grab';zlastInt=performance.now()};
-   zcv.addEventListener('pointerup',zup); zcv.addEventListener('pointercancel',zup);
-   zcv.addEventListener('wheel',e=>{e.preventDefault();zdist=Math.max(8,Math.min(24,zdist+e.deltaY*.012));zlastInt=performance.now()},{passive:false});
-   zcam.position.set(0,0,zdist);
-
    const zrc=new THREE.Raycaster(), zv2=new THREE.Vector2();
-   zcv.addEventListener('click',e=>{
-    if(zmv>6||!zwaters.length)return;
+   const triggerZoomRipple=pt=>{
+    if(!zwaters.length)return false;
     const r=zcv.getBoundingClientRect();
-    zv2.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);
+    zv2.set((pt.x-r.left)/r.width*2-1,-((pt.y-r.top)/r.height)*2+1);
     zrc.setFromCamera(zv2,zcam);
     const hit=zrc.intersectObjects(zwaters.map(w=>w.mesh))[0];
-    if(!hit)return;
+    if(!hit)return false;
     const w=zwaters.find(x=>x.mesh===hit.object), p=hit.object.worldToLocal(hit.point.clone());
     w.ripple(p.x,p.z,performance.now()/1000); play('ripple');
+    return true;
+   };
+
+   bindOrbitPinchTap(zcv,{
+    onInteract:()=>{zlastInt=performance.now()},
+    onSingleStart:e=>{zdrag=true;zpx=e.clientX;zpy=e.clientY},
+    onDrag:(dx,dy)=>{
+     zry+=dx*.0085;
+     zrx=Math.max(.1,Math.min(1.25,zrx+dy*.0055));
+     zpx+=dx; zpy+=dy;
+    },
+    onPinch:deltaPx=>{
+     zdist=Math.max(8,Math.min(25,zdist+deltaPx*.028));
+    },
+    onEnd:(isTap,pt)=>{
+     zdrag=false;
+     if(isTap)triggerZoomRipple(pt);
+    }
    });
+   zcv.addEventListener('wheel',e=>{e.preventDefault();zdist=Math.max(8,Math.min(25,zdist+e.deltaY*.012));zlastInt=performance.now()},{passive:false});
+   zcam.position.set(0,0,zdist);
 
    function zframe(now){
     if(stopped)return;
@@ -705,10 +846,10 @@ function openModelZoom(){
     const dt=Math.min(.05,(now-zlastF)/1000); zlastF=now;
     if(!zdrag&&!reduce&&now-zlastInt>1500)zry+=.003;
     zpivot.rotation.x=zrx; zpivot.rotation.y=zry;
-    zcam.position.z+=(zdist-zcam.position.z)*.1;
+    zcam.position.z+=(zdist-zcam.position.z)*.14;
     const k=Math.min(1,(now-zborn)/600); zcur.scale.setScalar(.01+.99*(1-Math.pow(1-k,3)));
     const sec=now/1000;
-    zwaters.forEach(w=>w.update(sec,sec));
+    zwaters.forEach(w=>w.update(sec,dt));
     zanim.forEach(f=>f(sec,dt));
     ZR.render(zsc,zcam);
    }
@@ -738,10 +879,11 @@ $('#reset').onclick=()=>{play('tine');window.fdiReset&&fdiReset()};
 function initFDI3D(){
  const cv=$('#fdi3d');
  if(typeof THREE==='undefined'){cv.replaceWith(Object.assign(document.createElement('p'),{className:'p-10 text-sm text-slate-300',textContent:'Cần kết nối mạng để tải Three.js / Requires internet to load Three.js'}));return}
- let R;try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){return}
- R.setPixelRatio(Math.min(devicePixelRatio||1,2));
+ const isMobile=innerWidth<768;
+ let R;try{R=new THREE.WebGLRenderer({canvas:cv,antialias:!isMobile,alpha:true,powerPreference:isMobile?'low-power':'high-performance'})}catch(e){return}
+ R.setPixelRatio(Math.min(devicePixelRatio||1,isMobile?1.5:2));
  R.shadowMap.enabled=true;
- R.shadowMap.type=THREE.PCFSoftShadowMap;
+ R.shadowMap.type=isMobile?THREE.BasicShadowMap:THREE.PCFSoftShadowMap;
  R.toneMapping=THREE.ACESFilmicToneMapping;
  R.toneMappingExposure=1.08;
 
@@ -751,7 +893,8 @@ function initFDI3D(){
  const dl=new THREE.DirectionalLight(0xfff7ed,1.15);
  dl.position.set(7,12,8);
  dl.castShadow=true;
- dl.shadow.mapSize.set(1024,1024);
+ const sm=isMobile?512:1024;
+ dl.shadow.mapSize.set(sm,sm);
  dl.shadow.camera.near=1;
  dl.shadow.camera.far=35;
  const dCam=9.5;
@@ -767,11 +910,11 @@ function initFDI3D(){
  const DEFAULT_DIST=18.2;
  let cur=null,anim=[],waters=[],born=0,ry=.6,rx=.42,dist=DEFAULT_DIST,drag=false,wasDrag=false,px=0,py=0,lastInt=0,vis=true;
  const M=(c,e=0,i=0,m=.3,r=.48)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,emissive:e,emissiveIntensity:i});
- const bx=(g,w,h,d,mat,x,y,z,edge,castS=true,recvS=true)=>{
+ const bx=(g,w,h,d,mat,x,y,z,edge,castS=!isMobile,recvS=true)=>{
   const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
   m.position.set(x,y+h/2,z);
   m.castShadow=castS; m.receiveShadow=recvS;
-  if(edge)m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0xe2e8f0,transparent:true,opacity:.22})));
+  if(edge&&!isMobile)m.add(new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0xe2e8f0,transparent:true,opacity:.22})));
   g.add(m);return m;
  };
  const rng=seed=>{let sd=seed;return()=>(sd=sd*16807%2147483647)/2147483647};
@@ -780,7 +923,9 @@ function initFDI3D(){
  function buildScenePack(idx){
   const locAnim=[], locWaters=[];
   function makeWater(w,d,nx,nz,col){
-   const geo=new THREE.PlaneGeometry(w,d,nx,nz);geo.rotateX(-Math.PI/2);
+   const segX=isMobile?Math.max(4,Math.round(nx*.55)):nx;
+   const segZ=isMobile?Math.max(10,Math.round(nz*.55)):nz;
+   const geo=new THREE.PlaneGeometry(w,d,segX,segZ);geo.rotateX(-Math.PI/2);
    const mesh=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:col,emissive:0x0369a1,emissiveIntensity:.45,roughness:.18,metalness:.68,transparent:true,opacity:.92,flatShading:true}));
    mesh.receiveShadow=true;
    const pos=geo.attributes.position,b0=new Float32Array(pos.array),rip=[];
@@ -788,11 +933,12 @@ function initFDI3D(){
     for(const r of rip){const age=t-r.t;if(age<0)continue;const k=Math.hypot(x-r.x,z-r.z)-age*1.3;h+=.11*Math.exp(-age*.8)*Math.exp(-k*k*12)*Math.cos(k*13)}
     return h};
    function ripple(x,z,tCur){rip.push({x:x,z:z,t:tCur});if(rip.length>14)rip.shift()}
+   let nTick=0;
    function update(t){
     if(rip.length&&t-rip[0].t>4)rip.shift();
     for(let i=0;i<pos.count;i++){pos.setY(i,H(b0[i*3],b0[i*3+2],t))}
     pos.needsUpdate=true;
-    geo.computeVertexNormals();
+    if(!isMobile||(++nTick&1)===0)geo.computeVertexNormals();
    }
    const o={mesh:mesh,H:H,ripple:ripple,update:update};
    locWaters.push(o);return o;
@@ -1114,22 +1260,42 @@ function initFDI3D(){
  const fit=()=>{const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};
  new ResizeObserver(fit).observe(cv);
  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
- cv.addEventListener('pointerdown',e=>{mv=0;drag=true;wasDrag=false;px=e.clientX;py=e.clientY;lastInt=performance.now();cv.style.cursor='grabbing';cv.setPointerCapture(e.pointerId)});
- cv.addEventListener('pointermove',e=>{if(!drag)return;const d=Math.abs(e.clientX-px)+Math.abs(e.clientY-py);mv+=d;if(mv>6)wasDrag=true;ry+=(e.clientX-px)*.008;rx=Math.max(.1,Math.min(1.25,rx+(e.clientY-py)*.005));px=e.clientX;py=e.clientY;lastInt=performance.now()});
- const up=()=>{drag=false;cv.style.cursor='grab';lastInt=performance.now();setTimeout(()=>{wasDrag=false},50)};
- cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
- cv.addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(8,Math.min(25,dist+e.deltaY*.012));lastInt=performance.now()},{passive:false});
- cam.position.set(0,0,dist);
  const rc=new THREE.Raycaster(),v2=new THREE.Vector2();
- cv.addEventListener('click',e=>{
-  if(wasDrag||mv>6)return;
-  const r=cv.getBoundingClientRect();v2.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);rc.setFromCamera(v2,cam);
+ const handleTap=pt=>{
   if(waters.length){
+   const r=cv.getBoundingClientRect();
+   v2.set((pt.x-r.left)/r.width*2-1,-((pt.y-r.top)/r.height)*2+1);
+   rc.setFromCamera(v2,cam);
    const hit=rc.intersectObjects(waters.map(w=>w.mesh))[0];
-   if(hit){const w=waters.find(x=>x.mesh===hit.object),p=hit.object.worldToLocal(hit.point.clone());w.ripple(p.x,p.z,performance.now()/1000);play('ripple');return}
+   if(hit){
+    const w=waters.find(x=>x.mesh===hit.object),p=hit.object.worldToLocal(hit.point.clone());
+    w.ripple(p.x,p.z,performance.now()/1000);play('ripple');
+    return;
+   }
   }
   openModelZoom();
+ };
+ bindOrbitPinchTap(cv,{
+  onInteract:()=>{lastInt=performance.now();document.body.classList.toggle('is-rotating-3d',true)},
+  onSingleStart:e=>{mv=0;drag=true;wasDrag=false;px=e.clientX;py=e.clientY},
+  onDrag:(dx,dy,m)=>{
+   mv=m;if(mv>8)wasDrag=true;
+   ry+=dx*.0085;
+   rx=Math.max(.1,Math.min(1.25,rx+dy*.0055));
+   px+=dx;py+=dy;
+  },
+  onPinch:deltaPx=>{
+   wasDrag=true;
+   dist=Math.max(8,Math.min(25,dist+deltaPx*.028));
+  },
+  onEnd:(isTap,pt)=>{
+   drag=false;document.body.classList.remove('is-rotating-3d');
+   setTimeout(()=>{wasDrag=false},60);
+   if(isTap)handleTap(pt);
+  }
  });
+ cv.addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(8,Math.min(25,dist+e.deltaY*.012));lastInt=performance.now()},{passive:false});
+ cam.position.set(0,0,dist);
  function frame(now){
   requestAnimationFrame(frame);
   const dt=Math.min(.05,(now-lastF)/1000);lastF=now;
@@ -1261,8 +1427,9 @@ function initScrollExpand(){
  const track=$('#se-track'),stage=$('#se-stage'),frame=$('#se-frame'),media=$('#se-media'),
   title=$('#se-title'),scrim=$('#se-scrim'),overlay=$('#se-overlay'),hint=$('#se-hint');
  if(!track)return;
- const C={startWidth:42,startHeight:58,startRadius:24,endRadius:0,mediaZoom:1.35,
-  scrollDistance:1.2,holdDistance:.35,smoothing:.1,overlayScrim:.45};
+ const isSmallPhone=innerWidth<640;
+ const C={startWidth:isSmallPhone?76:42,startHeight:isSmallPhone?46:58,startRadius:isSmallPhone?20:24,endRadius:0,mediaZoom:isSmallPhone?1.2:1.35,
+  scrollDistance:isSmallPhone?1.0:1.2,holdDistance:.35,smoothing:.1,overlayScrim:.45};
  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
  const smooth=(a,b,x)=>{const t=clamp((x-a)/((b-a)||1e-6),0,1);return t*t*(3-2*t)};
  let cur=0,target=0,stageH=0,raf=0,running=false;
@@ -1407,7 +1574,9 @@ addEventListener('scroll',()=>{
   $('#progress').style.width=(h>0?y/h*100:0)+'%';
   pxUpdate();heroScroll();$('#hdr').classList.toggle('sc',y>20);const top=$('#top'); top.classList.toggle('opacity-0',y<600); top.classList.toggle('pointer-events-none',y<600);
   const sr=seSec.getBoundingClientRect(), inSE=sr.top<innerHeight&&sr.bottom>0;
-  if(!reduce&&!inSE&&Math.abs(dy)>25){
+  if(document.body.classList.contains('is-rotating-3d')&&innerWidth<768){
+   if(wrap.style.filter)wrap.style.filter='';
+  }else if(!reduce&&!inSE&&Math.abs(dy)>25){
    wrap.style.filter=`blur(${Math.min(Math.abs(dy)*.03,2.5).toFixed(2)}px)`;
    clearTimeout(blurTimer); blurTimer=setTimeout(()=>wrap.style.filter='',120);
   }else if(inSE&&wrap.style.filter){wrap.style.filter=''}
